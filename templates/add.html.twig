@@ -1,0 +1,18 @@
+{% extends "master.html.twig" %}
+
+{% block title %}Add todo item{% endblock %}
+
+{% block content %}
+    
+    <h1>Add a to do task</h1>
+    
+    <form method="post">
+    ownerId: <input  type="name" name="ownerId" ><br>
+    task: <input type="name" name="task"><br>
+    dueDate:  <input type="date" name="dueDate"><br>
+    isDone: <input type="date" name="isDone"><br>
+    
+    <input type="submit" value="add">
+</form>
+{% endblock content %}
+        
