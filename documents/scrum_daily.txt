@@ -34,3 +34,15 @@ got familiar with boostrap
 - created windows mockup
 - implement datase
  
+ 15 may
+1) finished proposal
+   designed database in phpmyadmin
+   tested bootstrap and twig
+
+2) complete database design
+implement login
+register domain in 	class
+
+3) twig inheritance using boostrap
+using a master
+
