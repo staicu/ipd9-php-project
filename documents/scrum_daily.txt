@@ -1,2 +1,30 @@
-Every dayeach memeber will write down the following:
-1. what did I do/ 
+Laurian 196177
+1) What I did yesterday
+
+2) what I will do today
+
+3) what impedes me.
+
+13 may
+
+2)  install environment home computer
+- started Database design
+- implemeted user table
+- mockup master page
+- mockup survey page
+- continue with the proposal
+got familiar with boostrap
+
+3) twig bootstrap- issues with  
+
+14 may
+
+1) 
+finalize the proposal
+implement mockup login
+got familiar with boostrap
+
+- added trello for the project
+- created windows mockup
+- implement datase
+ 

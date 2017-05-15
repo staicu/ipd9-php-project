@@ -1,0 +1,11 @@
+C:\xampp\htdocs\ipd9-php-project\web\html\master\assets\img\TEAM-BWSM-1.jpg
+/html/master/assets/css/
+url(/html/user/img/meeting.jpg)
+href="/html/user/css/styles.min.css"
+
+
+/
+/login (for admin only)
+/surveys/:id/{add,list,edit,delete,promote,analyze}
+/questions/:surveyId/{list, add, edit, delete}
+/take/:surveyId/:pageId
