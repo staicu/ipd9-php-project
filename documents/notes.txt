@@ -9,3 +9,11 @@ href="/html/user/css/styles.min.css"
 /surveys/:id/{add,list,edit,delete,promote,analyze}
 /questions/:surveyId/{list, add, edit, delete}
 /take/:surveyId/:pageId
+
+
+ 
+
+{% extends "index.html.twig" %}
+{% block container %}
+
+{% endblock %}{# empty Twig template #}

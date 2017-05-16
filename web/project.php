@@ -26,7 +26,7 @@ $view->parserOptions = array(
 );
 $view->setTemplatesDirectory(dirname(__FILE__) . '/html');
 
-$app->render('/login/login.html.twig');
+$app->render('/survey.html.twig');
 
 
 

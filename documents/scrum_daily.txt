@@ -46,3 +46,12 @@ register domain in 	class
 3) twig inheritance using boostrap
 using a master
 
+16 - may
+1-submited proposal
+-finished the design and functionality of the applicaiton
+-tested boostrap twig inheritance
+
+2- implement login
+implement create register sureveyee
+
+3- database dependencies
