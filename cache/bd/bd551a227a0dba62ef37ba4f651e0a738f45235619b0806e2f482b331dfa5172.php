@@ -219,6 +219,6 @@ class __TwigTemplate_5dc266b695d42b289c8c76d85ed7a8b0495aa23904e9997633497053606
     <script src=\"/html/assets/js/script.min.js\"></script>
 </body>
 
-</html>", "index.html.twig", "C:\\xampp\\htdocs\\ipd9-php-project\\web\\html\\index.html.twig");
+</html>", "index.html.twig", "C:\\xampp\\htdocs\\php\\ipd9project\\web\\html\\index.html.twig");
     }
 }

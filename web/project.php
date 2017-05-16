@@ -1,5 +1,5 @@
 <?php
-//echo'php';
+echo'php';
 session_cache_limiter(false);
 session_start();
 
@@ -26,7 +26,7 @@ $view->parserOptions = array(
 );
 $view->setTemplatesDirectory(dirname(__FILE__) . '/html');
 
-$app->render('/survey.html.twig');
+$app->render('/login.html.twig');
 
 
 
