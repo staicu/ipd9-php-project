@@ -42,10 +42,10 @@ class __TwigTemplate_5dc266b695d42b289c8c76d85ed7a8b0495aa23904e9997633497053606
             <div class=\"collapse navbar-collapse\" id=\"navcol-2\">
                 <ul class=\"nav navbar-nav hidden-xs hidden-sm navbar-right\" id=\"desktop-toolbar\">
                     <li class=\"dropdown\">
-                        <a class=\"dropdown-toggle\" data-toggle=\"dropdown\" aria-expanded=\"false\" href=\"#\"><img class=\"img-circle\" src=\"assets/img/user-photo.jpg\" width=\"25px\" height=\"25px\"> John <i class=\"fa fa-chevron-down fa-fw\"></i></a>
+                        <a class=\"dropdown-toggle\" data-toggle=\"dropdown\" aria-expanded=\"false\" href=\"#\">Laurian <i class=\"fa fa-chevron-down fa-fw\"></i></a>
                         <ul class=\"dropdown-menu\" role=\"menu\">
                             <li role=\"presentation\"><a href=\"#\"><i class=\"fa fa-user fa-fw\"></i> Profile </a></li>
-                            <li role=\"presentation\"><a href=\"#\"><i class=\"fa fa-power-off fa-fw\"></i>Logout </a></li>
+                            <li role=\"presentation\"><a href=\"/logout\"><i class=\"fa fa-power-off fa-fw\"></i>Logout </a></li>
                         </ul>
                     </li>
                 </ul>
@@ -162,10 +162,10 @@ class __TwigTemplate_5dc266b695d42b289c8c76d85ed7a8b0495aa23904e9997633497053606
             <div class=\"collapse navbar-collapse\" id=\"navcol-2\">
                 <ul class=\"nav navbar-nav hidden-xs hidden-sm navbar-right\" id=\"desktop-toolbar\">
                     <li class=\"dropdown\">
-                        <a class=\"dropdown-toggle\" data-toggle=\"dropdown\" aria-expanded=\"false\" href=\"#\"><img class=\"img-circle\" src=\"assets/img/user-photo.jpg\" width=\"25px\" height=\"25px\"> John <i class=\"fa fa-chevron-down fa-fw\"></i></a>
+                        <a class=\"dropdown-toggle\" data-toggle=\"dropdown\" aria-expanded=\"false\" href=\"#\">Laurian <i class=\"fa fa-chevron-down fa-fw\"></i></a>
                         <ul class=\"dropdown-menu\" role=\"menu\">
                             <li role=\"presentation\"><a href=\"#\"><i class=\"fa fa-user fa-fw\"></i> Profile </a></li>
-                            <li role=\"presentation\"><a href=\"#\"><i class=\"fa fa-power-off fa-fw\"></i>Logout </a></li>
+                            <li role=\"presentation\"><a href=\"/logout\"><i class=\"fa fa-power-off fa-fw\"></i>Logout </a></li>
                         </ul>
                     </li>
                 </ul>
@@ -219,6 +219,6 @@ class __TwigTemplate_5dc266b695d42b289c8c76d85ed7a8b0495aa23904e9997633497053606
     <script src=\"/html/assets/js/script.min.js\"></script>
 </body>
 
-</html>", "index.html.twig", "C:\\xampp\\htdocs\\php\\ipd9project\\web\\html\\index.html.twig");
+</html>", "index.html.twig", "C:\\xampp\\htdocs\\ipd9-php-project\\web\\html\\index.html.twig");
     }
 }

@@ -1,6 +1,6 @@
 <?php
 
-/* /login.html.twig */
+/* login.html.twig */
 class __TwigTemplate_7680b0eadb38fe5daa2726abcee8a6a031593cfee551ffdcd1c012a36f09e974 extends Twig_Template
 {
     public function __construct(Twig_Environment $env)
@@ -8,7 +8,7 @@ class __TwigTemplate_7680b0eadb38fe5daa2726abcee8a6a031593cfee551ffdcd1c012a36f0
         parent::__construct($env);
 
         // line 1
-        $this->parent = $this->loadTemplate("index.html.twig", "/login.html.twig", 1);
+        $this->parent = $this->loadTemplate("index.html.twig", "login.html.twig", 1);
         $this->blocks = array(
             'container' => array($this, 'block_container'),
         );
@@ -28,27 +28,28 @@ class __TwigTemplate_7680b0eadb38fe5daa2726abcee8a6a031593cfee551ffdcd1c012a36f0
     public function block_container($context, array $blocks = array())
     {
         // line 4
-        echo "    
-      <div class=\"row row-login\">
-                    <div class=\"col-md-4 col-md-offset-4 col-sm-6 col-sm-offset-3 col-xs-10 col-xs-offset-1\">
-                        <h1 class=\"text-center\">360 Imagine</h1>
-                        <div class=\"well\">
-                            <h3 class=\"text-danger\">Admin Login </h3>
-                            <form>
-                                <div class=\"form-group\">
-                                    <label class=\"control-label\">Username </label>
-                                    <input class=\"form-control\" type=\"text\">
-                                </div>
-                                <div class=\"form-group\">
-                                    <label class=\"control-label\">Password </label>
-                                    <input class=\"form-control\" type=\"password\">
-                                </div>
-                                <button class=\"btn btn-success btn-block\" type=\"submit\">LOGIN </button>
-                            </form>
-                        </div>
+        echo "
+    <div class=\"row row-login\">
+        <div class=\"col-md-4 col-md-offset-4 col-sm-6 col-sm-offset-3 col-xs-10 col-xs-offset-1\">
+            <h1 class=\"text-center\">360 Imagine</h1>
+            <div class=\"well\">
+                <h3 class=\"text-danger\">Admin Login </h3>
+                
+                <form method=\"post\">
+                    <div class=\"form-group\">
+                        <label class=\"control-label\">Username </label>
+                        <input class=\"form-control\" type=\"text\" name=\"name\">
                     </div>
-                    <div class=\"col-md-12\"></div>
-                </div>
+                        <div class=\"form-group\">
+                        <label class=\"control-label\">Password </label>
+                        <input class=\"form-control\" type=\"password\" name=\"pass\">
+                    </div>
+                    <button class=\"btn btn-success btn-block\" type=\"submit\" value=\"/\">LOGIN </button>
+                </form>
+            </div>
+        </div>
+        <div class=\"col-md-12\"></div>
+    </div>
 
 
 ";
@@ -56,7 +57,7 @@ class __TwigTemplate_7680b0eadb38fe5daa2726abcee8a6a031593cfee551ffdcd1c012a36f0
 
     public function getTemplateName()
     {
-        return "/login.html.twig";
+        return "login.html.twig";
     }
 
     public function isTraitable()
@@ -82,29 +83,30 @@ class __TwigTemplate_7680b0eadb38fe5daa2726abcee8a6a031593cfee551ffdcd1c012a36f0
         return new Twig_Source("{% extends \"index.html.twig\" %}
 
 {% block container %}
-    
-      <div class=\"row row-login\">
-                    <div class=\"col-md-4 col-md-offset-4 col-sm-6 col-sm-offset-3 col-xs-10 col-xs-offset-1\">
-                        <h1 class=\"text-center\">360 Imagine</h1>
-                        <div class=\"well\">
-                            <h3 class=\"text-danger\">Admin Login </h3>
-                            <form>
-                                <div class=\"form-group\">
-                                    <label class=\"control-label\">Username </label>
-                                    <input class=\"form-control\" type=\"text\">
-                                </div>
-                                <div class=\"form-group\">
-                                    <label class=\"control-label\">Password </label>
-                                    <input class=\"form-control\" type=\"password\">
-                                </div>
-                                <button class=\"btn btn-success btn-block\" type=\"submit\">LOGIN </button>
-                            </form>
-                        </div>
+
+    <div class=\"row row-login\">
+        <div class=\"col-md-4 col-md-offset-4 col-sm-6 col-sm-offset-3 col-xs-10 col-xs-offset-1\">
+            <h1 class=\"text-center\">360 Imagine</h1>
+            <div class=\"well\">
+                <h3 class=\"text-danger\">Admin Login </h3>
+                
+                <form method=\"post\">
+                    <div class=\"form-group\">
+                        <label class=\"control-label\">Username </label>
+                        <input class=\"form-control\" type=\"text\" name=\"name\">
                     </div>
-                    <div class=\"col-md-12\"></div>
-                </div>
+                        <div class=\"form-group\">
+                        <label class=\"control-label\">Password </label>
+                        <input class=\"form-control\" type=\"password\" name=\"pass\">
+                    </div>
+                    <button class=\"btn btn-success btn-block\" type=\"submit\" value=\"/\">LOGIN </button>
+                </form>
+            </div>
+        </div>
+        <div class=\"col-md-12\"></div>
+    </div>
 
 
-{% endblock %}", "/login.html.twig", "C:\\xampp\\htdocs\\php\\ipd9project\\web\\html\\login.html.twig");
+{% endblock %}", "login.html.twig", "C:\\xampp\\htdocs\\ipd9-php-project\\web\\html\\login.html.twig");
     }
 }
