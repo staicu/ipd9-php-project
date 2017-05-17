@@ -35,7 +35,7 @@ class __TwigTemplate_7680b0eadb38fe5daa2726abcee8a6a031593cfee551ffdcd1c012a36f0
             <div class=\"well\">
                 <h3 class=\"text-danger\">Admin Login </h3>
                 
-                <form method=\"post\">
+                <form method=\"post\"  action=\"/\">
                     <div class=\"form-group\">
                         <label class=\"control-label\">Username </label>
                         <input class=\"form-control\" type=\"text\" name=\"name\">
@@ -90,7 +90,7 @@ class __TwigTemplate_7680b0eadb38fe5daa2726abcee8a6a031593cfee551ffdcd1c012a36f0
             <div class=\"well\">
                 <h3 class=\"text-danger\">Admin Login </h3>
                 
-                <form method=\"post\">
+                <form method=\"post\"  action=\"/\">
                     <div class=\"form-group\">
                         <label class=\"control-label\">Username </label>
                         <input class=\"form-control\" type=\"text\" name=\"name\">

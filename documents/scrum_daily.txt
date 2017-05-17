@@ -55,3 +55,17 @@ using a master
 implement create register sureveyee
 
 3- database dependencies
+
+17 - may
+
+1- login
+logout
+
+2- admin can register a cosutomer
+admin can create a survey
+admin can edit a survey
+admin can edit a surbey
+
+3- how to adjust url when navigating the application
+user and survey dependency
+button click redireect to a new url

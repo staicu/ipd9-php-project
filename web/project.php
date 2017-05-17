@@ -53,7 +53,7 @@ $app->post('/', function() use ($app) {
     if (!$user) {
         $error = true;
     } else {
-        if ($user['password'] != $pass) {
+        if ($user['password'] != $pass) {       
             $error = true;
         }
     }
