@@ -42,7 +42,7 @@ $app->get('/', function() use ($app) {
 
     $app->render('menu.html.twig');
 });
-
+//login
 $app->post('/', function() use ($app) {
     //    print_r($_POST);    
     $name = $app->request()->post('name');
@@ -53,7 +53,7 @@ $app->post('/', function() use ($app) {
     if (!$user) {
         $error = true;
     } else {
-        if ($user['password'] != $pass) {       
+        if ($user['password'] != $pass) {
             $error = true;
         }
     }
@@ -66,8 +66,69 @@ $app->post('/', function() use ($app) {
         $app->render('menu.html.twig');
     }
 });
+//logout
 $app->get('/logout', function() use ($app) {
     unset($_SESSION['todouser']);
     $app->render('login.html.twig');
 });
+$app->get('/surveylist', function() use ($app) {
+    /* $productList =  DB::query("SELECT * FROM products");
+      $app->render("surveylist.html.twig", array(
+      'productList' => $productList
+      )); */
+    $app->render("surveylist.html.twig");
+});
+$app->get('/register', function() use ($app) {
+    /* $productList =  DB::query("SELECT * FROM products");
+      $app->render("surveylist.html.twig", array(
+      'productList' => $productList
+      )); */
+    $app->render("register.html.twig");
+});
+
+$app->post('/admin/users/add', function() use ($app) {
+    $name = $app->request()->post('name');
+    $email = $app->request()->post('email');
+    $phone = $app->request()->post('phone');
+    $company = $app->request()->post('company');
+    $position = $app->request()->post('position');
+    $userList = array(
+        'name' => $name,
+        'email' => $email,
+        'phone' => $phone,
+        'company' => $company,
+        'position' => $position
+    );
+
+    $errorList = array();
+    if (strlen($name) < 2 || strlen($name) > 100) {
+        array_push($errorList, "Name must be 2-100 characters long");
+    }
+
+    if ($errorList) {
+
+        $app->render("register.html.twig");
+        echo 'not added';
+    } else {
+
+        print_r($errorList);
+        print_r($userList);
+        DB::insert('users', array(
+            "name" => $name,
+            "email" => $email,
+            "phone" => $phone,
+            "company" => $company,
+            "position" => $position
+        ));
+        $textToDisplay = $name." The surveyee was added to the database";
+        $app->render("congratulation.html.twig",array('textToDisplay'=>$textToDisplay));
+    }
+});
+$app->get('/admin/users/list', function() use ($app) {
+    $userList =  DB::query("SELECT * FROM users");
+    $app->render("surveylist.html.twig", array(
+        'userList' => $userList
+    ));
+});
+
 $app->run();

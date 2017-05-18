@@ -4,29 +4,29 @@
                     <div class="col-md-4 col-md-offset-4 col-sm-6 col-sm-offset-3 col-xs-10 col-xs-offset-1">
                         <h1 class="text-center">360 imagine</h1>
                         <div class="well">
-                            <h3 class="text-danger">Survey Registration </h3>
-                            <form>
+                            <h3 class="text-danger">Customer Registration </h3>
+                            <form method="post"  action="/admin/users/add" enctype="multipart/form-data">
                                 <div class="form-group">
                                     <label class="control-label">Name </label>
-                                    <input class="form-control" type="text">
+                                    <input class="form-control" type="text" name="name" value="{{name}}">
                                 </div>
                                 <div class="form-group">
                                     <label class="control-label">Email </label>
-                                    <input class="form-control" type="text">
+                                    <input class="form-control" type="text" name="email" value="{{email}}">
                                 </div>
                                 <div class="form-group">
                                     <label class="control-label">Phone Number</label>
-                                    <input class="form-control" type="text">
+                                    <input class="form-control" type="text" name="phone" value="{{phone}}">
                                 </div>
                                 <div class="form-group">
                                     <label class="control-label">Company </label>
-                                    <input class="form-control" type="text">
+                                    <input class="form-control" type="text" name="company" value="{{company}}">
                                 </div>
                                 <div class="form-group">
                                     <label class="control-label">Position </label>
-                                    <input class="form-control" type="text">
+                                    <input class="form-control" type="text" name="position" value="{{position}}">
                                 </div>
-                                <button class="btn btn-success btn-block" type="submit">LOGIN </button>
+                                <button class="btn btn-success btn-block" type="submit"> Register </button>
                             </form>
                         </div>
                     </div>

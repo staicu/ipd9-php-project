@@ -42,29 +42,18 @@ class __TwigTemplate_5dc266b695d42b289c8c76d85ed7a8b0495aa23904e9997633497053606
             <div class=\"collapse navbar-collapse\" id=\"navcol-2\">
                 <ul class=\"nav navbar-nav hidden-xs hidden-sm navbar-right\" id=\"desktop-toolbar\">
                     <li class=\"dropdown\">
-                        <a class=\"dropdown-toggle\" data-toggle=\"dropdown\" aria-expanded=\"false\" href=\"#\">Laurian <i class=\"fa fa-chevron-down fa-fw\"></i></a>
+                        <a class=\"dropdown-toggle\" data-toggle=\"dropdown\" aria-expanded=\"false\" href=\"#\"> 360 <i class=\"fa fa-chevron-down fa-fw\"></i></a>
                         <ul class=\"dropdown-menu\" role=\"menu\">
-                            <li role=\"presentation\"><a href=\"#\"><i class=\"fa fa-user fa-fw\"></i> Profile </a></li>
+                            <li role=\"presentation\"><a href=\"/\"><i class=\"fa fa-user fa-fw\"></i> Menu </a></li>
                             <li role=\"presentation\"><a href=\"/logout\"><i class=\"fa fa-power-off fa-fw\"></i>Logout </a></li>
                         </ul>
                     </li>
                 </ul>
                 <ul class=\"nav navbar-nav visible-xs-block visible-sm-block\" id=\"mobile-nav\">
-                    <li role=\"presentation\"><a href=\"index.html\"><i class=\"fa fa-home fa-fw\"></i> Dashboard </a></li>
-                    <li role=\"presentation\"><a href=\"index.html\"><i class=\"fa fa-star fa-fw\"></i> Nav Item</a></li>
-                    <li class=\"dropdown\"><a class=\"dropdown-toggle\" data-toggle=\"dropdown\" aria-expanded=\"false\" href=\"#\"><i class=\"fa fa-star fa-fw\"></i> Dropdown <span class=\"caret\"></span></a>
-                        <ul class=\"dropdown-menu\" role=\"menu\">
-                            <li role=\"presentation\"><a href=\"#nogo\"><i class=\"fa fa-star fa-fw\"></i> Link Item</a></li>
-                            <li role=\"presentation\"><a href=\"#nogo\"><i class=\"fa fa-star fa-fw\"></i> Link Item</a></li>
-                        </ul>
-                    </li>
-                    <li class=\"dropdown\"><a class=\"dropdown-toggle\" data-toggle=\"dropdown\" aria-expanded=\"false\" href=\"#\"><i class=\"fa fa-star fa-fw\"></i> Dropdown <span class=\"caret\"></span></a>
-                        <ul class=\"dropdown-menu\" role=\"menu\">
-                            <li role=\"presentation\"><a href=\"fundraising.html\"><i class=\"fa fa-star fa-fw\"></i> Link Item</a></li>
-                            <li role=\"presentation\"><a href=\"donations.html\"><i class=\"fa fa-star fa-fw\"></i> Link Item</a></li>
-                            <li role=\"presentation\"><a href=\"events-listing.html\"><i class=\"fa fa-star fa-fw\"></i> Link Item</a></li>
-                        </ul>
-                    </li>
+                    <li role=\"presentation\"><a href=\"/\"><i class=\"fa fa-home fa-fw\"></i> Menu </a></li>
+                    <li role=\"presentation\"><a href=\"/logout\"><i class=\"fa fa-star fa-fw\"></i> Logout</a></li>
+                    
+                    
                 </ul>
             </div>
         </div>
@@ -74,15 +63,15 @@ class __TwigTemplate_5dc266b695d42b289c8c76d85ed7a8b0495aa23904e9997633497053606
         <div class=\"header-blue\">
            
                 ";
-        // line 56
+        // line 45
         $this->displayBlock('container', $context, $blocks);
-        // line 57
+        // line 46
         echo "                
            
                 ";
-        // line 59
+        // line 48
         $this->displayBlock('container1', $context, $blocks);
-        // line 60
+        // line 49
         echo "        </div>
     </div>
     <div class=\"footer-basic\">
@@ -108,12 +97,12 @@ class __TwigTemplate_5dc266b695d42b289c8c76d85ed7a8b0495aa23904e9997633497053606
 </html>";
     }
 
-    // line 56
+    // line 45
     public function block_container($context, array $blocks = array())
     {
     }
 
-    // line 59
+    // line 48
     public function block_container1($context, array $blocks = array())
     {
     }
@@ -125,7 +114,7 @@ class __TwigTemplate_5dc266b695d42b289c8c76d85ed7a8b0495aa23904e9997633497053606
 
     public function getDebugInfo()
     {
-        return array (  117 => 59,  112 => 56,  86 => 60,  84 => 59,  80 => 57,  78 => 56,  21 => 1,);
+        return array (  106 => 48,  101 => 45,  75 => 49,  73 => 48,  69 => 46,  67 => 45,  21 => 1,);
     }
 
     /** @deprecated since 1.27 (to be removed in 2.0). Use getSourceContext() instead */
@@ -162,29 +151,18 @@ class __TwigTemplate_5dc266b695d42b289c8c76d85ed7a8b0495aa23904e9997633497053606
             <div class=\"collapse navbar-collapse\" id=\"navcol-2\">
                 <ul class=\"nav navbar-nav hidden-xs hidden-sm navbar-right\" id=\"desktop-toolbar\">
                     <li class=\"dropdown\">
-                        <a class=\"dropdown-toggle\" data-toggle=\"dropdown\" aria-expanded=\"false\" href=\"#\">Laurian <i class=\"fa fa-chevron-down fa-fw\"></i></a>
+                        <a class=\"dropdown-toggle\" data-toggle=\"dropdown\" aria-expanded=\"false\" href=\"#\"> 360 <i class=\"fa fa-chevron-down fa-fw\"></i></a>
                         <ul class=\"dropdown-menu\" role=\"menu\">
-                            <li role=\"presentation\"><a href=\"#\"><i class=\"fa fa-user fa-fw\"></i> Profile </a></li>
+                            <li role=\"presentation\"><a href=\"/\"><i class=\"fa fa-user fa-fw\"></i> Menu </a></li>
                             <li role=\"presentation\"><a href=\"/logout\"><i class=\"fa fa-power-off fa-fw\"></i>Logout </a></li>
                         </ul>
                     </li>
                 </ul>
                 <ul class=\"nav navbar-nav visible-xs-block visible-sm-block\" id=\"mobile-nav\">
-                    <li role=\"presentation\"><a href=\"index.html\"><i class=\"fa fa-home fa-fw\"></i> Dashboard </a></li>
-                    <li role=\"presentation\"><a href=\"index.html\"><i class=\"fa fa-star fa-fw\"></i> Nav Item</a></li>
-                    <li class=\"dropdown\"><a class=\"dropdown-toggle\" data-toggle=\"dropdown\" aria-expanded=\"false\" href=\"#\"><i class=\"fa fa-star fa-fw\"></i> Dropdown <span class=\"caret\"></span></a>
-                        <ul class=\"dropdown-menu\" role=\"menu\">
-                            <li role=\"presentation\"><a href=\"#nogo\"><i class=\"fa fa-star fa-fw\"></i> Link Item</a></li>
-                            <li role=\"presentation\"><a href=\"#nogo\"><i class=\"fa fa-star fa-fw\"></i> Link Item</a></li>
-                        </ul>
-                    </li>
-                    <li class=\"dropdown\"><a class=\"dropdown-toggle\" data-toggle=\"dropdown\" aria-expanded=\"false\" href=\"#\"><i class=\"fa fa-star fa-fw\"></i> Dropdown <span class=\"caret\"></span></a>
-                        <ul class=\"dropdown-menu\" role=\"menu\">
-                            <li role=\"presentation\"><a href=\"fundraising.html\"><i class=\"fa fa-star fa-fw\"></i> Link Item</a></li>
-                            <li role=\"presentation\"><a href=\"donations.html\"><i class=\"fa fa-star fa-fw\"></i> Link Item</a></li>
-                            <li role=\"presentation\"><a href=\"events-listing.html\"><i class=\"fa fa-star fa-fw\"></i> Link Item</a></li>
-                        </ul>
-                    </li>
+                    <li role=\"presentation\"><a href=\"/\"><i class=\"fa fa-home fa-fw\"></i> Menu </a></li>
+                    <li role=\"presentation\"><a href=\"/logout\"><i class=\"fa fa-star fa-fw\"></i> Logout</a></li>
+                    
+                    
                 </ul>
             </div>
         </div>
