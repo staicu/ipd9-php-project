@@ -71,12 +71,12 @@ $app->get('/logout', function() use ($app) {
     unset($_SESSION['todouser']);
     $app->render('login.html.twig');
 });
-$app->get('/surveylist', function() use ($app) {
+$app->get('/survey', function() use ($app) {
     /* $productList =  DB::query("SELECT * FROM products");
       $app->render("surveylist.html.twig", array(
       'productList' => $productList
       )); */
-    $app->render("surveylist.html.twig");
+    $app->render("survey.html.twig");
 });
 $app->get('/register', function() use ($app) {
     /* $productList =  DB::query("SELECT * FROM products");
@@ -86,6 +86,7 @@ $app->get('/register', function() use ($app) {
     $app->render("register.html.twig");
 });
 
+//add customers
 $app->post('/admin/users/add', function() use ($app) {
     $name = $app->request()->post('name');
     $email = $app->request()->post('email');
@@ -124,6 +125,7 @@ $app->post('/admin/users/add', function() use ($app) {
         $app->render("congratulation.html.twig",array('textToDisplay'=>$textToDisplay));
     }
 });
+//list customers
 $app->get('/admin/users/list', function() use ($app) {
     $userList =  DB::query("SELECT * FROM users");
     $app->render("surveylist.html.twig", array(

@@ -68,4 +68,19 @@ admin can edit a surbey
 
 3- how to adjust url when navigating the application
 user and survey dependency
-button click redireect to a new url
+button click redirect to a new url
+
+18 - may
+1- add surveyee no checks
+ - confirmation add
+ - surveyee list
+
+2- modify surveyee
+ - delete surveyee
+ - update 
+ - add verification surveyee email
+ - complete list surveyee list with column of edit and delete
+ - research report and promotional email
+
+3- database constrains
+ - sending emails from local server
