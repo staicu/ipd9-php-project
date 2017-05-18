@@ -189,6 +189,6 @@ class __TwigTemplate_b37c9840b23aea18bbd2ccde61fcdc67999e3324d2fa84c0eb55b31ea50
 
         </div>
     </div>
-{% endblock %}{# empty Twig template #}", "menu.html.twig", "C:\\xampp\\htdocs\\ipd9-php-project\\web\\html\\menu.html.twig");
+{% endblock %}{# empty Twig template #}", "menu.html.twig", "C:\\xampp\\htdocs\\php\\ipd9project\\web\\html\\menu.html.twig");
     }
 }

@@ -135,6 +135,6 @@ class __TwigTemplate_439044ce3cdf01a168d88c3a4b229e100d6d51127a368cffacf9fbc26a9
                         </div>
                     </div>
                 </div>
-{% endblock %}{# empty Twig template #}", "register.html.twig", "C:\\xampp\\htdocs\\ipd9-php-project\\web\\html\\register.html.twig");
+{% endblock %}{# empty Twig template #}", "register.html.twig", "C:\\xampp\\htdocs\\php\\ipd9project\\web\\html\\register.html.twig");
     }
 }

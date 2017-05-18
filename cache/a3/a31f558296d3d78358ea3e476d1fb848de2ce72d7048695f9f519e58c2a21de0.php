@@ -118,6 +118,6 @@ class __TwigTemplate_fa60e03551dbb231f46b6128965b924409887fd35a682bbc065020ef9c7
             </tbody>
         </table>
     </div>
-{% endblock %}", "surveylist.html.twig", "C:\\xampp\\htdocs\\ipd9-php-project\\web\\html\\surveylist.html.twig");
+{% endblock %}", "surveylist.html.twig", "C:\\xampp\\htdocs\\php\\ipd9project\\web\\html\\surveylist.html.twig");
     }
 }

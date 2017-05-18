@@ -1,3 +1,47 @@
+
+
+-----------------------------------------
+
+estorefull ipd9 complete project
+
+------------------------------------------------------
+c panel
+
+https://srv06.datona-1.com:2083/?locale=en
+
+Your username for this account is: cp4776
+ Your password for this account is: xgh7y35y
+ Your Domain Name is: ipd9.info
+
+Filezilla
+
+--------------------------------------------------------
+1. Title of your project
+
+Survey engine 
+
+?
+
+2. Name of members of the project
+
+Laurian Staicu 1696177
+
+
+3. URL to GitHub
+
+https://github.com/staicu/ipd9-php-project
+
+trying to fix composer : branch ?
+
+4. URL to Trello (make sure it's publicly readable)
+
+https://trello.com/b/F4MOrPEs/survey-engine
+
+?
+5. URL to working online version on 
+laurian.ipd9.info
+-------------------------------------------------------------
+
 C:\xampp\htdocs\ipd9-php-project\web\html\master\assets\img\TEAM-BWSM-1.jpg
 /html/master/assets/css/
 url(/html/user/img/meeting.jpg)
