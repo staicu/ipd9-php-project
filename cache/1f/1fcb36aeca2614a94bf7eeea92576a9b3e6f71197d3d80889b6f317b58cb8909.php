@@ -8,16 +8,15 @@ class __TwigTemplate_591d72df4acef753d6453fcb03915ee4564d20a5055a20980a99b4838d8
         parent::__construct($env);
 
         // line 1
-        $this->parent = $this->loadTemplate("master.html.twig", "login.html.twig", 1);
+        $this->parent = $this->loadTemplate("index.html.twig", "login.html.twig", 1);
         $this->blocks = array(
-            'title' => array($this, 'block_title'),
-            'content' => array($this, 'block_content'),
+            'container' => array($this, 'block_container'),
         );
     }
 
     protected function doGetParent(array $context)
     {
-        return "master.html.twig";
+        return "index.html.twig";
     }
 
     protected function doDisplay(array $context, array $blocks = array())
@@ -26,30 +25,32 @@ class __TwigTemplate_591d72df4acef753d6453fcb03915ee4564d20a5055a20980a99b4838d8
     }
 
     // line 3
-    public function block_title($context, array $blocks = array())
+    public function block_container($context, array $blocks = array())
     {
-        echo "Login";
-    }
+        // line 4
+        echo "
+    <div class=\"row row-login\">
+        <div class=\"col-md-4 col-md-offset-4 col-sm-6 col-sm-offset-3 col-xs-10 col-xs-offset-1\">
+            <h1 class=\"text-center\">360 Imagine</h1>
+            <div class=\"well\">
+                <h3 class=\"text-danger\">Admin Login </h3>
+                
+                <form method=\"post\"  action=\"/\">
+                    <div class=\"form-group\">
+                        <label class=\"control-label\">Username </label>
+                        <input class=\"form-control\" type=\"text\" name=\"name\">
+                    </div>
+                        <div class=\"form-group\">
+                        <label class=\"control-label\">Password </label>
+                        <input class=\"form-control\" type=\"password\" name=\"pass\">
+                    </div>
+                    <button class=\"btn btn-success btn-block\" type=\"submit\" value=\"/\">LOGIN </button>
+                </form>
+            </div>
+        </div>
+        <div class=\"col-md-12\"></div>
+    </div>
 
-    // line 5
-    public function block_content($context, array $blocks = array())
-    {
-        // line 6
-        echo "
-";
-        // line 7
-        if ((isset($context["error"]) ? $context["error"] : null)) {
-            // line 8
-            echo "    <p class=\"errorList\">Login failed try again.</p>
-";
-        }
-        // line 10
-        echo "
-<form method=\"post\">
-    Email: <input type=\"email\" name=\"email\"><br>
-    Password: <input type=\"password\" name=\"pass\"><br>
-    <input type=\"submit\" value=\"Login\">
-</form>
 
 ";
     }
@@ -66,7 +67,7 @@ class __TwigTemplate_591d72df4acef753d6453fcb03915ee4564d20a5055a20980a99b4838d8
 
     public function getDebugInfo()
     {
-        return array (  47 => 10,  43 => 8,  41 => 7,  38 => 6,  35 => 5,  29 => 3,  11 => 1,);
+        return array (  31 => 4,  28 => 3,  11 => 1,);
     }
 
     /** @deprecated since 1.27 (to be removed in 2.0). Use getSourceContext() instead */
@@ -79,24 +80,33 @@ class __TwigTemplate_591d72df4acef753d6453fcb03915ee4564d20a5055a20980a99b4838d8
 
     public function getSourceContext()
     {
-        return new Twig_Source("{% extends \"master.html.twig\" %}
+        return new Twig_Source("{% extends \"index.html.twig\" %}
 
-{% block title %}Login{% endblock %}
+{% block container %}
 
-{% block content %}
+    <div class=\"row row-login\">
+        <div class=\"col-md-4 col-md-offset-4 col-sm-6 col-sm-offset-3 col-xs-10 col-xs-offset-1\">
+            <h1 class=\"text-center\">360 Imagine</h1>
+            <div class=\"well\">
+                <h3 class=\"text-danger\">Admin Login </h3>
+                
+                <form method=\"post\"  action=\"/\">
+                    <div class=\"form-group\">
+                        <label class=\"control-label\">Username </label>
+                        <input class=\"form-control\" type=\"text\" name=\"name\">
+                    </div>
+                        <div class=\"form-group\">
+                        <label class=\"control-label\">Password </label>
+                        <input class=\"form-control\" type=\"password\" name=\"pass\">
+                    </div>
+                    <button class=\"btn btn-success btn-block\" type=\"submit\" value=\"/\">LOGIN </button>
+                </form>
+            </div>
+        </div>
+        <div class=\"col-md-12\"></div>
+    </div>
 
-{% if error %}
-    <p class=\"errorList\">Login failed try again.</p>
-{% endif %}
 
-<form method=\"post\">
-    Email: <input type=\"email\" name=\"email\"><br>
-    Password: <input type=\"password\" name=\"pass\"><br>
-    <input type=\"submit\" value=\"Login\">
-</form>
-
-{% endblock content %}
-
-", "login.html.twig", "C:\\xampp\\htdocs\\ipd9-php-project\\templates\\login.html.twig");
+{% endblock %}", "login.html.twig", "C:\\xampp\\htdocs\\ipd9-php-project\\templates\\login.html.twig");
     }
 }

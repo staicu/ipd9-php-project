@@ -3,14 +3,22 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/xampp/htdocs/php/ipd9project/web/html/register.html.twig</file>
-            <file>file:/C:/xampp/htdocs/php/ipd9project/web/project.php</file>
-            <file>file:/C:/xampp/htdocs/php/ipd9project/templates/master.html.twig</file>
-            <file>file:/C:/xampp/htdocs/php/ipd9project/web/html/error_internal.html.twig</file>
-            <file>file:/C:/xampp/htdocs/php/ipd9project/web/html/index.html.twig</file>
-            <file>file:/C:/xampp/htdocs/php/ipd9project/templates/user.html.twig</file>
-            <file>file:/C:/xampp/htdocs/php/ipd9project/templates/usertest.html.twig</file>
-            <file>file:/C:/xampp/htdocs/php/ipd9project/web/local.php</file>
+            <file>file:/C:/xampp/htdocs/ipd9-php-project/templates/login.html.twig</file>
+            <file>file:/C:/xampp/htdocs/ipd9-php-project/templates/admin_question_add.html.twig</file>
+            <file>file:/C:/xampp/htdocs/ipd9-php-project/templates/index.html</file>
+            <file>file:/C:/xampp/htdocs/ipd9-php-project/templates/createsurvey-1.html</file>
+            <file>file:/C:/xampp/htdocs/ipd9-php-project/templates/admin_customer_add.html.twig</file>
+            <file>file:/C:/xampp/htdocs/ipd9-php-project/web/logs/errors.log</file>
+            <file>file:/C:/xampp/htdocs/ipd9-php-project/templates/questionlist.html.twig</file>
+            <file>file:/C:/xampp/htdocs/ipd9-php-project/web/logs/everything.log</file>
+            <file>file:/C:/xampp/htdocs/ipd9-php-project/templates/error_internal.html.twig</file>
+            <file>file:/C:/xampp/htdocs/ipd9-php-project/web/project.php</file>
+            <file>file:/C:/xampp/htdocs/ipd9-php-project/templates/congratulation.html.twig</file>
+            <file>file:/C:/xampp/htdocs/ipd9-php-project/templates/admin_list.html.twig</file>
+            <file>file:/C:/xampp/htdocs/ipd9-php-project/templates/survey.html.twig</file>
+            <file>file:/C:/xampp/htdocs/ipd9-php-project/templates/menu.html.twig</file>
+            <file>file:/C:/xampp/htdocs/ipd9-php-project/templates/index.html.twig</file>
+            <file>file:/C:/xampp/htdocs/ipd9-php-project/web/local.php</file>
         </group>
     </open-files>
 </project-private>

@@ -8,17 +8,15 @@ class __TwigTemplate_2d795e50620bcbf2a3274db3b379c6c432c9f265488718b7cabb0baf465
         parent::__construct($env);
 
         // line 1
-        $this->parent = $this->loadTemplate("master.html.twig", "register.html.twig", 1);
+        $this->parent = $this->loadTemplate("index.html.twig", "register.html.twig", 1);
         $this->blocks = array(
-            'title' => array($this, 'block_title'),
-            'headExtra' => array($this, 'block_headExtra'),
-            'content' => array($this, 'block_content'),
+            'container' => array($this, 'block_container'),
         );
     }
 
     protected function doGetParent(array $context)
     {
-        return "master.html.twig";
+        return "index.html.twig";
     }
 
     protected function doDisplay(array $context, array $blocks = array())
@@ -26,84 +24,56 @@ class __TwigTemplate_2d795e50620bcbf2a3274db3b379c6c432c9f265488718b7cabb0baf465
         $this->parent->display($context, array_merge($this->blocks, $blocks));
     }
 
-    // line 3
-    public function block_title($context, array $blocks = array())
+    // line 2
+    public function block_container($context, array $blocks = array())
     {
-        echo "User registration";
-    }
-
-    // line 5
-    public function block_headExtra($context, array $blocks = array())
-    {
-        // line 6
-        echo "
-<script src=\"https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js\"></script>
-<script>
-    \$(document).ready(function() {
-        \$(\"#emailInUse\").hide();
-        \$(\"input[name=email]\").keyup(function() {
-            var email = \$(this).val();
-            //console.log(\"Keyup: \" + email);
-            if (email === \"\") {
-                \$(\"#emailInUse\").hide();
-                return;
-            }
-            \$.get(\"/ajax/emailused/\" + email, function(result) {
-                result = eval(result);
-                if (result) {
-                    \$(\"#emailInUse\").show();
-                } else {
-                    \$(\"#emailInUse\").hide();
-                }
-            });
-        });
-    });
-</script>
-
-";
-    }
-
-    // line 33
-    public function block_content($context, array $blocks = array())
-    {
-        // line 34
-        echo "    
-";
-        // line 35
-        if ((isset($context["errorList"]) ? $context["errorList"] : null)) {
-            // line 36
-            echo "    <ul class=\"errorList\">
-        ";
-            // line 37
-            $context['_parent'] = $context;
-            $context['_seq'] = twig_ensure_traversable((isset($context["errorList"]) ? $context["errorList"] : null));
-            foreach ($context['_seq'] as $context["_key"] => $context["error"]) {
-                // line 38
-                echo "            <li>";
-                echo twig_escape_filter($this->env, $context["error"], "html", null, true);
-                echo "</li>
-        ";
-            }
-            $_parent = $context['_parent'];
-            unset($context['_seq'], $context['_iterated'], $context['_key'], $context['error'], $context['_parent'], $context['loop']);
-            $context = array_intersect_key($context, $_parent) + $_parent;
-            // line 40
-            echo "    </ul>
-";
-        }
-        // line 42
-        echo "
-<form method=\"post\">
-    Email: <input type=\"email\" name=\"email\" value=\"";
-        // line 44
-        echo twig_escape_filter($this->env, $this->getAttribute((isset($context["v"]) ? $context["v"] : null), "email", array()), "html", null, true);
+        // line 3
+        echo "    <div class=\"row row-login\">
+                    <div class=\"col-md-4 col-md-offset-4 col-sm-6 col-sm-offset-3 col-xs-10 col-xs-offset-1\">
+                        <h1 class=\"text-center\">360 imagine</h1>
+                        <div class=\"well\">
+                            <h3 class=\"text-danger\">Customer Registration </h3>
+                            <form method=\"post\"  action=\"/admin/users/add\" enctype=\"multipart/form-data\">
+                                <div class=\"form-group\">
+                                    <label class=\"control-label\">Name </label>
+                                    <input class=\"form-control\" type=\"text\" name=\"name\" value=\"";
+        // line 11
+        echo twig_escape_filter($this->env, (isset($context["name"]) ? $context["name"] : null), "html", null, true);
         echo "\">
-        <span id=\"emailInUse\">Email already registered</span><br>
-    Password <input type=\"password\" name=\"pass1\"><br>
-    Password (repeated) <input type=\"password\" name=\"pass2\"><br>
-    <input type=\"submit\" value=\"Register\">
-</form>
-
+                                </div>
+                                <div class=\"form-group\">
+                                    <label class=\"control-label\">Email </label>
+                                    <input class=\"form-control\" type=\"text\" name=\"email\" value=\"";
+        // line 15
+        echo twig_escape_filter($this->env, (isset($context["email"]) ? $context["email"] : null), "html", null, true);
+        echo "\">
+                                </div>
+                                <div class=\"form-group\">
+                                    <label class=\"control-label\">Phone Number</label>
+                                    <input class=\"form-control\" type=\"text\" name=\"phone\" value=\"";
+        // line 19
+        echo twig_escape_filter($this->env, (isset($context["phone"]) ? $context["phone"] : null), "html", null, true);
+        echo "\">
+                                </div>
+                                <div class=\"form-group\">
+                                    <label class=\"control-label\">Company </label>
+                                    <input class=\"form-control\" type=\"text\" name=\"company\" value=\"";
+        // line 23
+        echo twig_escape_filter($this->env, (isset($context["company"]) ? $context["company"] : null), "html", null, true);
+        echo "\">
+                                </div>
+                                <div class=\"form-group\">
+                                    <label class=\"control-label\">Position </label>
+                                    <input class=\"form-control\" type=\"text\" name=\"position\" value=\"";
+        // line 27
+        echo twig_escape_filter($this->env, (isset($context["position"]) ? $context["position"] : null), "html", null, true);
+        echo "\">
+                                </div>
+                                <button class=\"btn btn-success btn-block\" type=\"submit\"> Register </button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
 ";
     }
 
@@ -119,7 +89,7 @@ class __TwigTemplate_2d795e50620bcbf2a3274db3b379c6c432c9f265488718b7cabb0baf465
 
     public function getDebugInfo()
     {
-        return array (  99 => 44,  95 => 42,  91 => 40,  82 => 38,  78 => 37,  75 => 36,  73 => 35,  70 => 34,  67 => 33,  39 => 6,  36 => 5,  30 => 3,  11 => 1,);
+        return array (  69 => 27,  62 => 23,  55 => 19,  48 => 15,  41 => 11,  31 => 3,  28 => 2,  11 => 1,);
     }
 
     /** @deprecated since 1.27 (to be removed in 2.0). Use getSourceContext() instead */
@@ -132,58 +102,39 @@ class __TwigTemplate_2d795e50620bcbf2a3274db3b379c6c432c9f265488718b7cabb0baf465
 
     public function getSourceContext()
     {
-        return new Twig_Source("{% extends \"master.html.twig\" %}
-
-{% block title %}User registration{% endblock %}
-
-{% block headExtra %}
-
-<script src=\"https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js\"></script>
-<script>
-    \$(document).ready(function() {
-        \$(\"#emailInUse\").hide();
-        \$(\"input[name=email]\").keyup(function() {
-            var email = \$(this).val();
-            //console.log(\"Keyup: \" + email);
-            if (email === \"\") {
-                \$(\"#emailInUse\").hide();
-                return;
-            }
-            \$.get(\"/ajax/emailused/\" + email, function(result) {
-                result = eval(result);
-                if (result) {
-                    \$(\"#emailInUse\").show();
-                } else {
-                    \$(\"#emailInUse\").hide();
-                }
-            });
-        });
-    });
-</script>
-
-{% endblock headExtra %}
-
-
-{% block content %}
-    
-{% if errorList %}
-    <ul class=\"errorList\">
-        {% for error in errorList %}
-            <li>{{ error }}</li>
-        {% endfor %}
-    </ul>
-{% endif %}
-
-<form method=\"post\">
-    Email: <input type=\"email\" name=\"email\" value=\"{{v.email}}\">
-        <span id=\"emailInUse\">Email already registered</span><br>
-    Password <input type=\"password\" name=\"pass1\"><br>
-    Password (repeated) <input type=\"password\" name=\"pass2\"><br>
-    <input type=\"submit\" value=\"Register\">
-</form>
-
-{% endblock content %}
-        
-", "register.html.twig", "C:\\xampp\\htdocs\\ipd9-php-project\\templates\\register.html.twig");
+        return new Twig_Source("{% extends \"index.html.twig\" %}
+{% block container %}
+    <div class=\"row row-login\">
+                    <div class=\"col-md-4 col-md-offset-4 col-sm-6 col-sm-offset-3 col-xs-10 col-xs-offset-1\">
+                        <h1 class=\"text-center\">360 imagine</h1>
+                        <div class=\"well\">
+                            <h3 class=\"text-danger\">Customer Registration </h3>
+                            <form method=\"post\"  action=\"/admin/users/add\" enctype=\"multipart/form-data\">
+                                <div class=\"form-group\">
+                                    <label class=\"control-label\">Name </label>
+                                    <input class=\"form-control\" type=\"text\" name=\"name\" value=\"{{name}}\">
+                                </div>
+                                <div class=\"form-group\">
+                                    <label class=\"control-label\">Email </label>
+                                    <input class=\"form-control\" type=\"text\" name=\"email\" value=\"{{email}}\">
+                                </div>
+                                <div class=\"form-group\">
+                                    <label class=\"control-label\">Phone Number</label>
+                                    <input class=\"form-control\" type=\"text\" name=\"phone\" value=\"{{phone}}\">
+                                </div>
+                                <div class=\"form-group\">
+                                    <label class=\"control-label\">Company </label>
+                                    <input class=\"form-control\" type=\"text\" name=\"company\" value=\"{{company}}\">
+                                </div>
+                                <div class=\"form-group\">
+                                    <label class=\"control-label\">Position </label>
+                                    <input class=\"form-control\" type=\"text\" name=\"position\" value=\"{{position}}\">
+                                </div>
+                                <button class=\"btn btn-success btn-block\" type=\"submit\"> Register </button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+{% endblock %}{# empty Twig template #}", "register.html.twig", "C:\\xampp\\htdocs\\ipd9-php-project\\templates\\register.html.twig");
     }
 }
