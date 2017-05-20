@@ -38,7 +38,7 @@ class __TwigTemplate_0e4dafee37aaee720d010f584df53d8a9efcea0cae442ebd1a5ce6080e2
 
                 <div class=\"panel-collapse collapse item-1\" role=\"tabpanel\">
 
-                    <div class=\"panel-body\"><span><a href=\"/survey\">Start a Survey</a>.</span></div>
+                    <div class=\"panel-body\"><span><a href=\"/admin/start/survey/step1\">Start a Survey</a>.</span></div>
 
                 </div>
             </div>
@@ -60,10 +60,10 @@ class __TwigTemplate_0e4dafee37aaee720d010f584df53d8a9efcea0cae442ebd1a5ce6080e2
 
             <div class=\"panel panel-default\">
                 <div class=\"panel-heading\" role=\"tab\">
-                    <h4 class=\"panel-title\"><a role=\"button\" data-toggle=\"collapse\" data-parent=\"#accordion-1\" aria-expanded=\"false\" href=\"#accordion-1 .item-3\">Survey Management</a></h4></div>
+                    <h4 class=\"panel-title\"><a role=\"button\" data-toggle=\"collapse\" data-parent=\"#accordion-1\" aria-expanded=\"false\" href=\"#accordion-1 .item-3\">Survey Template</a></h4></div>
                 <div class=\"panel-collapse collapse item-3\" role=\"tabpanel\">
-                    <div class=\"panel-body\"><span><a href=\"/admin/survey/list\">Create a Survey</a>.</span></div>
-                    <div class=\"panel-body\"><span><a href=\"/admin/survey/list\">List of Surveys</a>.</span></div>
+                    <div class=\"panel-body\"><span><a href=\"/admin/template/add\">Create a Template</a>.</span></div>
+                    <div class=\"panel-body\"><span><a href=\"/admin/template/list\">List of Template</a>.</span></div>
 
                 </div>
             </div>
@@ -133,7 +133,7 @@ class __TwigTemplate_0e4dafee37aaee720d010f584df53d8a9efcea0cae442ebd1a5ce6080e2
 
                 <div class=\"panel-collapse collapse item-1\" role=\"tabpanel\">
 
-                    <div class=\"panel-body\"><span><a href=\"/survey\">Start a Survey</a>.</span></div>
+                    <div class=\"panel-body\"><span><a href=\"/admin/start/survey/step1\">Start a Survey</a>.</span></div>
 
                 </div>
             </div>
@@ -155,10 +155,10 @@ class __TwigTemplate_0e4dafee37aaee720d010f584df53d8a9efcea0cae442ebd1a5ce6080e2
 
             <div class=\"panel panel-default\">
                 <div class=\"panel-heading\" role=\"tab\">
-                    <h4 class=\"panel-title\"><a role=\"button\" data-toggle=\"collapse\" data-parent=\"#accordion-1\" aria-expanded=\"false\" href=\"#accordion-1 .item-3\">Survey Management</a></h4></div>
+                    <h4 class=\"panel-title\"><a role=\"button\" data-toggle=\"collapse\" data-parent=\"#accordion-1\" aria-expanded=\"false\" href=\"#accordion-1 .item-3\">Survey Template</a></h4></div>
                 <div class=\"panel-collapse collapse item-3\" role=\"tabpanel\">
-                    <div class=\"panel-body\"><span><a href=\"/admin/survey/list\">Create a Survey</a>.</span></div>
-                    <div class=\"panel-body\"><span><a href=\"/admin/survey/list\">List of Surveys</a>.</span></div>
+                    <div class=\"panel-body\"><span><a href=\"/admin/template/add\">Create a Template</a>.</span></div>
+                    <div class=\"panel-body\"><span><a href=\"/admin/template/list\">List of Template</a>.</span></div>
 
                 </div>
             </div>

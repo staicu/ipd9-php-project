@@ -1,7 +1,7 @@
 {% extends "index.html.twig" %}
 {% block container %}
     <div class="container" style ="padding-top: 100px;color: orange" >
-        <h1 class="text-center">List of {{titlelist}}</h1>
+        <h1 class="text-center">List of {{titlelist}}. {{extraTitle}}</h1>
         <table id="example" class="table table-striped table-bordered" cellspacing="0" width="100%">
             <thead >
                 <tr >
@@ -9,13 +9,17 @@
                         <th>Id</th>
                         <th>Name</th>
                         <th>Phone</th>
+                        <th>Email</th>
                         <th>Operations</th>
                         {%endif%}
-                        {% if titlelist == "Suveys"%}
+                        {% if titlelist == "Survey Template"%}
                         <th>Id</th>
                         <th>Name</th>
+                        <th>ID Question 1</th>
                         <th>Question 1</th>
+                        <th>ID Question 2</th>
                         <th>Question 2</th>
+
                         <th>Operations</th>
                         {%endif%}
                         {% if titlelist == "Questions"%}
@@ -27,43 +31,65 @@
                         {%endif%}
                 </tr>
             </thead>
+
             <tbody>
                 {% if titlelist == "Customers"%}
+
                     {% for s in userList %}
                         <tr><td>{{s.id}}</td>
                             <td>{{s.name}}</td>
                             <td>{{s.phone}}</td>
+                            <td>{{s.email}}</td>
                             <td><a style="color:red;" href="/admin/customer/edit/{{s.id}}">Update</a>
                                 <a style="color:red;" href="/admin/customer/delete/{{s.id}}">Delete</a>
                             </td>
                         </tr>   
                     {% endfor %}
                 {%endif%}
-                {% if titlelist == "Suveys"%}
+                {% if titlelist == "Survey Template"%}
+
+                <form action="/action_page.php" method="get">
+
                     {% for s in userList %}
+
                         <tr><td>{{s.id}}</td>
                             <td>{{s.name}}</td>
                             <td>{{s.idquestion1}}</td>
+                            <td>{{s.question1}}</td>
                             <td>{{s.idquestion2}}</td>
-                            <td><a style="color:red;" href="/admin/survey/edit/{{s.id}}">Update</a>
-                                <a style="color:red;" href="/admin/survey/delete/{{s.id}}">Delete</a>
+                            <td>{{s.question2}}</td>
+                            <td>
+                                <a style="color:red;" href="/admin/template/delete/{{s.id}}">Delete</a>
                             </td>
                         </tr>   
                     {% endfor %}
+
                 {%endif%}
                 {% if titlelist == "Questions"%}
-                    {% for s in userList %}
-                        <tr><td>{{s.id}}</td>
-                            <td>{{s.question}}</td>
-                            <td>{{s.ans1}}</td>
-                            <td>{{s.ans2}}</td>
-                            <td><a style="color:red;" href="/admin/question/edit/{{s.id}}">Update</a>
-                                <a style="color:red;" href="/admin/question/delete/{{s.id}}">Delete</a>
-                            </td>
-                        </tr>   
-                    {% endfor %}
+                    <form action="/admin/template/add/step1" method="post" >
+                        {% for s in userList %}
+                            <tr><td>{{s.id}}</td>
+                                <td>{{s.question}}</td>
+                                <td>{{s.ans1}}</td>
+                                <td>{{s.ans2}}</td>
+                                <td>
+                                    {% if admin == "template" %}
+                                        <input id="id" type="checkbox" name="id[]" value="{{s.id}}">
+                                    {%else %}
+                                        <a style="color:red;" href="/admin/question/edit/{{s.id}}">Update</a>
+                                        <a style="color:red;" href="/admin/question/delete/{{s.id}}">Delete</a>
+                                    {%endif%}
+                                </td>
+                            </tr>   
+                        {% endfor %}
+                        {% if admin == "template"%}
+                            <input type="submit" value="Next">
+                        {%endif%}
+                    </form>
                 {%endif%}
-            </tbody>
+                </tbody>
+
         </table>
     </div>
+
 {% endblock %}

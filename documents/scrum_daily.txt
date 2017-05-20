@@ -84,3 +84,18 @@ button click redirect to a new url
 
 3- database constrains
  - sending emails from local server
+
+
+19 - may - enjoy php/twig :-)
+
+1- change menu/application names to more understanding ones
+customer add/delete/list/modify
+question survey template add/delete/list/modify
+
+2-survey template add/delete/list/modify
+undertanding the power of arrays in php 
+meerkodb testing - testing the array results of queries
+
+3-how to define a temporary table of view in meekrodb and then query the results in twig
+array structure (espacially associative arrays)
+

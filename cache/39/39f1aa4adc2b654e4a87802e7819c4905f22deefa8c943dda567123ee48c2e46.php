@@ -60,21 +60,21 @@ class __TwigTemplate_472eb04470dfc1c947241b050a9d6b1df9951f41b05ae4baf63831ec29b
         echo "
                     <div class=\"form-group\">
                         <label class=\"control-label\">Question </label>
-                        <input class=\"form-control\" type=\"text\" name=\"name\" value=\"";
+                        <input class=\"form-control\" type=\"text\" name=\"question\" value=\"";
         // line 21
-        echo twig_escape_filter($this->env, (isset($context["name"]) ? $context["name"] : null), "html", null, true);
+        echo twig_escape_filter($this->env, (isset($context["question"]) ? $context["question"] : null), "html", null, true);
         echo "\">
                     </div>
                     <div class=\"form-group\">
                         <label class=\"control-label\">Answer 1 </label>
-                        <input class=\"form-control\" type=\"text\" name=\"email\" value=\"";
+                        <input class=\"form-control\" type=\"text\" name=\"ans1\" value=\"";
         // line 25
         echo twig_escape_filter($this->env, (isset($context["ans1"]) ? $context["ans1"] : null), "html", null, true);
         echo "\">
                     </div>
                     <div class=\"form-group\">
                         <label class=\"control-label\">Answer 2</label>
-                        <input class=\"form-control\" type=\"text\" name=\"phone\" value=\"";
+                        <input class=\"form-control\" type=\"text\" name=\"ans2\" value=\"";
         // line 29
         echo twig_escape_filter($this->env, (isset($context["ans2"]) ? $context["ans2"] : null), "html", null, true);
         echo "\">
@@ -136,15 +136,15 @@ class __TwigTemplate_472eb04470dfc1c947241b050a9d6b1df9951f41b05ae4baf63831ec29b
 
                     <div class=\"form-group\">
                         <label class=\"control-label\">Question </label>
-                        <input class=\"form-control\" type=\"text\" name=\"name\" value=\"{{name}}\">
+                        <input class=\"form-control\" type=\"text\" name=\"question\" value=\"{{question}}\">
                     </div>
                     <div class=\"form-group\">
                         <label class=\"control-label\">Answer 1 </label>
-                        <input class=\"form-control\" type=\"text\" name=\"email\" value=\"{{ans1}}\">
+                        <input class=\"form-control\" type=\"text\" name=\"ans1\" value=\"{{ans1}}\">
                     </div>
                     <div class=\"form-group\">
                         <label class=\"control-label\">Answer 2</label>
-                        <input class=\"form-control\" type=\"text\" name=\"phone\" value=\"{{ans2}}\">
+                        <input class=\"form-control\" type=\"text\" name=\"ans2\" value=\"{{ans2}}\">
                     </div>
                     
                     <button class=\"btn btn-success btn-block\" type=\"submit\"> {{operation}} </button>
