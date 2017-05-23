@@ -37,12 +37,13 @@ class __TwigTemplate_0e4dafee37aaee720d010f584df53d8a9efcea0cae442ebd1a5ce6080e2
                     <h4 class=\"panel-title\"><a role=\"button\" data-toggle=\"collapse\" data-parent=\"#accordion-1\" aria-expanded=\"false\" href=\"#accordion-1 .item-1\">Start a Survey</a></h4></div>
 
                 <div class=\"panel-collapse collapse item-1\" role=\"tabpanel\">
-
-                    <div class=\"panel-body\"><span><a href=\"/admin/start/survey/step1\">Start a Survey</a>.</span></div>
+                    <div class=\"panel-body\"><span><a href=\"/admin/template/add\">Create a Template</a>.</span></div>
+                    <div class=\"panel-body\"><span><a href=\"/admin/customer/add\">Register a Customer</a>.</span></div>
+                    <div class=\"panel-body\"><span><a href=\"/admin/start/survey/addcustomer\">Start Survey</a>.</span></div>
 
                 </div>
             </div>
-            
+
             <div class=\"panel panel-default\">
                 <div class=\"panel-heading\" role=\"tab\">
                     <h4 class=\"panel-title\"><a role=\"button\" data-toggle=\"collapse\" data-parent=\"#accordion-1\" aria-expanded=\"false\" href=\"#accordion-1 .item-2\">Customer</a></h4></div>
@@ -56,7 +57,7 @@ class __TwigTemplate_0e4dafee37aaee720d010f584df53d8a9efcea0cae442ebd1a5ce6080e2
                 </div>
             </div>
 
- 
+
 
             <div class=\"panel panel-default\">
                 <div class=\"panel-heading\" role=\"tab\">
@@ -84,7 +85,7 @@ class __TwigTemplate_0e4dafee37aaee720d010f584df53d8a9efcea0cae442ebd1a5ce6080e2
                 <div class=\"panel-collapse collapse item-5\" role=\"tabpanel\">
                     <div class=\"panel-body\"><span><a href=\"/admin/responses/list\">List of All Reponses</a>.</span></div>
                     <div class=\"panel-body\"><span><a href=\"/analizedata\">Analize Survey Data</a>.</span></div>
-                    
+
                 </div>
             </div>
 
@@ -132,12 +133,13 @@ class __TwigTemplate_0e4dafee37aaee720d010f584df53d8a9efcea0cae442ebd1a5ce6080e2
                     <h4 class=\"panel-title\"><a role=\"button\" data-toggle=\"collapse\" data-parent=\"#accordion-1\" aria-expanded=\"false\" href=\"#accordion-1 .item-1\">Start a Survey</a></h4></div>
 
                 <div class=\"panel-collapse collapse item-1\" role=\"tabpanel\">
-
-                    <div class=\"panel-body\"><span><a href=\"/admin/start/survey/step1\">Start a Survey</a>.</span></div>
+                    <div class=\"panel-body\"><span><a href=\"/admin/template/add\">Create a Template</a>.</span></div>
+                    <div class=\"panel-body\"><span><a href=\"/admin/customer/add\">Register a Customer</a>.</span></div>
+                    <div class=\"panel-body\"><span><a href=\"/admin/start/survey/addcustomer\">Start Survey</a>.</span></div>
 
                 </div>
             </div>
-            
+
             <div class=\"panel panel-default\">
                 <div class=\"panel-heading\" role=\"tab\">
                     <h4 class=\"panel-title\"><a role=\"button\" data-toggle=\"collapse\" data-parent=\"#accordion-1\" aria-expanded=\"false\" href=\"#accordion-1 .item-2\">Customer</a></h4></div>
@@ -151,7 +153,7 @@ class __TwigTemplate_0e4dafee37aaee720d010f584df53d8a9efcea0cae442ebd1a5ce6080e2
                 </div>
             </div>
 
- 
+
 
             <div class=\"panel panel-default\">
                 <div class=\"panel-heading\" role=\"tab\">
@@ -179,7 +181,7 @@ class __TwigTemplate_0e4dafee37aaee720d010f584df53d8a9efcea0cae442ebd1a5ce6080e2
                 <div class=\"panel-collapse collapse item-5\" role=\"tabpanel\">
                     <div class=\"panel-body\"><span><a href=\"/admin/responses/list\">List of All Reponses</a>.</span></div>
                     <div class=\"panel-body\"><span><a href=\"/analizedata\">Analize Survey Data</a>.</span></div>
-                    
+
                 </div>
             </div>
 

@@ -51,9 +51,33 @@ $view->setTemplatesDirectory(dirname(__FILE__) . '/../templates');
 if (!isset($_SESSION['todouser'])) {
     $_SESSION['todouser'] = array();
 }
+if (!isset($_SESSION['templateselected'])) {
+    $_SESSION['templateselected'] = array();
+}
+if (!isset($_SESSION['userselected'])) {
+    $_SESSION['userselected'] = array();
+}
+if (!isset($_SESSION['activesurvey'])) {
+    $_SESSION['activesurvey'] = array();
+}
 
+if (!isset($_SESSION['datesurvey'])) {
+    $_SESSION['datesurvey'] = array();
+}
 $twig = $app->view()->getEnvironment();
+
+//active admin
 $twig->addGlobal('todouser', $_SESSION['todouser']);
+
+//active template
+$twig->addGlobal('templateselected', $_SESSION['templateselected']);
+
+//active surveyee
+$twig->addGlobal('userselected', $_SESSION['userselected']);
+
+//name of the current survey
+$twig->addGlobal('activesurvey', $_SESSION['activesurvey']);
+
 
 //when the application starts
 $app->get('/', function() use ($app) {
@@ -140,8 +164,19 @@ $app->post('/admin/customer/add', function() use ($app) {
             "company" => $company,
             "position" => $position
         ));
+
+        $idinserted = DB::insertId();
+
+        print_r($idinserted);
+        $_SESSION['userselected'] = DB::queryFirstRow("SELECT * FROM users WHERE id=%i", $idinserted);
+        print_r($_SESSION['userselected']);
+
         $textToDisplay = $name . " : customer was added to the database";
-        $app->render("congratulation.html.twig", array('textToDisplay' => $textToDisplay));
+        $app->render("congratulation.html.twig", array('textToDisplay' => $textToDisplay,
+            'topuser' => $_SESSION['templateselected']['name'],
+            'toptemplate' => $_SESSION['userselected']['name'],
+            'topadmin' => $_SESSION['todouser']['name'],
+        ));
     }
 });
 
@@ -463,11 +498,11 @@ $app->post('/admin/template/add/step1', function() use ($app) {
 });
 //add template to database
 $app->post('/admin/template/add/step2', function() use ($app) {
-    
+
     $name = $app->request()->post('name');
     $idquestion1 = $app->request()->post('idquestion1');
     $idquestion2 = $app->request()->post('idquestion2');
-    
+
 //    $userList = array(
 //        'name' => $name,
 //        'email' => $idquestion1,
@@ -490,17 +525,87 @@ $app->post('/admin/template/add/step2', function() use ($app) {
             "idquestion1" => $idquestion1,
             "idquestion2" => $idquestion2
         ));
+        $idinserted = DB::insertId();
+
+        //print_r($idinserted);
+        $_SESSION['templateselected'] = DB::queryFirstRow("SELECT * FROM surveys WHERE id=%i", $idinserted);
+        print_r($_SESSION['templateselected']);
         $textToDisplay = $name . " : template was added to the database";
-        $app->render("congratulation.html.twig", array('textToDisplay' => $textToDisplay));
+        $app->render("congratulation.html.twig", array('textToDisplay' => $textToDisplay,
+            'toptemplate' => $_SESSION['templateselected']['name']
+        ));
     }
-    
-    
-});
-
-$app->get('/admin/start/survey/step1', function() use ($app){
-  $app->render("admin_survey-step1.html.twig");
-    
 });
 
 
+//get the add customer window to start a new survey
+$app->get('/admin/start/survey/addcustomer', function() use ($app) {
+    print_r($_SESSION['userselected']);
+    $app->render("admin_customer_add.html.twig", array('extraoperation' =>
+        "Start a Survey", 'operation' =>
+        "Registration", 'url' => "survey",
+        'surveyname' => $_SESSION['templateselected']['name'],
+        'name' => $_SESSION['userselected']['name'],
+        'phone' => $_SESSION['userselected']['phone'],
+        'email' => $_SESSION['userselected']['email'],
+        'company' => $_SESSION['userselected']['company'],
+        'position' => $_SESSION['userselected']['position'],
+        'topuser' => $_SESSION['templateselected']['name'],
+        'toptemplate' => $_SESSION['userselected']['name'],
+        'topadmin' => $_SESSION['todouser']['name']
+    ));
+});
+//start survey question1
+$app->post('/admin/customer/survey', function() use ($app) {
+    $surveydate = $app->request()->post('surveydate');
+    $_SESSION['datesurvey'] = $surveydate;
+    $idquestion1 = $_SESSION['templateselected']['idquestion1'];
+
+    $idquestion2 = $_SESSION['templateselected']['idquestion2'];
+    $question1 = DB::queryFirstRow("SELECT * FROM questions WHERE id=%s", $idquestion1);
+    $question2 = DB::queryFirstRow("SELECT * FROM questions WHERE id=%s", $idquestion2);
+
+    print_r($question2);
+
+    $app->render("admin_survey_question1.html.twig", array(
+        'username' => $_SESSION['userselected']['name'],
+        'question1' => $question1['question'],
+        'ans11' => $question1['ans1'],
+        'ans12' => $question1['ans2'],
+        'question2' => $question2['question'],
+        'ans21' => $question2['ans1'],
+        'ans22' => $question2['ans2']
+            )
+    );
+});
+
+
+//quiz answer question
+$app->post('/admin/customer/survey/answer', function() use ($app) {
+    $selection1 = $app->request()->post('selection1');
+    $selection2 = $app->request()->post('selection2');
+    print_r($selection1);
+    print_r($_SESSION['datesurvey']);
+    print_r($_SESSION['userselected']);
+    print_r($_SESSION['templateselected']);
+
+    DB::insert('responses', array(
+        "userid" => $_SESSION['userselected']['id'],
+        "name" => $_SESSION['activesurvey'],
+        "surveyid" => $_SESSION['templateselected']['id'],
+        "anstoquestion1" => $selection1,
+        "anstoquestion2" => $selection2,
+        "date" => $_SESSION['datesurvey']
+    ));
+    $idinserted = DB::insertId();
+    print_r($idinserted);
+    $textToDisplay = "Congratulation ".$_SESSION['userselected']['name']. " completed ".$_SESSION['templateselected']['name']." survey.";
+        $app->render("congratulation.html.twig", array('textToDisplay' => $textToDisplay,
+            'topuser' => $_SESSION['templateselected']['name'],
+            'toptemplate' => $_SESSION['userselected']['name'],
+            'topadmin' => $_SESSION['todouser']['name'],
+        ));
+});
 $app->run();
+
+

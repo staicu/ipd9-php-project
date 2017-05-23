@@ -73,3 +73,47 @@ href="/html/user/css/styles.min.css"
                     </div>
                     <button class="btn btn-success btn-block" type="submit" value="/">LOGIN </button>
  </form>
+
+
+
+
+
+
+                    <div class="panel-body"><span><a href="/admin/start/survey/addcustomer/">Start a Survey - Register new Cusomer</a>.</span></div>
+                    <div class="panel-body"><span><a href="/admin/start/survey/selectcustomer">Start a Survey - Selecting Existing Customer</a>.</span></div>
+                    <div class="panel-body"><span><a href="/admin/start/survey/listallsurveys">List all the Surveys</a>.</span></div>
+                    <div class="panel-body"><span><a href="/admin/start/survey/deletesurvey">Delete a Survey</a>.</span></div>
+
+
+
+
+$_SESSION['todouser']
+$_SESSION['templateselected']
+$_SESSION['userselected']
+$_SESSION['activesurvey']
+
+
+ unset($_SESSION['todouser']);
+!isset($_SESSION['todouser'])
+
+ if (!$_SESSION['todouser']) {
+
+
+ $idinserted = DB::insertId();   
+        
+        //print_r($idinserted);
+        $_SESSION['templateselected'] = DB::queryFirstRow("SELECT * FROM surveys WHERE id=%i", $idinserted);
+        print_r($_SESSION['templateselected']);
+
+$app->render
+ 'toptemplate'=>$_SESSION['templateselected']['name']
+
+
+    $app->render("admin_survey_question1.html.twig", array(
+        'question1' => $question1['question'],
+        'ans11' => $question1['ans1'],
+        'ans12' => $question1['ans2'],
+        'question2' => $question2['question'],
+        'ans21' => $question2['ans1'],
+        'ans22' => $question2['ans2']
+            )

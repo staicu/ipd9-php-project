@@ -1,0 +1,47 @@
+
+
+{% extends "index.html.twig" %}
+{% block container %}
+
+    <div class="container"> 
+        <div class="highlight-blue">
+            <form action="/admin/customer/survey/answer" method="post" >
+                <div class="container"  style="text-align:center">
+                    <h3 class="text-danger">Hi {{username}}. Please select 1 answer per Question</h3>
+                    <input type="submit" value="Next">
+                    <table style="color: white" id="example" class="table table-bordered" cellspacing="0" width="100%">
+
+                        <thead>
+
+                            <tr>
+                                <th>Question</th>
+                                <th>Answer 1</th>
+                                <th> select this one</th>
+                                <th>Answer 2</th>
+                                <th>OR slect this one</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>{{question1}}</td>
+                                <td>{{ans11}}</td>
+                                <td><input type="radio" name="selection1" value="1"></td>
+                                <td>{{ans12}}</td>
+                                <td><input type="radio" name="selection1" value="2"></td>
+                            </tr>
+                            <tr>
+                                <td>{{question2}}</td>
+                                <td>{{ans21}}</td>
+                                <td><input type="radio" name="selection2" value="1"></td>
+                                <td>{{ans22}}</td>
+                                <td><input type="radio" name="selection2" value="2"></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                
+
+            </form>
+        </div>
+    </div>
+{% endblock %}

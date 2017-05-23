@@ -4,18 +4,37 @@
         <div class="col-md-4 col-md-offset-4 col-sm-6 col-sm-offset-3 col-xs-10 col-xs-offset-1">
             <h1 class="text-center">360 imagine</h1>
             <div class="well">
-                <h3 class="text-danger">Customer {{operation}}   </h3>
+                <h3 class="text-danger">
+                    {% if url != "survey" %}
+                    Customer {{operation}} 
+                    {% endif %}
+                    {{extraoperation}} </h3>
 
                 <form method="post"  action="/admin/customer/{{url}}" enctype="multipart/form-data">
 
                     {% if id >0 %}
 
                         <div class="form-group">
+                            
                             <label class="control-label">Customer ID </label>
                             <input class="form-control" type="text" name="id" value="{{id}}">
                         </div>
                     {% endif %}
+                    {% if url == "survey" %}
+                        <div class="form-group">
+                             <h4 class="text-danger">Survey Information  - Enter Date Start Survey</h4>
+                              <label class="control-label">Survey Date </label>
+                            <input class="form-control" type="date" name="surveydate" value="{{surveydate}}">
 
+                            <label class="control-label">Survey Name </label>
+                            <input class="form-control" type="text" name="surveyname" value="{{surveyname}}">
+                        </div>
+                        <div class="form-group">
+                            
+                            <h4 class="text-danger">Customer Information  </h4>
+                                                   
+                        </div>
+                    {% endif %}
                     <div class="form-group">
                         <label class="control-label">Name </label>
                         <input class="form-control" type="text" name="name" value="{{name}}">

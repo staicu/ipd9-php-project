@@ -37,7 +37,50 @@ class __TwigTemplate_e4712a772737ee1ffa43eb39db2cff9f2a1cdfd1cf0c74349f3a21ccb1b
     <body>
         <nav class=\"navbar navbar-default\">
             <div class=\"container-fluid\">
-                <div class=\"navbar-header\"><a class=\"navbar-brand navbar-link\" href=\"#\">360 imagine</a>
+                <div class=\"navbar-header\">
+                    <a class=\"navbar-brand navbar-link\" href=\"#\">360 imagine</a>
+                    <a class=\"navbar-brand navbar-link\" href=\"#\">
+                    ";
+        // line 22
+        if (((isset($context["topadmin"]) ? $context["topadmin"] : null) != "")) {
+            // line 23
+            echo "                            Admin : ";
+            echo twig_escape_filter($this->env, (isset($context["topadmin"]) ? $context["topadmin"] : null), "html", null, true);
+            echo "  
+                            ";
+        }
+        // line 25
+        echo "                    
+                    
+                    </a>
+                    <a class=\"navbar-brand navbar-link\" href=\"#\">
+                        
+                        ";
+        // line 30
+        if (((isset($context["toptemplate"]) ? $context["toptemplate"] : null) != "")) {
+            // line 31
+            echo "                            Selected Template: ";
+            echo twig_escape_filter($this->env, (isset($context["toptemplate"]) ? $context["toptemplate"] : null), "html", null, true);
+            echo "
+                            ";
+        }
+        // line 33
+        echo "                    
+                    </a>
+                    <a class=\"navbar-brand navbar-link\" href=\"#\">
+                    ";
+        // line 36
+        if (((isset($context["topuser"]) ? $context["topuser"] : null) != "")) {
+            // line 37
+            echo "                            Surveyee Name : ";
+            echo twig_escape_filter($this->env, (isset($context["topuser"]) ? $context["topuser"] : null), "html", null, true);
+            echo "  
+                            ";
+        }
+        // line 39
+        echo "                    
+                    </a>
+                    
                     <button class=\"navbar-toggle collapsed\" data-toggle=\"collapse\" data-target=\"#navcol-2\"><span class=\"sr-only\">Toggle navigation</span><span class=\"icon-bar\"></span><span class=\"icon-bar\"></span><span class=\"icon-bar\"></span></button>
                 </div>
                 <div class=\"collapse navbar-collapse\" id=\"navcol-2\">
@@ -62,18 +105,18 @@ class __TwigTemplate_e4712a772737ee1ffa43eb39db2cff9f2a1cdfd1cf0c74349f3a21ccb1b
 
         <div class=\"header-blue\" >
         ";
-        // line 43
+        // line 65
         $this->displayBlock('header', $context, $blocks);
-        // line 44
+        // line 66
         echo "    ";
         $this->displayBlock('container', $context, $blocks);
-        // line 45
+        // line 67
         echo "
 
 ";
-        // line 47
+        // line 69
         $this->displayBlock('container1', $context, $blocks);
-        // line 48
+        // line 70
         echo "
 </div>
 <div class=\"footer-basic\">
@@ -99,17 +142,17 @@ class __TwigTemplate_e4712a772737ee1ffa43eb39db2cff9f2a1cdfd1cf0c74349f3a21ccb1b
 </html>";
     }
 
-    // line 43
+    // line 65
     public function block_header($context, array $blocks = array())
     {
     }
 
-    // line 44
+    // line 66
     public function block_container($context, array $blocks = array())
     {
     }
 
-    // line 47
+    // line 69
     public function block_container1($context, array $blocks = array())
     {
     }
@@ -119,9 +162,14 @@ class __TwigTemplate_e4712a772737ee1ffa43eb39db2cff9f2a1cdfd1cf0c74349f3a21ccb1b
         return "index.html.twig";
     }
 
+    public function isTraitable()
+    {
+        return false;
+    }
+
     public function getDebugInfo()
     {
-        return array (  113 => 47,  108 => 44,  103 => 43,  77 => 48,  75 => 47,  71 => 45,  68 => 44,  66 => 43,  22 => 1,);
+        return array (  156 => 69,  151 => 66,  146 => 65,  120 => 70,  118 => 69,  114 => 67,  111 => 66,  109 => 65,  81 => 39,  75 => 37,  73 => 36,  68 => 33,  62 => 31,  60 => 30,  53 => 25,  47 => 23,  45 => 22,  22 => 1,);
     }
 
     /** @deprecated since 1.27 (to be removed in 2.0). Use getSourceContext() instead */
@@ -152,7 +200,29 @@ class __TwigTemplate_e4712a772737ee1ffa43eb39db2cff9f2a1cdfd1cf0c74349f3a21ccb1b
     <body>
         <nav class=\"navbar navbar-default\">
             <div class=\"container-fluid\">
-                <div class=\"navbar-header\"><a class=\"navbar-brand navbar-link\" href=\"#\">360 imagine</a>
+                <div class=\"navbar-header\">
+                    <a class=\"navbar-brand navbar-link\" href=\"#\">360 imagine</a>
+                    <a class=\"navbar-brand navbar-link\" href=\"#\">
+                    {% if topadmin != \"\"%}
+                            Admin : {{topadmin}}  
+                            {%endif%}
+                    
+                    
+                    </a>
+                    <a class=\"navbar-brand navbar-link\" href=\"#\">
+                        
+                        {% if toptemplate != \"\"%}
+                            Selected Template: {{toptemplate}}
+                            {%endif%}
+                    
+                    </a>
+                    <a class=\"navbar-brand navbar-link\" href=\"#\">
+                    {% if topuser != \"\"%}
+                            Surveyee Name : {{topuser}}  
+                            {%endif%}
+                    
+                    </a>
+                    
                     <button class=\"navbar-toggle collapsed\" data-toggle=\"collapse\" data-target=\"#navcol-2\"><span class=\"sr-only\">Toggle navigation</span><span class=\"icon-bar\"></span><span class=\"icon-bar\"></span><span class=\"icon-bar\"></span></button>
                 </div>
                 <div class=\"collapse navbar-collapse\" id=\"navcol-2\">
