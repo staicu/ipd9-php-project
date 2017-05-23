@@ -99,3 +99,23 @@ meerkodb testing - testing the array results of queries
 3-how to define a temporary table of view in meekrodb and then query the results in twig
 array structure (espacially associative arrays)
 
+22 - may
+1- take survey - change design
+
+2- implemented take survey
+using session global variables
+for cusomter, survey template, survey name
+
+3-css for laurian.ipd9.info does not work
+
+
+23 - may
+1- test take survey
+
+2- list all surveys
+select customer
+select survey
+display selected admin , survey and survey templates anytime
+
+3- publish the website on line
+
