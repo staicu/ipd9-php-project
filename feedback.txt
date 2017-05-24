@@ -1,0 +1,18 @@
+May 24, 2017 review
+
+
+* Must be able to have 4 answers per question
+
+* Must be able to add multiple questions (unlmited) per survey
+
+* Must create a many-to-many relation table 'surveyqestions' 
+linking syurveys to questions.
+
+* Must split table 'users' to 'users' for administrator
+and 'customers' for people taking the survey.
+
+* Must be able to view some basic statistical analysis of responses to questions in a specific survey.
+
+
+
+

@@ -60,7 +60,6 @@ if (!isset($_SESSION['userselected'])) {
 if (!isset($_SESSION['activesurvey'])) {
     $_SESSION['activesurvey'] = array();
 }
-
 if (!isset($_SESSION['datesurvey'])) {
     $_SESSION['datesurvey'] = array();
 }
