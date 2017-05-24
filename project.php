@@ -3,7 +3,7 @@
 session_cache_limiter(false);
 session_start();
 
-require_once '../vendor/autoload.php';
+require_once 'vendor/autoload.php';
 
 use Monolog\Logger;
 use Monolog\Handler\StreamHandler;
@@ -45,9 +45,9 @@ $app = new \Slim\Slim(array(
 $view = $app->view();
 $view->parserOptions = array(
     'debug' => true,
-    'cache' => dirname(__FILE__) . '/../cache'
+    'cache' => dirname(__FILE__) . '/cache'
 );
-$view->setTemplatesDirectory(dirname(__FILE__) . '/../templates');
+$view->setTemplatesDirectory(dirname(__FILE__) . '/templates');
 if (!isset($_SESSION['todouser'])) {
     $_SESSION['todouser'] = array();
 }

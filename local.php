@@ -4,5 +4,5 @@
 DB::$user = 'surveydb';
 DB::$password = 'vLRY2kgGn571UVKe';
 DB::$dbName = 'surveydb';
-DB::$port = 3306;
+DB::$port = 3333;
 DB::$encoding = 'utf8';
