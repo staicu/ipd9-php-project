@@ -26,12 +26,12 @@ class __TwigTemplate_e4712a772737ee1ffa43eb39db2cff9f2a1cdfd1cf0c74349f3a21ccb1b
         <meta charset=\"utf-8\">
         <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">
         <title>survey</title>
-        <link rel=\"stylesheet\" href=\"/assets/bootstrap/css/bootstrap.min.css\">
+        <link rel=\"stylesheet\" href=\"/php/assets/bootstrap/css/bootstrap.min.css\">
         <link rel=\"stylesheet\" href=\"https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,700\">
-        <link rel=\"stylesheet\" href=\"/assets/fonts/font-awesome.min.css\">
-        <link rel=\"stylesheet\" href=\"/assets/fonts/ionicons.min.css\">
+        <link rel=\"stylesheet\" href=\"/php/assets/fonts/font-awesome.min.css\">
+        <link rel=\"stylesheet\" href=\"/php/assets/fonts/ionicons.min.css\">
         <link rel=\"stylesheet\" href=\"https://cdn.datatables.net/1.10.15/css/dataTables.bootstrap.min.css\">
-        <link rel=\"stylesheet\" href=\"/assets/css/styles.min.css\">
+        <link rel=\"stylesheet\" href=\"/php/assets/css/styles.min.css\">
     </head>
 
     <body>
@@ -53,7 +53,10 @@ class __TwigTemplate_e4712a772737ee1ffa43eb39db2cff9f2a1cdfd1cf0c74349f3a21ccb1b
         echo "                    
                     
                     </a>
-                    <a class=\"navbar-brand navbar-link\" href=\"#\">
+                    <a class=\"navbar-brand navbar-link\" href=\"/admin/template/select/";
+        // line 28
+        echo twig_escape_filter($this->env, (isset($context["templateselectedid"]) ? $context["templateselectedid"] : null), "html", null, true);
+        echo "\">
                         
                         ";
         // line 30
@@ -67,7 +70,10 @@ class __TwigTemplate_e4712a772737ee1ffa43eb39db2cff9f2a1cdfd1cf0c74349f3a21ccb1b
         // line 33
         echo "                    
                     </a>
-                    <a class=\"navbar-brand navbar-link\" href=\"#\">
+                    <a class=\"navbar-brand navbar-link\" href=\"/admin/customer/select/";
+        // line 35
+        echo twig_escape_filter($this->env, (isset($context["userselectedid"]) ? $context["userselectedid"] : null), "html", null, true);
+        echo "\">
                     ";
         // line 36
         if (((isset($context["topuser"]) ? $context["topuser"] : null) != "")) {
@@ -132,11 +138,11 @@ class __TwigTemplate_e4712a772737ee1ffa43eb39db2cff9f2a1cdfd1cf0c74349f3a21ccb1b
         <p class=\"copyright\">Imagine 360 © 2017</p>
     </footer>
 </div>
-<script src=\"/assets/js/jquery.min.js\"></script>
-<script src=\"/assets/bootstrap/js/bootstrap.min.js\"></script>
+<script src=\"/php/assets/js/jquery.min.js\"></script>
+<script src=\"/php/assets/bootstrap/js/bootstrap.min.js\"></script>
 <script src=\"https://cdn.datatables.net/1.10.15/js/jquery.dataTables.min.js\"></script>
 <script src=\"https://cdn.datatables.net/1.10.15/js/dataTables.bootstrap.min.js\"></script>
-<script src=\"/assets/js/script.min.js\"></script>
+<script src=\"/php/assets/js/script.min.js\"></script>
 </body>
 
 </html>";
@@ -169,7 +175,7 @@ class __TwigTemplate_e4712a772737ee1ffa43eb39db2cff9f2a1cdfd1cf0c74349f3a21ccb1b
 
     public function getDebugInfo()
     {
-        return array (  156 => 69,  151 => 66,  146 => 65,  120 => 70,  118 => 69,  114 => 67,  111 => 66,  109 => 65,  81 => 39,  75 => 37,  73 => 36,  68 => 33,  62 => 31,  60 => 30,  53 => 25,  47 => 23,  45 => 22,  22 => 1,);
+        return array (  162 => 69,  157 => 66,  152 => 65,  126 => 70,  124 => 69,  120 => 67,  117 => 66,  115 => 65,  87 => 39,  81 => 37,  79 => 36,  75 => 35,  71 => 33,  65 => 31,  63 => 30,  58 => 28,  53 => 25,  47 => 23,  45 => 22,  22 => 1,);
     }
 
     /** @deprecated since 1.27 (to be removed in 2.0). Use getSourceContext() instead */
@@ -189,12 +195,12 @@ class __TwigTemplate_e4712a772737ee1ffa43eb39db2cff9f2a1cdfd1cf0c74349f3a21ccb1b
         <meta charset=\"utf-8\">
         <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">
         <title>survey</title>
-        <link rel=\"stylesheet\" href=\"/assets/bootstrap/css/bootstrap.min.css\">
+        <link rel=\"stylesheet\" href=\"/php/assets/bootstrap/css/bootstrap.min.css\">
         <link rel=\"stylesheet\" href=\"https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,700\">
-        <link rel=\"stylesheet\" href=\"/assets/fonts/font-awesome.min.css\">
-        <link rel=\"stylesheet\" href=\"/assets/fonts/ionicons.min.css\">
+        <link rel=\"stylesheet\" href=\"/php/assets/fonts/font-awesome.min.css\">
+        <link rel=\"stylesheet\" href=\"/php/assets/fonts/ionicons.min.css\">
         <link rel=\"stylesheet\" href=\"https://cdn.datatables.net/1.10.15/css/dataTables.bootstrap.min.css\">
-        <link rel=\"stylesheet\" href=\"/assets/css/styles.min.css\">
+        <link rel=\"stylesheet\" href=\"/php/assets/css/styles.min.css\">
     </head>
 
     <body>
@@ -209,14 +215,14 @@ class __TwigTemplate_e4712a772737ee1ffa43eb39db2cff9f2a1cdfd1cf0c74349f3a21ccb1b
                     
                     
                     </a>
-                    <a class=\"navbar-brand navbar-link\" href=\"#\">
+                    <a class=\"navbar-brand navbar-link\" href=\"/admin/template/select/{{templateselectedid}}\">
                         
                         {% if toptemplate != \"\"%}
                             Selected Template: {{toptemplate}}
                             {%endif%}
                     
                     </a>
-                    <a class=\"navbar-brand navbar-link\" href=\"#\">
+                    <a class=\"navbar-brand navbar-link\" href=\"/admin/customer/select/{{userselectedid}}\">
                     {% if topuser != \"\"%}
                             Surveyee Name : {{topuser}}  
                             {%endif%}
@@ -266,11 +272,11 @@ class __TwigTemplate_e4712a772737ee1ffa43eb39db2cff9f2a1cdfd1cf0c74349f3a21ccb1b
         <p class=\"copyright\">Imagine 360 © 2017</p>
     </footer>
 </div>
-<script src=\"/assets/js/jquery.min.js\"></script>
-<script src=\"/assets/bootstrap/js/bootstrap.min.js\"></script>
+<script src=\"/php/assets/js/jquery.min.js\"></script>
+<script src=\"/php/assets/bootstrap/js/bootstrap.min.js\"></script>
 <script src=\"https://cdn.datatables.net/1.10.15/js/jquery.dataTables.min.js\"></script>
 <script src=\"https://cdn.datatables.net/1.10.15/js/dataTables.bootstrap.min.js\"></script>
-<script src=\"/assets/js/script.min.js\"></script>
+<script src=\"/php/assets/js/script.min.js\"></script>
 </body>
 
 </html>", "index.html.twig", "C:\\xampp\\htdocs\\ipd9-php-project\\templates\\index.html.twig");

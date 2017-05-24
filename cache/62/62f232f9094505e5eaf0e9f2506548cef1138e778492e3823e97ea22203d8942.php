@@ -28,7 +28,7 @@ class __TwigTemplate_0e4dafee37aaee720d010f584df53d8a9efcea0cae442ebd1a5ce6080e2
     public function block_container($context, array $blocks = array())
     {
         // line 4
-        echo "    <div class=\"container\" >
+        echo "    <div class=\"container\" style=\"padding-top: 100px\">
         <div class=\"panel-group\" role=\"tablist\" aria-multiselectable=\"true\" id=\"accordion-1\">
 
 
@@ -37,9 +37,11 @@ class __TwigTemplate_0e4dafee37aaee720d010f584df53d8a9efcea0cae442ebd1a5ce6080e2
                     <h4 class=\"panel-title\"><a role=\"button\" data-toggle=\"collapse\" data-parent=\"#accordion-1\" aria-expanded=\"false\" href=\"#accordion-1 .item-1\">Start a Survey</a></h4></div>
 
                 <div class=\"panel-collapse collapse item-1\" role=\"tabpanel\">
-                    <div class=\"panel-body\"><span><a href=\"/admin/template/add\">Create a Template</a>.</span></div>
-                    <div class=\"panel-body\"><span><a href=\"/admin/customer/add\">Register a Customer</a>.</span></div>
                     <div class=\"panel-body\"><span><a href=\"/admin/start/survey/addcustomer\">Start Survey</a>.</span></div>
+                    <div class=\"panel-body\"><span><a href=\"/admin/template/add\">Create a Template</a>.</span></div>
+                    <div class=\"panel-body\"><span><a href=\"/admin/template/list/select\">Select a Template from List</a>.</span></div>
+                    <div class=\"panel-body\"><span><a href=\"/admin/customer/add\">Register a Customer</a>.</span></div>
+                    <div class=\"panel-body\"><span><a href=\"/admin/customer/list\">Select a Customer from List</a>.</span></div>
 
                 </div>
             </div>
@@ -124,7 +126,7 @@ class __TwigTemplate_0e4dafee37aaee720d010f584df53d8a9efcea0cae442ebd1a5ce6080e2
         return new Twig_Source("
 {% extends \"index.html.twig\" %}
 {% block container %}
-    <div class=\"container\" >
+    <div class=\"container\" style=\"padding-top: 100px\">
         <div class=\"panel-group\" role=\"tablist\" aria-multiselectable=\"true\" id=\"accordion-1\">
 
 
@@ -133,9 +135,11 @@ class __TwigTemplate_0e4dafee37aaee720d010f584df53d8a9efcea0cae442ebd1a5ce6080e2
                     <h4 class=\"panel-title\"><a role=\"button\" data-toggle=\"collapse\" data-parent=\"#accordion-1\" aria-expanded=\"false\" href=\"#accordion-1 .item-1\">Start a Survey</a></h4></div>
 
                 <div class=\"panel-collapse collapse item-1\" role=\"tabpanel\">
-                    <div class=\"panel-body\"><span><a href=\"/admin/template/add\">Create a Template</a>.</span></div>
-                    <div class=\"panel-body\"><span><a href=\"/admin/customer/add\">Register a Customer</a>.</span></div>
                     <div class=\"panel-body\"><span><a href=\"/admin/start/survey/addcustomer\">Start Survey</a>.</span></div>
+                    <div class=\"panel-body\"><span><a href=\"/admin/template/add\">Create a Template</a>.</span></div>
+                    <div class=\"panel-body\"><span><a href=\"/admin/template/list/select\">Select a Template from List</a>.</span></div>
+                    <div class=\"panel-body\"><span><a href=\"/admin/customer/add\">Register a Customer</a>.</span></div>
+                    <div class=\"panel-body\"><span><a href=\"/admin/customer/list\">Select a Customer from List</a>.</span></div>
 
                 </div>
             </div>

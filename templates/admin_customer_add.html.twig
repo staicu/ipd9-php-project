@@ -6,7 +6,7 @@
             <div class="well">
                 <h3 class="text-danger">
                     {% if url != "survey" %}
-                    Customer {{operation}} 
+                        Customer {{operation}} 
                     {% endif %}
                     {{extraoperation}} </h3>
 
@@ -15,49 +15,58 @@
                     {% if id >0 %}
 
                         <div class="form-group">
-                            
-                            <label class="control-label">Customer ID </label>
-                            <input class="form-control" type="text" name="id" value="{{id}}">
-                        </div>
-                    {% endif %}
-                    {% if url == "survey" %}
-                        <div class="form-group">
-                             <h4 class="text-danger">Survey Information  - Enter Date Start Survey</h4>
-                              <label class="control-label">Survey Date </label>
-                            <input class="form-control" type="date" name="surveydate" value="{{surveydate}}">
 
-                            <label class="control-label">Survey Name </label>
-                            <input class="form-control" type="text" name="surveyname" value="{{surveyname}}">
+                            <label class="control-label">Customer ID </label>
+
+                            <input class="form-control" type="number" name="id" value="{{id}}" 
+                                   {% if ((operation == "Delete") or (operation == "Update")
+                                        or (operation == "Select"))
+                                   %} 
+                                   readonly
+                            {%endif%}
+                            required>
+                    </div>
+                    {% endif %}
+                        {% if url == "survey" %}
+                            <div class="form-group">
+                                <h4 class="text-danger">Survey Information  - Enter Date Start Survey</h4>
+                                <label class="control-label">Survey Date </label>
+                                <input class="form-control" type="date" name="surveydate" value="{{surveydate}}" required >
+
+                                <label class="control-label">Survey Name </label>
+                                <input class="form-control" type="text" name="surveyname" value="{{surveyname}}"required>
+                            </div>
+                            <div class="form-group">
+
+                                <h4 class="text-danger">Customer Information  </h4>
+
+                            </div>
+                        {% endif %}
+                        <div class="form-group">
+                            <label class="control-label">Name </label>
+                            <input class="form-control" type="text" name="name" value="{{name}}" required>
                         </div>
                         <div class="form-group">
-                            
-                            <h4 class="text-danger">Customer Information  </h4>
-                                                   
+                            <label class="control-label">Email </label>
+                            <input class="form-control" type="email" name="email" value="{{email}}" required>
                         </div>
-                    {% endif %}
-                    <div class="form-group">
-                        <label class="control-label">Name </label>
-                        <input class="form-control" type="text" name="name" value="{{name}}">
-                    </div>
-                    <div class="form-group">
-                        <label class="control-label">Email </label>
-                        <input class="form-control" type="text" name="email" value="{{email}}">
-                    </div>
-                    <div class="form-group">
-                        <label class="control-label">Phone Number</label>
-                        <input class="form-control" type="text" name="phone" value="{{phone}}">
-                    </div>
-                    <div class="form-group">
-                        <label class="control-label">Company </label>
-                        <input class="form-control" type="text" name="company" value="{{company}}">
-                    </div>
-                    <div class="form-group">
-                        <label class="control-label">Position </label>
-                        <input class="form-control" type="text" name="position" value="{{position}}">
-                    </div>
-                    <button class="btn btn-success btn-block" type="submit"> {{operation}} </button>
-                </form>
+                        <div class="form-group">
+                            <label class="control-label">Phone Number</label>
+                            <input class="form-control" 
+                                   type='tel' pattern='[\(]\d{3}[\)]\d{3}[\-]\d{4}' title='Phone Number (Format: (999)999-9999)'
+                                   name="phone" value="{{phone}}" required>
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label">Company </label>
+                            <input class="form-control" type="text" name="company" value="{{company}}" required>
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label">Position </label>
+                            <input class="form-control" type="text" name="position" value="{{position}}" required>
+                        </div>
+                        <button class="btn btn-success btn-block" type="submit"> {{operation}} </button>
+                    </form>
+                </div>
             </div>
         </div>
-    </div>
-{% endblock %}{# empty Twig template #}
+        {% endblock %}{# empty Twig template #}

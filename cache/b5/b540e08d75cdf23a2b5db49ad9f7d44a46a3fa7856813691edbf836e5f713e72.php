@@ -105,125 +105,159 @@ class __TwigTemplate_422e0c1971d0fba4bbf1f3b4c7c8c8b9abe5d815d94645c777349d578f0
                 // line 42
                 echo twig_escape_filter($this->env, $this->getAttribute($context["s"], "email", array()), "html", null, true);
                 echo "</td>
-                            <td><a style=\"color:red;\" href=\"/admin/customer/edit/";
-                // line 43
-                echo twig_escape_filter($this->env, $this->getAttribute($context["s"], "id", array()), "html", null, true);
-                echo "\">Update</a>
-                                <a style=\"color:red;\" href=\"/admin/customer/delete/";
+                            <td>
+                                ";
                 // line 44
-                echo twig_escape_filter($this->env, $this->getAttribute($context["s"], "id", array()), "html", null, true);
-                echo "\">Delete</a>
-                            </td>
+                if (((isset($context["onlyselect"]) ? $context["onlyselect"] : null) == 1)) {
+                    // line 45
+                    echo "                                    <a style=\"color:red;\" href=\"/admin/customer/select/";
+                    echo twig_escape_filter($this->env, $this->getAttribute($context["s"], "id", array()), "html", null, true);
+                    echo "\">Select</a>
+
+                                ";
+                } else {
+                    // line 48
+                    echo "                                    <a style=\"color:red;\" href=\"/admin/customer/edit/";
+                    echo twig_escape_filter($this->env, $this->getAttribute($context["s"], "id", array()), "html", null, true);
+                    echo "\">Update</a>
+                                    <a style=\"color:red;\" href=\"/admin/customer/delete/";
+                    // line 49
+                    echo twig_escape_filter($this->env, $this->getAttribute($context["s"], "id", array()), "html", null, true);
+                    echo "\">Delete</a>
+                                    <a style=\"color:red;\" href=\"/admin/customer/select/";
+                    // line 50
+                    echo twig_escape_filter($this->env, $this->getAttribute($context["s"], "id", array()), "html", null, true);
+                    echo "\">Select</a>
+                                ";
+                }
+                // line 52
+                echo "                            </td>
                         </tr>   
                     ";
             }
             $_parent = $context['_parent'];
             unset($context['_seq'], $context['_iterated'], $context['_key'], $context['s'], $context['_parent'], $context['loop']);
             $context = array_intersect_key($context, $_parent) + $_parent;
-            // line 48
+            // line 55
             echo "                ";
         }
-        // line 49
+        // line 56
         echo "                ";
         if (((isset($context["titlelist"]) ? $context["titlelist"] : null) == "Survey Template")) {
-            // line 50
+            // line 57
             echo "
                 <form action=\"/action_page.php\" method=\"get\">
 
                     ";
-            // line 53
+            // line 60
             $context['_parent'] = $context;
             $context['_seq'] = twig_ensure_traversable((isset($context["userList"]) ? $context["userList"] : null));
             foreach ($context['_seq'] as $context["_key"] => $context["s"]) {
-                // line 54
+                // line 61
                 echo "
                         <tr><td>";
-                // line 55
+                // line 62
                 echo twig_escape_filter($this->env, $this->getAttribute($context["s"], "id", array()), "html", null, true);
                 echo "</td>
                             <td>";
-                // line 56
+                // line 63
                 echo twig_escape_filter($this->env, $this->getAttribute($context["s"], "name", array()), "html", null, true);
                 echo "</td>
                             <td>";
-                // line 57
+                // line 64
                 echo twig_escape_filter($this->env, $this->getAttribute($context["s"], "idquestion1", array()), "html", null, true);
                 echo "</td>
                             <td>";
-                // line 58
+                // line 65
                 echo twig_escape_filter($this->env, $this->getAttribute($context["s"], "question1", array()), "html", null, true);
                 echo "</td>
                             <td>";
-                // line 59
+                // line 66
                 echo twig_escape_filter($this->env, $this->getAttribute($context["s"], "idquestion2", array()), "html", null, true);
                 echo "</td>
                             <td>";
-                // line 60
+                // line 67
                 echo twig_escape_filter($this->env, $this->getAttribute($context["s"], "question2", array()), "html", null, true);
                 echo "</td>
                             <td>
-                                <a style=\"color:red;\" href=\"/admin/template/delete/";
-                // line 62
-                echo twig_escape_filter($this->env, $this->getAttribute($context["s"], "id", array()), "html", null, true);
-                echo "\">Delete</a>
-                            </td>
+                                ";
+                // line 69
+                if (((isset($context["onlyselect"]) ? $context["onlyselect"] : null) == 1)) {
+                    // line 70
+                    echo "                                    <a style=\"color:red;\" href=\"/admin/template/select/";
+                    echo twig_escape_filter($this->env, $this->getAttribute($context["s"], "id", array()), "html", null, true);
+                    echo "\">Select</a>
+                                ";
+                } else {
+                    // line 72
+                    echo "                                    <a style=\"color:red;\" href=\"/admin/template/delete/";
+                    echo twig_escape_filter($this->env, $this->getAttribute($context["s"], "id", array()), "html", null, true);
+                    echo "\">Delete</a>
+                                    <a style=\"color:red;\" href=\"/admin/template/select/";
+                    // line 73
+                    echo twig_escape_filter($this->env, $this->getAttribute($context["s"], "id", array()), "html", null, true);
+                    echo "\">Select</a>
+                                ";
+                }
+                // line 75
+                echo "                            </td>
                         </tr>   
                     ";
             }
             $_parent = $context['_parent'];
             unset($context['_seq'], $context['_iterated'], $context['_key'], $context['s'], $context['_parent'], $context['loop']);
             $context = array_intersect_key($context, $_parent) + $_parent;
-            // line 66
+            // line 78
             echo "
                 ";
         }
-        // line 68
+        // line 80
         echo "                ";
         if (((isset($context["titlelist"]) ? $context["titlelist"] : null) == "Questions")) {
-            // line 69
+            // line 81
             echo "                    <form action=\"/admin/template/add/step1\" method=\"post\" >
                         ";
-            // line 70
+            // line 82
             $context['_parent'] = $context;
             $context['_seq'] = twig_ensure_traversable((isset($context["userList"]) ? $context["userList"] : null));
             foreach ($context['_seq'] as $context["_key"] => $context["s"]) {
-                // line 71
+                // line 83
                 echo "                            <tr><td>";
                 echo twig_escape_filter($this->env, $this->getAttribute($context["s"], "id", array()), "html", null, true);
                 echo "</td>
                                 <td>";
-                // line 72
+                // line 84
                 echo twig_escape_filter($this->env, $this->getAttribute($context["s"], "question", array()), "html", null, true);
                 echo "</td>
                                 <td>";
-                // line 73
+                // line 85
                 echo twig_escape_filter($this->env, $this->getAttribute($context["s"], "ans1", array()), "html", null, true);
                 echo "</td>
                                 <td>";
-                // line 74
+                // line 86
                 echo twig_escape_filter($this->env, $this->getAttribute($context["s"], "ans2", array()), "html", null, true);
                 echo "</td>
                                 <td>
                                     ";
-                // line 76
+                // line 88
                 if (((isset($context["admin"]) ? $context["admin"] : null) == "template")) {
-                    // line 77
+                    // line 89
                     echo "                                        <input id=\"id\" type=\"checkbox\" name=\"id[]\" value=\"";
                     echo twig_escape_filter($this->env, $this->getAttribute($context["s"], "id", array()), "html", null, true);
                     echo "\">
                                     ";
                 } else {
-                    // line 79
+                    // line 91
                     echo "                                        <a style=\"color:red;\" href=\"/admin/question/edit/";
                     echo twig_escape_filter($this->env, $this->getAttribute($context["s"], "id", array()), "html", null, true);
                     echo "\">Update</a>
                                         <a style=\"color:red;\" href=\"/admin/question/delete/";
-                    // line 80
+                    // line 92
                     echo twig_escape_filter($this->env, $this->getAttribute($context["s"], "id", array()), "html", null, true);
                     echo "\">Delete</a>
                                     ";
                 }
-                // line 82
+                // line 94
                 echo "                                </td>
                             </tr>   
                         ";
@@ -231,18 +265,18 @@ class __TwigTemplate_422e0c1971d0fba4bbf1f3b4c7c8c8b9abe5d815d94645c777349d578f0
             $_parent = $context['_parent'];
             unset($context['_seq'], $context['_iterated'], $context['_key'], $context['s'], $context['_parent'], $context['loop']);
             $context = array_intersect_key($context, $_parent) + $_parent;
-            // line 85
+            // line 97
             echo "                        ";
             if (((isset($context["admin"]) ? $context["admin"] : null) == "template")) {
-                // line 86
+                // line 98
                 echo "                            <input type=\"submit\" value=\"Next\">
                         ";
             }
-            // line 88
+            // line 100
             echo "                    </form>
                 ";
         }
-        // line 90
+        // line 102
         echo "                </tbody>
 
         </table>
@@ -263,7 +297,7 @@ class __TwigTemplate_422e0c1971d0fba4bbf1f3b4c7c8c8b9abe5d815d94645c777349d578f0
 
     public function getDebugInfo()
     {
-        return array (  246 => 90,  242 => 88,  238 => 86,  235 => 85,  227 => 82,  222 => 80,  217 => 79,  211 => 77,  209 => 76,  204 => 74,  200 => 73,  196 => 72,  191 => 71,  187 => 70,  184 => 69,  181 => 68,  177 => 66,  167 => 62,  162 => 60,  158 => 59,  154 => 58,  150 => 57,  146 => 56,  142 => 55,  139 => 54,  135 => 53,  130 => 50,  127 => 49,  124 => 48,  114 => 44,  110 => 43,  106 => 42,  102 => 41,  98 => 40,  93 => 39,  89 => 38,  86 => 37,  84 => 36,  78 => 32,  70 => 26,  67 => 25,  56 => 16,  53 => 15,  45 => 9,  43 => 8,  34 => 4,  31 => 3,  28 => 2,  11 => 1,);
+        return array (  280 => 102,  276 => 100,  272 => 98,  269 => 97,  261 => 94,  256 => 92,  251 => 91,  245 => 89,  243 => 88,  238 => 86,  234 => 85,  230 => 84,  225 => 83,  221 => 82,  218 => 81,  215 => 80,  211 => 78,  203 => 75,  198 => 73,  193 => 72,  187 => 70,  185 => 69,  180 => 67,  176 => 66,  172 => 65,  168 => 64,  164 => 63,  160 => 62,  157 => 61,  153 => 60,  148 => 57,  145 => 56,  142 => 55,  134 => 52,  129 => 50,  125 => 49,  120 => 48,  113 => 45,  111 => 44,  106 => 42,  102 => 41,  98 => 40,  93 => 39,  89 => 38,  86 => 37,  84 => 36,  78 => 32,  70 => 26,  67 => 25,  56 => 16,  53 => 15,  45 => 9,  43 => 8,  34 => 4,  31 => 3,  28 => 2,  11 => 1,);
     }
 
     /** @deprecated since 1.27 (to be removed in 2.0). Use getSourceContext() instead */
@@ -318,8 +352,15 @@ class __TwigTemplate_422e0c1971d0fba4bbf1f3b4c7c8c8b9abe5d815d94645c777349d578f0
                             <td>{{s.name}}</td>
                             <td>{{s.phone}}</td>
                             <td>{{s.email}}</td>
-                            <td><a style=\"color:red;\" href=\"/admin/customer/edit/{{s.id}}\">Update</a>
-                                <a style=\"color:red;\" href=\"/admin/customer/delete/{{s.id}}\">Delete</a>
+                            <td>
+                                {%if onlyselect == 1 %}
+                                    <a style=\"color:red;\" href=\"/admin/customer/select/{{s.id}}\">Select</a>
+
+                                {%else%}
+                                    <a style=\"color:red;\" href=\"/admin/customer/edit/{{s.id}}\">Update</a>
+                                    <a style=\"color:red;\" href=\"/admin/customer/delete/{{s.id}}\">Delete</a>
+                                    <a style=\"color:red;\" href=\"/admin/customer/select/{{s.id}}\">Select</a>
+                                {%endif%}
                             </td>
                         </tr>   
                     {% endfor %}
@@ -337,7 +378,12 @@ class __TwigTemplate_422e0c1971d0fba4bbf1f3b4c7c8c8b9abe5d815d94645c777349d578f0
                             <td>{{s.idquestion2}}</td>
                             <td>{{s.question2}}</td>
                             <td>
-                                <a style=\"color:red;\" href=\"/admin/template/delete/{{s.id}}\">Delete</a>
+                                {%if onlyselect == 1 %}
+                                    <a style=\"color:red;\" href=\"/admin/template/select/{{s.id}}\">Select</a>
+                                {%else%}
+                                    <a style=\"color:red;\" href=\"/admin/template/delete/{{s.id}}\">Delete</a>
+                                    <a style=\"color:red;\" href=\"/admin/template/select/{{s.id}}\">Select</a>
+                                {%endif%}
                             </td>
                         </tr>   
                     {% endfor %}

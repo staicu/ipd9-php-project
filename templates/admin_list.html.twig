@@ -40,8 +40,15 @@
                             <td>{{s.name}}</td>
                             <td>{{s.phone}}</td>
                             <td>{{s.email}}</td>
-                            <td><a style="color:red;" href="/admin/customer/edit/{{s.id}}">Update</a>
-                                <a style="color:red;" href="/admin/customer/delete/{{s.id}}">Delete</a>
+                            <td>
+                                {%if onlyselect == 1 %}
+                                    <a style="color:red;" href="/admin/customer/select/{{s.id}}">Select</a>
+
+                                {%else%}
+                                    <a style="color:red;" href="/admin/customer/edit/{{s.id}}">Update</a>
+                                    <a style="color:red;" href="/admin/customer/delete/{{s.id}}">Delete</a>
+                                    <a style="color:red;" href="/admin/customer/select/{{s.id}}">Select</a>
+                                {%endif%}
                             </td>
                         </tr>   
                     {% endfor %}
@@ -59,7 +66,12 @@
                             <td>{{s.idquestion2}}</td>
                             <td>{{s.question2}}</td>
                             <td>
-                                <a style="color:red;" href="/admin/template/delete/{{s.id}}">Delete</a>
+                                {%if onlyselect == 1 %}
+                                    <a style="color:red;" href="/admin/template/select/{{s.id}}">Select</a>
+                                {%else%}
+                                    <a style="color:red;" href="/admin/template/delete/{{s.id}}">Delete</a>
+                                    <a style="color:red;" href="/admin/template/select/{{s.id}}">Select</a>
+                                {%endif%}
                             </td>
                         </tr>   
                     {% endfor %}

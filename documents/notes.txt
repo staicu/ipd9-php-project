@@ -117,3 +117,29 @@ $app->render
         'ans21' => $question2['ans1'],
         'ans22' => $question2['ans2']
             )
+
+
+'topuser' => $_SESSION['templateselected']['name'],
+'toptemplate' => $_SESSION['userselected']['name'],
+'topadmin' => $_SESSION['todouser']['name']	
+
+
+Array ( [0] => no template 
+selected [1] => no customer 
+
+selected [2] => test )
+
+topcontent()[0]
+
+        $_SESSION['userselected'] = DB::queryFirstRow("SELECT * FROM users WHERE id=%i", $idinserted);
+
+
+'toptemplate' => topcontent()[0],
+'topuser' =>  topcontent()[1],
+'topadmin' =>  topcontent()[2]	
+'userselectedid' => topcontent[3]
+
+
+    $app->render('login.html.twig'
+        );
+        return;

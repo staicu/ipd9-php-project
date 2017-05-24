@@ -12,34 +12,50 @@
 
                         <div class="form-group">
                             <label class="control-label">Template ID </label>
-                            <input class="form-control" type="text" name="id" value="{{id}}">
-                        </div>
+                            <input class="form-control" type="number " name="id" value="{{id}}" required
+                                   {% if ((operation == "Delete") or (operation == "Update")
+                                        or (operation == "Select"))
+                                   %} 
+                                   readonly
+                            {%endif%}
+
+
+                            >
+                    </div>
                     {% endif %}
 
-                    <div class="form-group">
-                        <label class="control-label">Name </label>
-                        <input class="form-control" type="text" name="name" value="{{name}}">
-                    </div>
-                    <div class="form-group">
-                        <label class="control-label">ID Question 1 </label>
-                        <input class="form-control" type="text" name="idquestion1" value="{{idquestion1}}">
-                    </div>
-                     <div class="form-group">
-                        <label class="control-label">Question 1 </label>
-                        <input class="form-control" type="text" name="question1" value="{{question1}}">
-                    </div>
-                    <div class="form-group">
-                        <label class="control-label">ID Question 2 </label>
-                        <input class="form-control" type="text" name="idquestion2" value="{{idquestion2}}">
-                    </div>
-                    <div class="form-group">
-                        <label class="control-label">Question 2</label>
-                        <input class="form-control" type="text" name="question2" value="{{question2}}">
-                    </div>
-                    
-                    <button class="btn btn-success btn-block" type="submit"> {{operation}} </button>
-                </form>
+                        <div class="form-group">
+                            <label class="control-label">Name </label>
+                            <input class="form-control" type="text" name="name" value="{{name}}"
+                                   
+                                   {% if ((operation == "Delete") or (operation == "Update")
+                                        or (operation == "Select"))
+                                   %} 
+                                   readonly
+                            {%endif%}
+                                   
+                                   >
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label">ID Question 1 </label>
+                            <input class="form-control" type="number" name="idquestion1" value="{{idquestion1}}" required readonly>
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label">Question 1 </label>
+                            <input class="form-control" type="text" name="question1" value="{{question1}}" required readonly>
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label">ID Question 2 </label>
+                            <input class="form-control" type="number" name="idquestion2" value="{{idquestion2}}" required readonly>
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label">Question 2</label>
+                            <input class="form-control" type="text" name="question2" value="{{question2}}" required readonly>
+                        </div>
+
+                        <button class="btn btn-success btn-block" type="submit" required> {{operation}} </button>
+                    </form>
+                </div>
             </div>
         </div>
-    </div>
-{% endblock %}{# empty Twig template #}
+        {% endblock %}{# empty Twig template #}
