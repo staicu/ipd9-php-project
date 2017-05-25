@@ -19,45 +19,47 @@
                 <div class="navbar-header">
                     <a class="navbar-brand navbar-link" href="#">360 imagine</a>
                     <a class="navbar-brand navbar-link" href="#">
-                    {% if topadmin != ""%}
+                        {% if topadmin != ""%}
                             Admin : {{topadmin}}  
-                            {%endif%}
-                    
-                    
+                        {%endif%}
+
+
                     </a>
                     <a class="navbar-brand navbar-link" href="/admin/template/select/{{templateselectedid}}">
-                        
+
                         {% if toptemplate != ""%}
                             Selected Template: {{toptemplate}}
-                            {%endif%}
-                    
+                        {%endif%}
+
                     </a>
                     <a class="navbar-brand navbar-link" href="/admin/customer/select/{{userselectedid}}">
-                    {% if topuser != ""%}
+                        {% if topuser != ""%}
                             Surveyee Name : {{topuser}}  
-                            {%endif%}
-                    
+                        {%endif%}
+
                     </a>
-                    
+
                     <button class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navcol-2"><span class="sr-only">Toggle navigation</span><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span></button>
                 </div>
-                <div class="collapse navbar-collapse" id="navcol-2">
-                    <ul class="nav navbar-nav hidden-xs hidden-sm navbar-right" id="desktop-toolbar">
-                        <li class="dropdown">
-                            <a class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false" href="#"> Menu <i class="fa fa-chevron-down fa-fw"></i></a>
-                            <ul class="dropdown-menu" role="menu">
-                                <li role="presentation"><a href="/"><i class="fa fa-user fa-fw"></i> Menu </a></li>
-                                <li role="presentation"><a href="/logout"><i class="fa fa-power-off fa-fw"></i>Logout </a></li>
-                            </ul>
-                        </li>
-                    </ul>
-                    <ul class="nav navbar-nav visible-xs-block visible-sm-block" id="mobile-nav">
-                        <li role="presentation"><a href="/"><i class="fa fa-home fa-fw"></i> Menu </a></li>
-                        <li role="presentation"><a href="/logout"><i class="fa fa-star fa-fw"></i> Logout</a></li>
+                {% if topadmin != ""%}
+                    <div class="collapse navbar-collapse" id="navcol-2">
+                        <ul class="nav navbar-nav hidden-xs hidden-sm navbar-right" id="desktop-toolbar">
+                            <li class="dropdown">
+                                <a class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false" href="#"> Menu <i class="fa fa-chevron-down fa-fw"></i></a>
+                                <ul class="dropdown-menu" role="menu">
+                                    <li role="presentation"><a href="/"><i class="fa fa-user fa-fw"></i> Menu </a></li>
+                                    <li role="presentation"><a href="/logout"><i class="fa fa-power-off fa-fw"></i>Logout </a></li>
+                                </ul>
+                            </li>
+                        </ul>
+                        <ul class="nav navbar-nav visible-xs-block visible-sm-block" id="mobile-nav">
+                            <li role="presentation"><a href="/"><i class="fa fa-home fa-fw"></i> Menu </a></li>
+                            <li role="presentation"><a href="/logout"><i class="fa fa-star fa-fw"></i> Logout</a></li>
 
 
-                    </ul>
-                </div>
+                        </ul>
+                    </div>
+                {%endif%}
             </div>
         </nav>
 

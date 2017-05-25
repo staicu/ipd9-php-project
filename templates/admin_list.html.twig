@@ -27,6 +27,8 @@
                         <th>Question</th>
                         <th>Answer 1</th>
                         <th>Answer 2</th>
+                        <th>Answer 3</th>
+                        <th>Answer 4</th>
                         <th>Operations</th>
                         {%endif%}
                 </tr>
@@ -84,6 +86,8 @@
                                 <td>{{s.question}}</td>
                                 <td>{{s.ans1}}</td>
                                 <td>{{s.ans2}}</td>
+                                <td>{{s.ans3}}</td>
+                                <td>{{s.ans4}}</td>
                                 <td>
                                     {% if admin == "template" %}
                                         <input id="id" type="checkbox" name="id[]" value="{{s.id}}">

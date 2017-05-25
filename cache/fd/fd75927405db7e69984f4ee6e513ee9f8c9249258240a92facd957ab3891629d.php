@@ -36,7 +36,10 @@ class __TwigTemplate_92f197d1080b5ebab401cffb99c3921ce207c106ea5f502e2de3c689d80
         // line 7
         echo twig_escape_filter($this->env, (isset($context["operation"]) ? $context["operation"] : null), "html", null, true);
         echo " Question</h3>
-
+                <h4 class=\"text-danger\">";
+        // line 8
+        echo twig_escape_filter($this->env, (isset($context["errorMessage"]) ? $context["errorMessage"] : null), "html", null, true);
+        echo " Question</h4><br>
                 <form method=\"post\"  action=\"/admin/question/";
         // line 9
         echo twig_escape_filter($this->env, (isset($context["url"]) ? $context["url"] : null), "html", null, true);
@@ -79,9 +82,22 @@ class __TwigTemplate_92f197d1080b5ebab401cffb99c3921ce207c106ea5f502e2de3c689d80
         echo twig_escape_filter($this->env, (isset($context["ans2"]) ? $context["ans2"] : null), "html", null, true);
         echo "\" required>
                     </div>
-                    
+                    <div class=\"form-group\">
+                        <label class=\"control-label\">Answer 3 </label>
+                        <input class=\"form-control\" type=\"text\" name=\"ans3\" value=\"";
+        // line 33
+        echo twig_escape_filter($this->env, (isset($context["ans3"]) ? $context["ans3"] : null), "html", null, true);
+        echo "\" required>
+                    </div>
+                    <div class=\"form-group\">
+                        <label class=\"control-label\">Answer 4</label>
+                        <input class=\"form-control\" type=\"text\" name=\"ans4\" value=\"";
+        // line 37
+        echo twig_escape_filter($this->env, (isset($context["ans4"]) ? $context["ans4"] : null), "html", null, true);
+        echo "\" required>
+                    </div>
                     <button class=\"btn btn-success btn-block\" type=\"submit\"> ";
-        // line 32
+        // line 39
         echo twig_escape_filter($this->env, (isset($context["operation"]) ? $context["operation"] : null), "html", null, true);
         echo " </button>
                 </form>
@@ -103,7 +119,7 @@ class __TwigTemplate_92f197d1080b5ebab401cffb99c3921ce207c106ea5f502e2de3c689d80
 
     public function getDebugInfo()
     {
-        return array (  85 => 32,  79 => 29,  72 => 25,  65 => 21,  60 => 18,  54 => 15,  49 => 12,  47 => 11,  42 => 9,  37 => 7,  31 => 3,  28 => 2,  11 => 1,);
+        return array (  101 => 39,  96 => 37,  89 => 33,  82 => 29,  75 => 25,  68 => 21,  63 => 18,  57 => 15,  52 => 12,  50 => 11,  45 => 9,  41 => 8,  37 => 7,  31 => 3,  28 => 2,  11 => 1,);
     }
 
     /** @deprecated since 1.27 (to be removed in 2.0). Use getSourceContext() instead */
@@ -123,7 +139,7 @@ class __TwigTemplate_92f197d1080b5ebab401cffb99c3921ce207c106ea5f502e2de3c689d80
             <h1 class=\"text-center\">360 imagine</h1>
             <div class=\"well\">
                 <h3 class=\"text-danger\">{{operation}} Question</h3>
-
+                <h4 class=\"text-danger\">{{errorMessage}} Question</h4><br>
                 <form method=\"post\"  action=\"/admin/question/{{url}}\" enctype=\"multipart/form-data\">
 
                     {% if id >0 %}
@@ -146,12 +162,19 @@ class __TwigTemplate_92f197d1080b5ebab401cffb99c3921ce207c106ea5f502e2de3c689d80
                         <label class=\"control-label\">Answer 2</label>
                         <input class=\"form-control\" type=\"text\" name=\"ans2\" value=\"{{ans2}}\" required>
                     </div>
-                    
+                    <div class=\"form-group\">
+                        <label class=\"control-label\">Answer 3 </label>
+                        <input class=\"form-control\" type=\"text\" name=\"ans3\" value=\"{{ans3}}\" required>
+                    </div>
+                    <div class=\"form-group\">
+                        <label class=\"control-label\">Answer 4</label>
+                        <input class=\"form-control\" type=\"text\" name=\"ans4\" value=\"{{ans4}}\" required>
+                    </div>
                     <button class=\"btn btn-success btn-block\" type=\"submit\"> {{operation}} </button>
                 </form>
             </div>
         </div>
     </div>
-{% endblock %}", "admin_question_add.html.twig", "C:\\xampp\\htdocs\\ipd9project\\templates\\admin_question_add.html.twig");
+{% endblock %}", "admin_question_add.html.twig", "C:\\xampp\\htdocs\\ipd9-php-project\\templates\\admin_question_add.html.twig");
     }
 }

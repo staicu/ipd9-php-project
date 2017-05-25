@@ -119,3 +119,21 @@ display selected admin , survey and survey templates anytime
 
 3- publish the website on line
 
+24- 
+1-header renders information about surey , customer , admin
+2-redesign:
+ the database to have the following functionality
+
+* Must be able to have 4 answers per question
+
+* Must be able to add multiple questions (unlmited) per survey
+
+* Must create a many-to-many relation table 'surveyqestions' 
+linking syurveys to questions.
+
+* Must split table 'users' to 'users' for administrator
+and 'customers' for people taking the survey.
+
+* Must be able to view some basic statistical analysis of responses to questions in a specific survey.
+ 3-how many url pfp and html functions I have to update 
+

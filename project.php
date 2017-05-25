@@ -47,37 +47,47 @@ $view->parserOptions = array(
     'debug' => true,
     'cache' => dirname(__FILE__) . '/cache'
 );
+
+
+//admin logged in
 $view->setTemplatesDirectory(dirname(__FILE__) . '/templates');
 if (!isset($_SESSION['todouser'])) {
     $_SESSION['todouser'] = array();
 }
+
+//template selected for the survey
 if (!isset($_SESSION['templateselected'])) {
     $_SESSION['templateselected'] = array();
 }
+
+//selected customer for survey
 if (!isset($_SESSION['userselected'])) {
     $_SESSION['userselected'] = array();
 }
+//the survey name that is active for the specific event
 if (!isset($_SESSION['activesurvey'])) {
     $_SESSION['activesurvey'] = array();
 }
-if (!isset($_SESSION['datesurvey'])) {
-    $_SESSION['datesurvey'] = array();
+//selected questions to create a template
+if (!isset($_SESSION['$selectedQuestions'])) {
+    $_SESSION['$selectedQuestions'] = array();
 }
+
 $twig = $app->view()->getEnvironment();
 
+//selected questions to create a template
+$twig->addGlobal('$selectedQuestions', $_SESSION['$selectedQuestions']);
 //active admin
 $twig->addGlobal('todouser', $_SESSION['todouser']);
-
 //active template
 $twig->addGlobal('templateselected', $_SESSION['templateselected']);
-
 //active surveyee
 $twig->addGlobal('userselected', $_SESSION['userselected']);
-
 //name of the current survey
 $twig->addGlobal('activesurvey', $_SESSION['activesurvey']);
 
 //function to display in header
+include 'newdesign.php';
 
 function topcontent() {
 
@@ -100,10 +110,9 @@ function topcontent() {
     } else {
         $todouser = $_SESSION['todouser']['name'];
     }
-    return array($templateselected, $userselected, $todouser, $userselectedid, 
+    return array($templateselected, $userselected, $todouser, $userselectedid,
         $templateselectedid,
-        
-        );
+    );
 }
 
 //when the application starts
@@ -131,7 +140,7 @@ $app->post('/', function() use ($app) {
     $pass = $app->request()->post('pass');
     // verification    
     $error = false;
-    $user = DB::queryFirstRow("SELECT * FROM users WHERE name=%s", $name);
+    $user = DB::queryFirstRow("SELECT * FROM admins WHERE name=%s", $name);
     if (!$user) {
         $error = true;
     } else {
@@ -145,7 +154,12 @@ $app->post('/', function() use ($app) {
     } else {
         unset($user['password']);
         $_SESSION['todouser'] = $user;
-        $app->render('menu.html.twig');
+        $app->render('menu.html.twig', array(
+            'toptemplate' => topcontent()[0],
+            'topuser' => topcontent()[1],
+            'topadmin' => topcontent()[2]
+                )
+        );
     }
 });
 //logout
@@ -156,11 +170,7 @@ $app->get('/logout', function() use ($app) {
     unset($_SESSION['activesurvey']);
     $app->render('login.html.twig');
 });
-//survey page
-$app->get('/survey', function() use ($app) {
 
-    $app->render("survey.html.twig");
-});
 //get the add customer page
 $app->get('/admin/customer/add', function() use ($app) {
 
@@ -214,9 +224,7 @@ $app->post('/admin/customer/add', function() use ($app) {
             'toptemplate' => topcontent()[0],
             'topuser' => topcontent()[1],
             'topadmin' => topcontent()[2],
-           // 'userselectedid' => topcontent[3]
-            
-            
+                // 'userselectedid' => topcontent[3]
         ));
     }
 });
@@ -394,32 +402,58 @@ $app->post('/admin/question/add', function() use ($app) {
     $question = $app->request()->post('question');
     $ans1 = $app->request()->post('ans1');
     $ans2 = $app->request()->post('ans2');
+    $ans3 = $app->request()->post('ans3');
+    $ans4 = $app->request()->post('ans4');
+
+    $errorList = array();
+    if (strlen($question) < 2 || strlen($question) > 150) {
+        array_push($errorList, "Question must be 2-150 characters long");
+    }
+    if (strlen($ans1) < 2 || strlen($ans1) > 150) {
+        array_push($errorList, "Answer1 must be 2-150 characters long");
+    }
+    if (strlen($ans2) < 2 || strlen($ans2) > 150) {
+        array_push($errorList, "Answer2 must be 2-150 characters long");
+    }
+    if (strlen($ans3) < 2 || strlen($ans3) > 150) {
+        array_push($errorList, "Answer3 must be 2-150 characters long");
+    }
+    if (strlen($ans4) < 2 || strlen($ans4) > 150) {
+        array_push($errorList, "Answer4 must be 2-150 characters long");
+    }
     $questionList = array(
         'question' => $question,
         'ans1' => $ans1,
         'ans2' => $ans2,
+        'ans3' => $ans3,
+        'ans4' => $ans4,
         'toptemplate' => topcontent()[0],
         'topuser' => topcontent()[1],
         'topadmin' => topcontent()[2]
     );
 
-    $errorList = array();
-    if (strlen($question) < 2 || strlen($question) > 100) {
-        array_push($errorList, "Question must be 2-100 characters long");
-    }
-
+    //print_r($questionList);
     if ($errorList) {
-        print_r($errorList);
-        $app->render("admin_question_add.html.twig");
-        echo 'not added';
+        $errorMessage = "Please enter between 2 and 150 characters";
+        $app->render("admin_question_add.html.twig", array(
+            'operation' => "Create",
+            'url' => "add",
+            'errorMessage' => $errorMessage,
+            'question' => $question,
+            'ans1' => $ans1,
+            'ans2' => $ans2,
+            'ans3' => $ans3,
+            'ans4' => $ans4
+        ));
     } else {
-
 
         //print_r($questionList);
         DB::insert('questions', array(
             "question" => $question,
             "ans1" => $ans1,
-            "ans2" => $ans2
+            "ans2" => $ans2,
+            "ans3" => $ans3,
+            "ans4" => $ans4
         ));
         $textToDisplay = $question . " : Question was added to the database";
         $app->render("congratulation.html.twig", array('textToDisplay' => $textToDisplay,
@@ -446,6 +480,8 @@ $app->get('/admin/question/edit(/:id)', function($id = 0) use ($app) {
         'question' => $question['question'],
         'ans1' => $question['ans1'],
         'ans2' => $question['ans2'],
+        'ans3' => $question['ans3'],
+        'ans4' => $question['ans4'],
         'operation' => "Modify",
         'toptemplate' => topcontent()[0],
         'topuser' => topcontent()[1],
@@ -461,37 +497,92 @@ $app->post('/admin/question/modify', function () use($app) {
     $question = $app->request()->post('question');
     $ans1 = $app->request()->post('ans1');
     $ans2 = $app->request()->post('ans2');
+    $ans3 = $app->request()->post('ans3');
+    $ans4 = $app->request()->post('ans4');
     $questionList = array(
         'id' => $id,
         'question' => $question,
         'ans1' => $ans1,
         'ans2' => $ans2,
+        'ans3' => $ans3,
+        'ans4' => $ans4,
         'toptemplate' => topcontent()[0],
         'topuser' => topcontent()[1],
         'topadmin' => topcontent()[2]
     );
 
+    print_r($questionList);
+    $errorList = array();
+    if (strlen($question) < 2 || strlen($question) > 150) {
+        array_push($errorList, "Question must be 2-150 characters long");
+    }
+    if (strlen($ans1) < 2 || strlen($ans1) > 150) {
+        array_push($errorList, "Answer1 must be 2-150 characters long");
+    }
+    if (strlen($ans2) < 2 || strlen($ans2) > 150) {
+        array_push($errorList, "Answer2 must be 2-150 characters long");
+    }
+    if (strlen($ans3) < 2 || strlen($ans3) > 150) {
+        array_push($errorList, "Answer3 must be 2-150 characters long");
+    }
+    if (strlen($ans4) < 2 || strlen($ans4) > 150) {
+        array_push($errorList, "Answer4 must be 2-150 characters long");
+    }
 
-    //print_r($question);
-    DB::update('questions', array(
-        "question" => $question,
-        "ans1" => $ans1,
-        "ans2" => $ans2,
-            ), 'id=%i', $id);
-    $textToDisplay = $question . " : question was updated in the database";
-    $app->render("congratulation.html.twig", array('textToDisplay' => $textToDisplay,
-        'toptemplate' => topcontent()[0],
-        'topuser' => topcontent()[1],
-        'topadmin' => topcontent()[2]));
+    if ($errorList) {
+        $errorMessage = "Please modify fields between 2 and 150 characters";
+        $app->render("admin_question_add.html.twig", array(
+            'url' => 'modify',
+            'errorMessage' => $errorMessage,
+            'id' => $questionList['id'],
+            'question' => $questionList['question'],
+            'ans1' => $questionList['ans1'],
+            'ans2' => $questionList['ans2'],
+            'ans3' => $questionList['ans3'],
+            'ans4' => $questionList['ans4'],
+            'operation' => "Modify",
+            'toptemplate' => topcontent()[0],
+            'topuser' => topcontent()[1],
+            'topadmin' => topcontent()[2]
+        ));
+    } else {
+        //print_r($question);
+        DB::update('questions', array(
+            "question" => $question,
+            "ans1" => $ans1,
+            "ans2" => $ans2,
+            "ans3" => $ans3,
+            "ans4" => $ans4
+                ), 'id=%i', $id);
+        $textToDisplay = $question . " : question was updated in the database";
+        $app->render("congratulation.html.twig", array('textToDisplay' => $textToDisplay,
+            'toptemplate' => topcontent()[0],
+            'topuser' => topcontent()[1],
+            'topadmin' => topcontent()[2]));
+    }
 });
 
 
 //get the question from the database for deletion
 $app->get('/admin/question/delete(/:id)', function($id = 0) use ($app) {
-    print_r($id);
+    //print_r($id);
     $question = DB::queryFirstRow("SELECT * FROM questions WHERE id=%i", $id);
     if (!$question) {
-        echo 'Product not found';
+        $errorMessage = "Product not found";
+        $app->render("admin_question_add.html.twig", array(
+            'errorMessage' => $errorMessage,
+            'url' => 'delete',
+            'id' => $question['id'],
+            'question' => $question['question'],
+            'ans1' => $question['ans1'],
+            'ans2' => $question['ans2'],
+            'ans3' => $question['ans3'],
+            'ans4' => $question['ans4'],
+            'operation' => "Delete",
+            'toptemplate' => topcontent()[0],
+            'topuser' => topcontent()[1],
+            'topadmin' => topcontent()[2]
+        ));
         return;
     }
     //print_r($question);
@@ -501,6 +592,8 @@ $app->get('/admin/question/delete(/:id)', function($id = 0) use ($app) {
         'question' => $question['question'],
         'ans1' => $question['ans1'],
         'ans2' => $question['ans2'],
+        'ans3' => $question['ans3'],
+        'ans4' => $question['ans4'],
         'operation' => "Delete",
         'toptemplate' => topcontent()[0],
         'topuser' => topcontent()[1],
@@ -526,27 +619,12 @@ $app->post('/admin/question/delete', function () use($app) {
 
 //list of  Survey Templates
 $app->get('/admin/template/list', function() use ($app) {
-    $surveyList1 = DB::query("SELECT * FROM surveys");
-    $surveyList2 = array();
-
-    foreach ($surveyList1 as $key => $value) {
-        // var_dump($survey); 
-        $question1 = DB::queryFirstRow("SELECT q.question as question1,q.id as q1idQT FROM questions as q WHERE q.id = $value[idquestion1] ");
-
-        $question2 = DB::queryFirstRow("SELECT q.question as question2,q.id as q2dQT FROM questions as q WHERE q.id = $value[idquestion2] ");
-
-
-        $result = array_merge($value, $question1, $question2);
-        $surveyList2[] = $result;
-    };
-
-    $app->render("admin_list.html.twig", array(
-        'userList' => $surveyList2,
-        'titlelist' => "Survey Template",
-        'toptemplate' => topcontent()[0],
-        'topuser' => topcontent()[1],
-        'topadmin' => topcontent()[2]
-    ));
+    $templatelist = DB::query("SELECT * FROM templates as t,questions as q, templatesquestions as tq
+WHERE q.id=tq.idquestion AND tq.idtemplate=t.id ORDER BY  t.id");
+    print_r($templatelist);
+    $app->render("list_template.html.twig", array(
+        'templatelist'=>$templatelist));
+    
 });
 
 //list of  Survey Templates
@@ -664,11 +742,15 @@ $app->post('/admin/template/delete', function () use($app) {
 //list of Questions to create a Survey Template
 $app->get('/admin/template/add', function() use ($app) {
     $userList = DB::query("SELECT * FROM questions");
+    print_r($userList);
     $app->render("admin_list.html.twig", array(
         'userList' => $userList,
         'titlelist' => "Questions",
         'admin' => "template",
-        'extraTitle' => "Please Select 2 Questions and press Next."
+        'extraTitle' => "Please Select All the Questions you need and press Next.",
+        'toptemplate' => topcontent()[0],
+        'topuser' => topcontent()[1],
+        'topadmin' => topcontent()[2]
     ));
 });
 //display the info of the template to be added
@@ -686,66 +768,53 @@ $app->post('/admin/template/add/step1', function() use ($app) {
     foreach ($id as $q) {
         $selectedQuestion[] = DB::queryFirstRow("SELECT * FROM questions WHERE id=%i", $q);
     }
-    print_r(count($selectedQuestion));
-    if (count($selectedQuestion) != 2) {
-        $textToDisplay = "Please select 2 questions to build a template";
-        $app->render("question_selection_error_for_template.html.twig", array(
-            'textToDisplay' => $textToDisplay
-                )
-        );
-        return;
-    }
+    $_SESSION['$selectedQuestions'] = $selectedQuestion;
+    print_r(count($_SESSION['$selectedQuestions']));
+    print_r($_SESSION['$selectedQuestions']);
 
-    //print_r($selectedQuestion[1]['question']);
-    $app->render("admin_template_add.html.twig", array(
-        'url' => 'add/step2',
-        'extraTitle' => "Enter the Name of the Template.",
-        'idquestion1' => $selectedQuestion[0]['id'],
-        'idquestion2' => $selectedQuestion[1]['id'],
-        'question1' => $selectedQuestion[1]['question'],
-        'question2' => $selectedQuestion[1]['question'],
-        'operation' => "Add"
-    ));
+    $app->render("add_template_list.html.twig", array(
+        'selectedQuestions' => $_SESSION['$selectedQuestions']
+            )
+    );
 });
 //add template to database
 $app->post('/admin/template/add/step2', function() use ($app) {
 
-    $name = $app->request()->post('name');
-    $idquestion1 = $app->request()->post('idquestion1');
-    $idquestion2 = $app->request()->post('idquestion2');
-
-//    $userList = array(
-//        'name' => $name,
-//        'email' => $idquestion1,
-//        'phone' => $idquestion2
-//    );
-
+    $templatename = $app->request()->post('templatename');
+//    print_r($templatename);
+//   
+//
     $errorList = array();
-    if (strlen($name) < 2 || strlen($name) > 100) {
-        array_push($errorList, "Name must be 2-100 characters long");
+    if (strlen($templatename) < 2 || strlen($templatename) > 100) {
+        array_push($errorList, "Template name must be 2-100 characters long");
     }
 
     if ($errorList) {
 
-        $app->render("error_internal.html.twig");
-        echo 'not added';
+        $app->render("add_template_list.html.twig", array(
+            'selectedQuestions' => $_SESSION['$selectedQuestions'],
+                'errorlist'=>$errorList[0]));
     } else {
-
-        DB::insert('surveys', array(
-            "name" => $name,
-            "idquestion1" => $idquestion1,
-            "idquestion2" => $idquestion2
+        DB::insert('templates', array(
+            "name" => $templatename
         ));
         $idinserted = DB::insertId();
 
-        //print_r($idinserted);
-        $_SESSION['templateselected'] = DB::queryFirstRow("SELECT * FROM surveys WHERE id=%i", $idinserted);
-        print_r($_SESSION['templateselected']);
-        $textToDisplay = $name . " : template was added to the database";
-        $app->render("congratulation.html.twig", array('textToDisplay' => $textToDisplay,
-            'toptemplate' => $_SESSION['templateselected']['name']
-        ));
+        $_SESSION['templateselected'] = DB::queryFirstRow("SELECT * FROM templates WHERE id=%i", $idinserted);
+
+        foreach ($_SESSION['$selectedQuestions'] as $q) {
+            DB::insert('templatesquestions', array(
+                "idtemplate" => $idinserted,
+                "idquestion" => $q['id']));
+        }
+        $template = DB::query("SELECT * FROM templates as t,questions as q, templatesquestions as tq "
+                        . "WHERE q.id=tq.idquestion AND tq.idtemplate=t.id	AND t.id=%i", $idinserted);
+        print_r($template);
+        $app->render("display_template.html.twig", array(
+            'selectedQuestions' => $_SESSION['$selectedQuestions'],
+                'templatename'=>$templatename));
     }
+
 });
 
 

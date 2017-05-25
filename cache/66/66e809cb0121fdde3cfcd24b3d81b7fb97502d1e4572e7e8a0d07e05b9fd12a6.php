@@ -39,7 +39,7 @@ class __TwigTemplate_4ed10a188da3dbe367f3ba8908463a84ef6da87ffce13cfceddd44a50a4
         echo twig_escape_filter($this->env, (isset($context["textToDisplay"]) ? $context["textToDisplay"] : null), "html", null, true);
         echo " . </p>
                 </div>
-                <div class=\"buttons\"><a class=\"btn btn-primary\" role=\"button\" href=\"/\">Menu</a></div>
+                <div class=\"buttons\"><a class=\"btn btn-primary\" role=\"butt  on\" href=\"/\">Menu</a></div>
             </div>
         </div>
     </div>
@@ -83,10 +83,10 @@ class __TwigTemplate_4ed10a188da3dbe367f3ba8908463a84ef6da87ffce13cfceddd44a50a4
                     <h2 class=\"text-center\" style=\"color: white\">Congratulation</h2>
                     <p style=\"font-size: 20; color: white\" class=\"text-center\">{{textToDisplay}} . </p>
                 </div>
-                <div class=\"buttons\"><a class=\"btn btn-primary\" role=\"button\" href=\"/\">Menu</a></div>
+                <div class=\"buttons\"><a class=\"btn btn-primary\" role=\"butt  on\" href=\"/\">Menu</a></div>
             </div>
         </div>
     </div>
-{% endblock %}", "congratulation.html.twig", "C:\\xampp\\htdocs\\ipd9project\\templates\\congratulation.html.twig");
+{% endblock %}", "congratulation.html.twig", "C:\\xampp\\htdocs\\ipd9-php-project\\templates\\congratulation.html.twig");
     }
 }

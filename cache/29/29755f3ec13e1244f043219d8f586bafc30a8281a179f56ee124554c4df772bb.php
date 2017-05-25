@@ -40,24 +40,24 @@ class __TwigTemplate_b731fc2f645ddef88e9fe6fd9538378ac2afbaab917425d9bb88c3717fc
                 <div class=\"navbar-header\">
                     <a class=\"navbar-brand navbar-link\" href=\"#\">360 imagine</a>
                     <a class=\"navbar-brand navbar-link\" href=\"#\">
-                    ";
+                        ";
         // line 22
         if (((isset($context["topadmin"]) ? $context["topadmin"] : null) != "")) {
             // line 23
             echo "                            Admin : ";
             echo twig_escape_filter($this->env, (isset($context["topadmin"]) ? $context["topadmin"] : null), "html", null, true);
             echo "  
-                            ";
+                        ";
         }
         // line 25
-        echo "                    
-                    
+        echo "
+
                     </a>
                     <a class=\"navbar-brand navbar-link\" href=\"/admin/template/select/";
         // line 28
         echo twig_escape_filter($this->env, (isset($context["templateselectedid"]) ? $context["templateselectedid"] : null), "html", null, true);
         echo "\">
-                        
+
                         ";
         // line 30
         if (((isset($context["toptemplate"]) ? $context["toptemplate"] : null) != "")) {
@@ -65,64 +65,71 @@ class __TwigTemplate_b731fc2f645ddef88e9fe6fd9538378ac2afbaab917425d9bb88c3717fc
             echo "                            Selected Template: ";
             echo twig_escape_filter($this->env, (isset($context["toptemplate"]) ? $context["toptemplate"] : null), "html", null, true);
             echo "
-                            ";
+                        ";
         }
         // line 33
-        echo "                    
+        echo "
                     </a>
                     <a class=\"navbar-brand navbar-link\" href=\"/admin/customer/select/";
         // line 35
         echo twig_escape_filter($this->env, (isset($context["userselectedid"]) ? $context["userselectedid"] : null), "html", null, true);
         echo "\">
-                    ";
+                        ";
         // line 36
         if (((isset($context["topuser"]) ? $context["topuser"] : null) != "")) {
             // line 37
             echo "                            Surveyee Name : ";
             echo twig_escape_filter($this->env, (isset($context["topuser"]) ? $context["topuser"] : null), "html", null, true);
             echo "  
-                            ";
+                        ";
         }
         // line 39
-        echo "                    
+        echo "
                     </a>
-                    
+
                     <button class=\"navbar-toggle collapsed\" data-toggle=\"collapse\" data-target=\"#navcol-2\"><span class=\"sr-only\">Toggle navigation</span><span class=\"icon-bar\"></span><span class=\"icon-bar\"></span><span class=\"icon-bar\"></span></button>
                 </div>
-                <div class=\"collapse navbar-collapse\" id=\"navcol-2\">
-                    <ul class=\"nav navbar-nav hidden-xs hidden-sm navbar-right\" id=\"desktop-toolbar\">
-                        <li class=\"dropdown\">
-                            <a class=\"dropdown-toggle\" data-toggle=\"dropdown\" aria-expanded=\"false\" href=\"#\"> Menu <i class=\"fa fa-chevron-down fa-fw\"></i></a>
-                            <ul class=\"dropdown-menu\" role=\"menu\">
-                                <li role=\"presentation\"><a href=\"/\"><i class=\"fa fa-user fa-fw\"></i> Menu </a></li>
-                                <li role=\"presentation\"><a href=\"/logout\"><i class=\"fa fa-power-off fa-fw\"></i>Logout </a></li>
-                            </ul>
-                        </li>
-                    </ul>
-                    <ul class=\"nav navbar-nav visible-xs-block visible-sm-block\" id=\"mobile-nav\">
-                        <li role=\"presentation\"><a href=\"/\"><i class=\"fa fa-home fa-fw\"></i> Menu </a></li>
-                        <li role=\"presentation\"><a href=\"/logout\"><i class=\"fa fa-star fa-fw\"></i> Logout</a></li>
+                ";
+        // line 44
+        if (((isset($context["topadmin"]) ? $context["topadmin"] : null) != "")) {
+            // line 45
+            echo "                    <div class=\"collapse navbar-collapse\" id=\"navcol-2\">
+                        <ul class=\"nav navbar-nav hidden-xs hidden-sm navbar-right\" id=\"desktop-toolbar\">
+                            <li class=\"dropdown\">
+                                <a class=\"dropdown-toggle\" data-toggle=\"dropdown\" aria-expanded=\"false\" href=\"#\"> Menu <i class=\"fa fa-chevron-down fa-fw\"></i></a>
+                                <ul class=\"dropdown-menu\" role=\"menu\">
+                                    <li role=\"presentation\"><a href=\"/\"><i class=\"fa fa-user fa-fw\"></i> Menu </a></li>
+                                    <li role=\"presentation\"><a href=\"/logout\"><i class=\"fa fa-power-off fa-fw\"></i>Logout </a></li>
+                                </ul>
+                            </li>
+                        </ul>
+                        <ul class=\"nav navbar-nav visible-xs-block visible-sm-block\" id=\"mobile-nav\">
+                            <li role=\"presentation\"><a href=\"/\"><i class=\"fa fa-home fa-fw\"></i> Menu </a></li>
+                            <li role=\"presentation\"><a href=\"/logout\"><i class=\"fa fa-star fa-fw\"></i> Logout</a></li>
 
 
-                    </ul>
-                </div>
-            </div>
+                        </ul>
+                    </div>
+                ";
+        }
+        // line 63
+        echo "            </div>
         </nav>
 
         <div class=\"header-blue\" >
         ";
-        // line 65
+        // line 67
         $this->displayBlock('header', $context, $blocks);
-        // line 66
+        // line 68
         echo "    ";
         $this->displayBlock('container', $context, $blocks);
-        // line 67
+        // line 69
         echo "
 
 ";
-        // line 69
+        // line 71
         $this->displayBlock('container1', $context, $blocks);
-        // line 70
+        // line 72
         echo "
 </div>
 <div class=\"footer-basic\">
@@ -148,17 +155,17 @@ class __TwigTemplate_b731fc2f645ddef88e9fe6fd9538378ac2afbaab917425d9bb88c3717fc
 </html>";
     }
 
-    // line 65
+    // line 67
     public function block_header($context, array $blocks = array())
     {
     }
 
-    // line 66
+    // line 68
     public function block_container($context, array $blocks = array())
     {
     }
 
-    // line 69
+    // line 71
     public function block_container1($context, array $blocks = array())
     {
     }
@@ -175,7 +182,7 @@ class __TwigTemplate_b731fc2f645ddef88e9fe6fd9538378ac2afbaab917425d9bb88c3717fc
 
     public function getDebugInfo()
     {
-        return array (  162 => 69,  157 => 66,  152 => 65,  126 => 70,  124 => 69,  120 => 67,  117 => 66,  115 => 65,  87 => 39,  81 => 37,  79 => 36,  75 => 35,  71 => 33,  65 => 31,  63 => 30,  58 => 28,  53 => 25,  47 => 23,  45 => 22,  22 => 1,);
+        return array (  169 => 71,  164 => 68,  159 => 67,  133 => 72,  131 => 71,  127 => 69,  124 => 68,  122 => 67,  116 => 63,  96 => 45,  94 => 44,  87 => 39,  81 => 37,  79 => 36,  75 => 35,  71 => 33,  65 => 31,  63 => 30,  58 => 28,  53 => 25,  47 => 23,  45 => 22,  22 => 1,);
     }
 
     /** @deprecated since 1.27 (to be removed in 2.0). Use getSourceContext() instead */
@@ -209,45 +216,47 @@ class __TwigTemplate_b731fc2f645ddef88e9fe6fd9538378ac2afbaab917425d9bb88c3717fc
                 <div class=\"navbar-header\">
                     <a class=\"navbar-brand navbar-link\" href=\"#\">360 imagine</a>
                     <a class=\"navbar-brand navbar-link\" href=\"#\">
-                    {% if topadmin != \"\"%}
+                        {% if topadmin != \"\"%}
                             Admin : {{topadmin}}  
-                            {%endif%}
-                    
-                    
+                        {%endif%}
+
+
                     </a>
                     <a class=\"navbar-brand navbar-link\" href=\"/admin/template/select/{{templateselectedid}}\">
-                        
+
                         {% if toptemplate != \"\"%}
                             Selected Template: {{toptemplate}}
-                            {%endif%}
-                    
+                        {%endif%}
+
                     </a>
                     <a class=\"navbar-brand navbar-link\" href=\"/admin/customer/select/{{userselectedid}}\">
-                    {% if topuser != \"\"%}
+                        {% if topuser != \"\"%}
                             Surveyee Name : {{topuser}}  
-                            {%endif%}
-                    
+                        {%endif%}
+
                     </a>
-                    
+
                     <button class=\"navbar-toggle collapsed\" data-toggle=\"collapse\" data-target=\"#navcol-2\"><span class=\"sr-only\">Toggle navigation</span><span class=\"icon-bar\"></span><span class=\"icon-bar\"></span><span class=\"icon-bar\"></span></button>
                 </div>
-                <div class=\"collapse navbar-collapse\" id=\"navcol-2\">
-                    <ul class=\"nav navbar-nav hidden-xs hidden-sm navbar-right\" id=\"desktop-toolbar\">
-                        <li class=\"dropdown\">
-                            <a class=\"dropdown-toggle\" data-toggle=\"dropdown\" aria-expanded=\"false\" href=\"#\"> Menu <i class=\"fa fa-chevron-down fa-fw\"></i></a>
-                            <ul class=\"dropdown-menu\" role=\"menu\">
-                                <li role=\"presentation\"><a href=\"/\"><i class=\"fa fa-user fa-fw\"></i> Menu </a></li>
-                                <li role=\"presentation\"><a href=\"/logout\"><i class=\"fa fa-power-off fa-fw\"></i>Logout </a></li>
-                            </ul>
-                        </li>
-                    </ul>
-                    <ul class=\"nav navbar-nav visible-xs-block visible-sm-block\" id=\"mobile-nav\">
-                        <li role=\"presentation\"><a href=\"/\"><i class=\"fa fa-home fa-fw\"></i> Menu </a></li>
-                        <li role=\"presentation\"><a href=\"/logout\"><i class=\"fa fa-star fa-fw\"></i> Logout</a></li>
+                {% if topadmin != \"\"%}
+                    <div class=\"collapse navbar-collapse\" id=\"navcol-2\">
+                        <ul class=\"nav navbar-nav hidden-xs hidden-sm navbar-right\" id=\"desktop-toolbar\">
+                            <li class=\"dropdown\">
+                                <a class=\"dropdown-toggle\" data-toggle=\"dropdown\" aria-expanded=\"false\" href=\"#\"> Menu <i class=\"fa fa-chevron-down fa-fw\"></i></a>
+                                <ul class=\"dropdown-menu\" role=\"menu\">
+                                    <li role=\"presentation\"><a href=\"/\"><i class=\"fa fa-user fa-fw\"></i> Menu </a></li>
+                                    <li role=\"presentation\"><a href=\"/logout\"><i class=\"fa fa-power-off fa-fw\"></i>Logout </a></li>
+                                </ul>
+                            </li>
+                        </ul>
+                        <ul class=\"nav navbar-nav visible-xs-block visible-sm-block\" id=\"mobile-nav\">
+                            <li role=\"presentation\"><a href=\"/\"><i class=\"fa fa-home fa-fw\"></i> Menu </a></li>
+                            <li role=\"presentation\"><a href=\"/logout\"><i class=\"fa fa-star fa-fw\"></i> Logout</a></li>
 
 
-                    </ul>
-                </div>
+                        </ul>
+                    </div>
+                {%endif%}
             </div>
         </nav>
 
@@ -279,6 +288,6 @@ class __TwigTemplate_b731fc2f645ddef88e9fe6fd9538378ac2afbaab917425d9bb88c3717fc
 <script src=\"/assets/js/script.min.js\"></script>
 </body>
 
-</html>", "index.html.twig", "C:\\xampp\\htdocs\\ipd9project\\templates\\index.html.twig");
+</html>", "index.html.twig", "C:\\xampp\\htdocs\\ipd9-php-project\\templates\\index.html.twig");
     }
 }

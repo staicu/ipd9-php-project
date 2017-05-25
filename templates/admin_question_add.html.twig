@@ -5,7 +5,7 @@
             <h1 class="text-center">360 imagine</h1>
             <div class="well">
                 <h3 class="text-danger">{{operation}} Question</h3>
-
+                <h4 class="text-danger">{{errorMessage}} Question</h4><br>
                 <form method="post"  action="/admin/question/{{url}}" enctype="multipart/form-data">
 
                     {% if id >0 %}
@@ -28,7 +28,14 @@
                         <label class="control-label">Answer 2</label>
                         <input class="form-control" type="text" name="ans2" value="{{ans2}}" required>
                     </div>
-                    
+                    <div class="form-group">
+                        <label class="control-label">Answer 3 </label>
+                        <input class="form-control" type="text" name="ans3" value="{{ans3}}" required>
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label">Answer 4</label>
+                        <input class="form-control" type="text" name="ans4" value="{{ans4}}" required>
+                    </div>
                     <button class="btn btn-success btn-block" type="submit"> {{operation}} </button>
                 </form>
             </div>
