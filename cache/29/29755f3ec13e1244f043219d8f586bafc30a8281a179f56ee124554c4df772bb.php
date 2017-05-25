@@ -288,6 +288,6 @@ class __TwigTemplate_b731fc2f645ddef88e9fe6fd9538378ac2afbaab917425d9bb88c3717fc
 <script src=\"/assets/js/script.min.js\"></script>
 </body>
 
-</html>", "index.html.twig", "C:\\xampp\\htdocs\\ipd9-php-project\\templates\\index.html.twig");
+</html>", "index.html.twig", "C:\\xampp\\htdocs\\phpproject\\templates\\index.html.twig");
     }
 }

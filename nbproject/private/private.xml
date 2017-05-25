@@ -3,17 +3,10 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/xampp/htdocs/ipd9-php-project/templates/admin_template_add.html.twig</file>
-            <file>file:/C:/xampp/htdocs/ipd9-php-project/templates/display_template.html.twig</file>
-            <file>file:/C:/xampp/htdocs/ipd9-php-project/project.php</file>
-            <file>file:/C:/xampp/htdocs/ipd9-php-project/templates/admin_question_add.html.twig</file>
-            <file>file:/C:/xampp/htdocs/ipd9-php-project/templates/error_internal.html.twig</file>
-            <file>file:/C:/xampp/htdocs/ipd9-php-project/templates/add_template_list.html.twig</file>
-            <file>file:/C:/xampp/htdocs/ipd9-php-project/templates/admin_customer_add.html.twig</file>
-            <file>file:/C:/xampp/htdocs/ipd9-php-project/logs/errors_1.log</file>
-            <file>file:/C:/xampp/htdocs/ipd9-php-project/newdesign.php</file>
-            <file>file:/C:/xampp/htdocs/ipd9-php-project/logs/everything_1.log</file>
-            <file>file:/C:/xampp/htdocs/ipd9-php-project/templates/list_template.html.twig</file>
+            <file>file:/C:/xampp/htdocs/phpproject/templates/display_template.html.twig</file>
+            <file>file:/C:/xampp/htdocs/phpproject/local.php</file>
+            <file>file:/C:/xampp/htdocs/phpproject/project.php</file>
+            <file>file:/C:/xampp/htdocs/phpproject/templates/list_template.html.twig</file>
         </group>
     </open-files>
 </project-private>

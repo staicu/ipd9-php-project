@@ -430,6 +430,6 @@ class __TwigTemplate_049a75f0b2078070c13adfb734e8ce6ace46c03a97acf9958a90045f5b8
         </table>
     </div>
 
-{% endblock %}", "admin_list.html.twig", "C:\\xampp\\htdocs\\ipd9-php-project\\templates\\admin_list.html.twig");
+{% endblock %}", "admin_list.html.twig", "C:\\xampp\\htdocs\\phpproject\\templates\\admin_list.html.twig");
     }
 }

@@ -249,6 +249,6 @@ class __TwigTemplate_e01b0dc6e178e64d5bf5597581a25453146b0c92ccbd361eeb7532c25bf
                 </div>
             </div>
         </div>
-        {% endblock %}{# empty Twig template #}", "admin_customer_add.html.twig", "C:\\xampp\\htdocs\\ipd9project\\templates\\admin_customer_add.html.twig");
+        {% endblock %}{# empty Twig template #}", "admin_customer_add.html.twig", "C:\\xampp\\htdocs\\phpproject\\templates\\admin_customer_add.html.twig");
     }
 }

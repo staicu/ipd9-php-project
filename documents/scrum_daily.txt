@@ -119,7 +119,7 @@ display selected admin , survey and survey templates anytime
 
 3- publish the website on line
 
-24- 
+24 may- 
 1-header renders information about surey , customer , admin
 2-redesign:
  the database to have the following functionality
@@ -136,4 +136,20 @@ and 'customers' for people taking the survey.
 
 * Must be able to view some basic statistical analysis of responses to questions in a specific survey.
  3-how many url pfp and html functions I have to update 
+
+
+25 may
+1-change design database to suport multiple questions per suvey
+implement add template
+change database for customer and admin
+list template
+implement add admin
+
+2- implement crud survey
+
+3- using temporary table and views
+
+
+
+
 

@@ -170,6 +170,6 @@ class __TwigTemplate_03d5a290f86912239d6d124107e201b48bccdda356f4c02584edc7521d8
         </table>
     </div>
 
-{% endblock %}", "display_template.html.twig", "C:\\xampp\\htdocs\\ipd9-php-project\\templates\\display_template.html.twig");
+{% endblock %}", "display_template.html.twig", "C:\\xampp\\htdocs\\phpproject\\templates\\display_template.html.twig");
     }
 }
