@@ -3,23 +3,20 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/xampp/htdocs/ipd9-php-project/local.php</file>
-            <file>file:/C:/xampp/htdocs/ipd9-php-project/templates/display_template.html.twig</file>
-            <file>file:/C:/xampp/htdocs/ipd9-php-project/templates/login.html.twig</file>
-            <file>file:/C:/xampp/htdocs/ipd9-php-project/templates/add_template_list.html.twig</file>
-            <file>file:/C:/xampp/htdocs/ipd9-php-project/templates/admin_customer_add.html.twig</file>
-            <file>file:/C:/xampp/htdocs/ipd9-php-project/newdesign.php</file>
-            <file>file:/C:/xampp/htdocs/ipd9-php-project/logs/everything.log</file>
-            <file>file:/C:/xampp/htdocs/ipd9-php-project/templates/json_display_with_links.html.twig</file>
-            <file>file:/C:/xampp/htdocs/ipd9-php-project/project.php</file>
-            <file>file:/C:/xampp/htdocs/ipd9-php-project/templates/admin_list.html.twig</file>
-            <file>file:/C:/xampp/htdocs/ipd9-php-project/composer.json</file>
-            <file>file:/C:/xampp/htdocs/ipd9-php-project/templates/list_onlytemplate.html.twig</file>
-            <file>file:/C:/xampp/htdocs/ipd9-php-project/templates/menu.html.twig</file>
-            <file>file:/C:/xampp/htdocs/ipd9-php-project/templates/index.html.twig</file>
-            <file>file:/C:/xampp/htdocs/ipd9-php-project/templates/infoheader.html.twig</file>
-            <file>file:/C:/xampp/htdocs/ipd9-php-project/templates/list_template.html.twig</file>
-            <file>file:/C:/xampp/htdocs/ipd9-php-project/logs/errors.log</file>
+            <file>file:/C:/xampp/htdocs/phpproject/templates/passreset.html.twig</file>
+            <file>file:/C:/xampp/htdocs/phpproject/templates/display_template.html.twig</file>
+            <file>file:/C:/xampp/htdocs/phpproject/templates/passreset_form_success.html.twig</file>
+            <file>file:/C:/xampp/htdocs/phpproject/templates/passreset_notfound_expired.html.twig</file>
+            <file>file:/C:/xampp/htdocs/phpproject/extra.php</file>
+            <file>file:/C:/xampp/htdocs/phpproject/logs/everything.log</file>
+            <file>file:/C:/xampp/htdocs/phpproject/templates/list_template.html.twig</file>
+            <file>file:/C:/xampp/htdocs/phpproject/templates/login.html.twig</file>
+            <file>file:/C:/xampp/htdocs/phpproject/logs/errors.log</file>
+            <file>file:/C:/xampp/htdocs/phpproject/templates/passreset_form.html.twig</file>
+            <file>file:/C:/xampp/htdocs/phpproject/templates/passreset_success.html.twig</file>
+            <file>file:/C:/xampp/htdocs/phpproject/templates/index.html.twig</file>
+            <file>file:/C:/xampp/htdocs/phpproject/local.php</file>
+            <file>file:/C:/xampp/htdocs/phpproject/project.php</file>
         </group>
     </open-files>
 </project-private>

@@ -93,7 +93,7 @@ $twig->addGlobal('activesurvey', $_SESSION['activesurvey']);
 $twig->addGlobal('linkToGoBack', $_SESSION['$linkToGoBack']);
 
 //function to display in header
-include 'newdesign.php';
+include 'extra.php';
 
 function topcontent() {
 
@@ -160,6 +160,8 @@ $app->post('/', function() use ($app) {
     } else {
         unset($user['password']);
         $_SESSION['todouser'] = $user;
+        global $twig;
+        $twig->addGlobal('todouser', $_SESSION['todouser']);
         $app->render('menu.html.twig', array(
             'toptemplate' => topcontent()[0],
             'topuser' => topcontent()[1],
@@ -170,12 +172,20 @@ $app->post('/', function() use ($app) {
 });
 //logout
 $app->get('/logout', function() use ($app) {
+    global $twig;
     unset($_SESSION['todouser']);
     unset($_SESSION['templateselected']);
     unset($_SESSION['userselected']);
     unset($_SESSION['activesurvey']);
     unset($_SESSION['linkToGoBack']);
-
+    //selected questions to create a template
+    $twig->addGlobal('selectedQuestions', '');
+    $twig->addGlobal('todouser', '');
+    $twig->addGlobal('templateselected', '');
+    $twig->addGlobal('userselected', '');
+    $twig->addGlobal('activesurvey', '');
+    $twig->addGlobal('linkToGoBack', '');
+    //
     $app->render('login.html.twig');
 });
 
@@ -428,7 +438,7 @@ $app->get('/admin/question/list', function() use ($app) {
         );
         return;
     }
-    
+
     $userList = DB::query("SELECT * FROM questions");
     $linkToGoBack = $_SESSION['$linkToGoBack'];
     $app->render("admin_list.html.twig", array(
@@ -762,8 +772,11 @@ $app->post('/admin/template/onlytemplatelist/delete', function () use($app) {
         );
         return;
     }
+
     $id = $app->request()->post('id');
     print_r($id);
+    DB::delete('templatesquestions', 'idtemplate=%i', $id);
+    DB::delete('templates', 'id=%i', $id);
 });
 
 
@@ -1043,6 +1056,8 @@ $app->post('/admin/customer/survey/answer', function() use ($app) {
         'topadmin' => $_SESSION['todouser']['name']
     ));
 });
+
+
 $app->run();
 
 

@@ -45,6 +45,8 @@ class __TwigTemplate_4f1016257b826a8da7734a6232679e57ddada732c5f8aac20a6bf7c0a40
                         <input class=\"form-control\" type=\"password\" name=\"pass\">
                     </div>
                     <button class=\"btn btn-success btn-block\" type=\"submit\" value=\"/\">LOGIN </button>
+                    <p>If you forgot your password <br>you can <a href=\"/passreset\">reset it</a>.</p>
+
                 </form>
             </div>
         </div>
@@ -100,6 +102,8 @@ class __TwigTemplate_4f1016257b826a8da7734a6232679e57ddada732c5f8aac20a6bf7c0a40
                         <input class=\"form-control\" type=\"password\" name=\"pass\">
                     </div>
                     <button class=\"btn btn-success btn-block\" type=\"submit\" value=\"/\">LOGIN </button>
+                    <p>If you forgot your password <br>you can <a href=\"/passreset\">reset it</a>.</p>
+
                 </form>
             </div>
         </div>

@@ -1,0 +1,6 @@
+[2017-05-26 16:57:54] main.ERROR: SQL error: Table 'surveydb.templatequestions' doesn't exist [] []
+[2017-05-26 16:57:54] main.ERROR:  in query: DELETE FROM `templatequestions` WHERE idtemplate=1 [] []
+[2017-05-26 16:58:25] main.ERROR: SQL error: Table 'surveydb.templatequestions' doesn't exist [] []
+[2017-05-26 16:58:25] main.ERROR:  in query: DELETE FROM `templatequestions` WHERE idtemplate=1 [] []
+[2017-05-26 16:58:27] main.ERROR: SQL error: Table 'surveydb.templatequestions' doesn't exist [] []
+[2017-05-26 16:58:27] main.ERROR:  in query: DELETE FROM `templatequestions` WHERE idtemplate=1 [] []

@@ -87,6 +87,6 @@ class __TwigTemplate_4ed10a188da3dbe367f3ba8908463a84ef6da87ffce13cfceddd44a50a4
             </div>
         </div>
     </div>
-{% endblock %}", "congratulation.html.twig", "C:\\xampp\\htdocs\\ipd9-php-project\\templates\\congratulation.html.twig");
+{% endblock %}", "congratulation.html.twig", "C:\\xampp\\htdocs\\phpproject\\templates\\congratulation.html.twig");
     }
 }

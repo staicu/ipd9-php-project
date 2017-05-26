@@ -83,6 +83,6 @@ class __TwigTemplate_20b44c2d83753242412a06ea8d5ab4d52f0fd163bfc4183b1f39f6acd5f
         <p><a href=\"/\">Click here</a> to continue</p>
 
     </div>
-{% endblock %}", "error_internal.html.twig", "C:\\xampp\\htdocs\\ipd9-php-project\\templates\\error_internal.html.twig");
+{% endblock %}", "error_internal.html.twig", "C:\\xampp\\htdocs\\phpproject\\templates\\error_internal.html.twig");
     }
 }
