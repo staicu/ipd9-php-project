@@ -39,13 +39,13 @@ class __TwigTemplate_b731fc2f645ddef88e9fe6fd9538378ac2afbaab917425d9bb88c3717fc
             <div class=\"container-fluid\">
                 <div class=\"navbar-header\">
                     <a class=\"navbar-brand navbar-link\" href=\"#\">360 imagine</a>
-                    <a class=\"navbar-brand navbar-link\" href=\"#\">
+                    <a class=\"navbar-brand navbar-link\" href=\"/admin/infoheader/1\">
                         ";
         // line 22
-        if (((isset($context["topadmin"]) ? $context["topadmin"] : null) != "")) {
+        if (($this->getAttribute((isset($context["todouser"]) ? $context["todouser"] : null), "name", array()) != "")) {
             // line 23
             echo "                            Admin : ";
-            echo twig_escape_filter($this->env, (isset($context["topadmin"]) ? $context["topadmin"] : null), "html", null, true);
+            echo twig_escape_filter($this->env, $this->getAttribute((isset($context["todouser"]) ? $context["todouser"] : null), "name", array()), "html", null, true);
             echo "  
                         ";
         }
@@ -53,33 +53,27 @@ class __TwigTemplate_b731fc2f645ddef88e9fe6fd9538378ac2afbaab917425d9bb88c3717fc
         echo "
 
                     </a>
-                    <a class=\"navbar-brand navbar-link\" href=\"/admin/template/select/";
-        // line 28
-        echo twig_escape_filter($this->env, (isset($context["templateselectedid"]) ? $context["templateselectedid"] : null), "html", null, true);
-        echo "\">
+                    <a class=\"navbar-brand navbar-link\" href=\"/admin/infoheader/2\">
 
                         ";
         // line 30
-        if (((isset($context["toptemplate"]) ? $context["toptemplate"] : null) != "")) {
+        if (($this->getAttribute((isset($context["templateselected"]) ? $context["templateselected"] : null), "name", array()) != "")) {
             // line 31
             echo "                            Selected Template: ";
-            echo twig_escape_filter($this->env, (isset($context["toptemplate"]) ? $context["toptemplate"] : null), "html", null, true);
+            echo twig_escape_filter($this->env, $this->getAttribute((isset($context["templateselected"]) ? $context["templateselected"] : null), "name", array()), "html", null, true);
             echo "
                         ";
         }
         // line 33
         echo "
                     </a>
-                    <a class=\"navbar-brand navbar-link\" href=\"/admin/customer/select/";
-        // line 35
-        echo twig_escape_filter($this->env, (isset($context["userselectedid"]) ? $context["userselectedid"] : null), "html", null, true);
-        echo "\">
+                    <a class=\"navbar-brand navbar-link\" href=\"/admin/infoheader/3\">
                         ";
         // line 36
-        if (((isset($context["topuser"]) ? $context["topuser"] : null) != "")) {
+        if (($this->getAttribute((isset($context["userselected"]) ? $context["userselected"] : null), "name", array()) != "")) {
             // line 37
             echo "                            Surveyee Name : ";
-            echo twig_escape_filter($this->env, (isset($context["topuser"]) ? $context["topuser"] : null), "html", null, true);
+            echo twig_escape_filter($this->env, $this->getAttribute((isset($context["userselected"]) ? $context["userselected"] : null), "name", array()), "html", null, true);
             echo "  
                         ";
         }
@@ -91,7 +85,7 @@ class __TwigTemplate_b731fc2f645ddef88e9fe6fd9538378ac2afbaab917425d9bb88c3717fc
                 </div>
                 ";
         // line 44
-        if (((isset($context["topadmin"]) ? $context["topadmin"] : null) != "")) {
+        if (($this->getAttribute((isset($context["todouser"]) ? $context["todouser"] : null), "name", array()) != "")) {
             // line 45
             echo "                    <div class=\"collapse navbar-collapse\" id=\"navcol-2\">
                         <ul class=\"nav navbar-nav hidden-xs hidden-sm navbar-right\" id=\"desktop-toolbar\">
@@ -182,7 +176,7 @@ class __TwigTemplate_b731fc2f645ddef88e9fe6fd9538378ac2afbaab917425d9bb88c3717fc
 
     public function getDebugInfo()
     {
-        return array (  169 => 71,  164 => 68,  159 => 67,  133 => 72,  131 => 71,  127 => 69,  124 => 68,  122 => 67,  116 => 63,  96 => 45,  94 => 44,  87 => 39,  81 => 37,  79 => 36,  75 => 35,  71 => 33,  65 => 31,  63 => 30,  58 => 28,  53 => 25,  47 => 23,  45 => 22,  22 => 1,);
+        return array (  163 => 71,  158 => 68,  153 => 67,  127 => 72,  125 => 71,  121 => 69,  118 => 68,  116 => 67,  110 => 63,  90 => 45,  88 => 44,  81 => 39,  75 => 37,  73 => 36,  68 => 33,  62 => 31,  60 => 30,  53 => 25,  47 => 23,  45 => 22,  22 => 1,);
     }
 
     /** @deprecated since 1.27 (to be removed in 2.0). Use getSourceContext() instead */
@@ -215,30 +209,30 @@ class __TwigTemplate_b731fc2f645ddef88e9fe6fd9538378ac2afbaab917425d9bb88c3717fc
             <div class=\"container-fluid\">
                 <div class=\"navbar-header\">
                     <a class=\"navbar-brand navbar-link\" href=\"#\">360 imagine</a>
-                    <a class=\"navbar-brand navbar-link\" href=\"#\">
-                        {% if topadmin != \"\"%}
-                            Admin : {{topadmin}}  
+                    <a class=\"navbar-brand navbar-link\" href=\"/admin/infoheader/1\">
+                        {% if todouser.name != \"\"%}
+                            Admin : {{todouser.name}}  
                         {%endif%}
 
 
                     </a>
-                    <a class=\"navbar-brand navbar-link\" href=\"/admin/template/select/{{templateselectedid}}\">
+                    <a class=\"navbar-brand navbar-link\" href=\"/admin/infoheader/2\">
 
-                        {% if toptemplate != \"\"%}
-                            Selected Template: {{toptemplate}}
+                        {% if templateselected.name != \"\"%}
+                            Selected Template: {{templateselected.name}}
                         {%endif%}
 
                     </a>
-                    <a class=\"navbar-brand navbar-link\" href=\"/admin/customer/select/{{userselectedid}}\">
-                        {% if topuser != \"\"%}
-                            Surveyee Name : {{topuser}}  
+                    <a class=\"navbar-brand navbar-link\" href=\"/admin/infoheader/3\">
+                        {% if userselected.name != \"\"%}
+                            Surveyee Name : {{userselected.name}}  
                         {%endif%}
 
                     </a>
 
                     <button class=\"navbar-toggle collapsed\" data-toggle=\"collapse\" data-target=\"#navcol-2\"><span class=\"sr-only\">Toggle navigation</span><span class=\"icon-bar\"></span><span class=\"icon-bar\"></span><span class=\"icon-bar\"></span></button>
                 </div>
-                {% if topadmin != \"\"%}
+                {% if (todouser.name!=\"\")%}
                     <div class=\"collapse navbar-collapse\" id=\"navcol-2\">
                         <ul class=\"nav navbar-nav hidden-xs hidden-sm navbar-right\" id=\"desktop-toolbar\">
                             <li class=\"dropdown\">
@@ -288,6 +282,6 @@ class __TwigTemplate_b731fc2f645ddef88e9fe6fd9538378ac2afbaab917425d9bb88c3717fc
 <script src=\"/assets/js/script.min.js\"></script>
 </body>
 
-</html>", "index.html.twig", "C:\\xampp\\htdocs\\phpproject\\templates\\index.html.twig");
+</html>", "index.html.twig", "C:\\xampp\\htdocs\\ipd9-php-project\\templates\\index.html.twig");
     }
 }

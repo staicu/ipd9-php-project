@@ -37,9 +37,8 @@ class __TwigTemplate_e6db0ccfecdd602111bb5af4270423812a8d4ce94dea5bf5b5aa7e998fe
                     <h4 class=\"panel-title\"><a role=\"button\" data-toggle=\"collapse\" data-parent=\"#accordion-1\" aria-expanded=\"false\" href=\"#accordion-1 .item-1\">Start a Survey</a></h4></div>
 
                 <div class=\"panel-collapse collapse item-1\" role=\"tabpanel\">
-                    <div class=\"panel-body\"><span><a href=\"/admin/start/survey/addcustomer\">Start Survey</a>.</span></div>
-                    <div class=\"panel-body\"><span><a href=\"/admin/template/add\">Create a Template</a>.</span></div>
-                    <div class=\"panel-body\"><span><a href=\"/admin/template/list/select\">Select a Template from List</a>.</span></div>
+                    <div class=\"panel-body\"><span><a href=\"/\">Start Survey</a>.</span></div>
+                    <div class=\"panel-body\"><span><a href=\"/admin/template/onlytemplatelist\">Select a Template from List</a>.</span></div>
                     <div class=\"panel-body\"><span><a href=\"/admin/customer/add\">Register a Customer</a>.</span></div>
                     <div class=\"panel-body\"><span><a href=\"/admin/customer/list\">Select a Customer from List</a>.</span></div>
 
@@ -66,7 +65,7 @@ class __TwigTemplate_e6db0ccfecdd602111bb5af4270423812a8d4ce94dea5bf5b5aa7e998fe
                     <h4 class=\"panel-title\"><a role=\"button\" data-toggle=\"collapse\" data-parent=\"#accordion-1\" aria-expanded=\"false\" href=\"#accordion-1 .item-3\">Survey Template</a></h4></div>
                 <div class=\"panel-collapse collapse item-3\" role=\"tabpanel\">
                     <div class=\"panel-body\"><span><a href=\"/admin/template/add\">Create a Template</a>.</span></div>
-                    <div class=\"panel-body\"><span><a href=\"/admin/template/list\">List of Template</a>.</span></div>
+                    <div class=\"panel-body\"><span><a href=\"/admin/template/onlytemplatelist\">List of Template</a>.</span></div>
 
                 </div>
             </div>
@@ -135,9 +134,8 @@ class __TwigTemplate_e6db0ccfecdd602111bb5af4270423812a8d4ce94dea5bf5b5aa7e998fe
                     <h4 class=\"panel-title\"><a role=\"button\" data-toggle=\"collapse\" data-parent=\"#accordion-1\" aria-expanded=\"false\" href=\"#accordion-1 .item-1\">Start a Survey</a></h4></div>
 
                 <div class=\"panel-collapse collapse item-1\" role=\"tabpanel\">
-                    <div class=\"panel-body\"><span><a href=\"/admin/start/survey/addcustomer\">Start Survey</a>.</span></div>
-                    <div class=\"panel-body\"><span><a href=\"/admin/template/add\">Create a Template</a>.</span></div>
-                    <div class=\"panel-body\"><span><a href=\"/admin/template/list/select\">Select a Template from List</a>.</span></div>
+                    <div class=\"panel-body\"><span><a href=\"/\">Start Survey</a>.</span></div>
+                    <div class=\"panel-body\"><span><a href=\"/admin/template/onlytemplatelist\">Select a Template from List</a>.</span></div>
                     <div class=\"panel-body\"><span><a href=\"/admin/customer/add\">Register a Customer</a>.</span></div>
                     <div class=\"panel-body\"><span><a href=\"/admin/customer/list\">Select a Customer from List</a>.</span></div>
 
@@ -164,7 +162,7 @@ class __TwigTemplate_e6db0ccfecdd602111bb5af4270423812a8d4ce94dea5bf5b5aa7e998fe
                     <h4 class=\"panel-title\"><a role=\"button\" data-toggle=\"collapse\" data-parent=\"#accordion-1\" aria-expanded=\"false\" href=\"#accordion-1 .item-3\">Survey Template</a></h4></div>
                 <div class=\"panel-collapse collapse item-3\" role=\"tabpanel\">
                     <div class=\"panel-body\"><span><a href=\"/admin/template/add\">Create a Template</a>.</span></div>
-                    <div class=\"panel-body\"><span><a href=\"/admin/template/list\">List of Template</a>.</span></div>
+                    <div class=\"panel-body\"><span><a href=\"/admin/template/onlytemplatelist\">List of Template</a>.</span></div>
 
                 </div>
             </div>
@@ -193,6 +191,6 @@ class __TwigTemplate_e6db0ccfecdd602111bb5af4270423812a8d4ce94dea5bf5b5aa7e998fe
 
         </div>
     </div>
-{% endblock %}{# empty Twig template #}", "menu.html.twig", "C:\\xampp\\htdocs\\phpproject\\templates\\menu.html.twig");
+{% endblock %}{# empty Twig template #}", "menu.html.twig", "C:\\xampp\\htdocs\\ipd9-php-project\\templates\\menu.html.twig");
     }
 }

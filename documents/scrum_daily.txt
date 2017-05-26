@@ -149,6 +149,15 @@ implement add admin
 
 3- using temporary table and views
 
+26- 
+1-used json - reading arrays and render then with jason
+implemeted list templates
+password protection for each page
+
+2- crud for take surve
+
+3- use global variables to be displaed on master page as status for admin template and customer
+it does not update!
 
 
 

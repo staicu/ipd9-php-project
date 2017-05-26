@@ -1,0 +1,33 @@
+{% extends "index.html.twig" %}
+{% block container %}
+    <div class="row row-login" >
+        <div class="col-md-4 col-md-offset-4 col-sm-6 col-sm-offset-3 col-xs-10 col-xs-offset-1">
+            <h3 class="text-center" style ="color: orange">Template List</h3>
+
+        </div>
+    </div>
+    <div class="container" style ="padding-top: 50px;color: orange" >       
+        <table id="example" class="table table-striped table-bordered" cellspacing="0" width="100%">
+            <thead >
+                <tr >
+                    <th>id</th>
+                    <th>name</th>
+                    <td> Operations </td>
+                </tr>
+            </thead>
+            <tbody>
+                {% for t in templatelist %}
+                    <tr>
+                        <td>{{t.id}}</td>
+                        <td> {{t.name}}</td>
+                        <td>
+                            <a style="color:red;" href="/admin/template/onlytemplatelist/delete/{{t.id}}">Delete</a>
+                            <a style="color:red;" href="/admin/template/onlytemplatelist/select/{{t.id}}">Select</a>
+                        </td>
+                    </tr>    
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+
+{% endblock %}

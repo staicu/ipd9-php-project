@@ -143,3 +143,75 @@ topcontent()[0]
     $app->render('login.html.twig'
         );
         return;
+'topuser' => $_SESSION['templateselected']['name'],
+'toptemplate' => $_SESSION['userselected']['name'],
+'topadmin' => $_SESSION['todouser']['name']	
+
+
+Array ( [0] => no template 
+selected [1] => no customer 
+
+selected [2] => test )
+
+topcontent()[0]
+
+        $_SESSION['userselected'] = DB::queryFirstRow("SELECT * FROM users WHERE id=%i", $idinserted);
+
+
+'toptemplate' => topcontent()[0],
+'topuser' =>  topcontent()[1],
+'topadmin' =>  topcontent()[2]	
+'userselectedid' => topcontent[3]
+
+
+    $app->render('login.html.twig'
+        );
+        return;
+
+SELECT * FROM templates as t,questions as q, templatesquestions as tq
+WHERE t.id=tq.idquestion AND tq.idtemplate=t.id
+
+
+
+SELECT * FROM templates as t,questions as q, templatesquestions as tq
+WHERE q.id=tq.idquestion AND tq.idtemplate=t.id ORDER BY  t.id
+
+
+	
+
+$textToDisplay= json_encode($_SESSION['todouser'],JSON_PRETTY_PRINT   );
+
+
+ $title="Customer";
+
+
+ $app->render('json_display_with_links.html.twig',array(
+        'title'=>$title,
+        'textToDisplay'=>$textToDisplay        
+    ));
+
+
+ $linkToGoBack = $_SESSION['$linkToGoBack'];
+    $textToDisplay = json_encode($template, JSON_PRETTY_PRINT);
+    $mainTitle = "Template :";
+    $title = $mainTitle . json_encode($templatename, JSON_PRETTY_PRINT);
+
+    $app->render('json_display_with_links.html.twig', array(
+        'mainTitle' => $mainTitle,
+        'title' => $title,
+        'textToDisplay' => $textToDisplay,
+        'goBack' => $linkToGoBack
+
+
+{{actionUrl}}">{{action}}
+
+
+$linkToGoBack = $_SESSION['$linkToGoBack'];
+
+$_SESSION['$linkToGoBack'] = "/admin/template/onlytemplatelist";
+
+
+
+display_template.html
+
+get /admin/template/onlytemplatelist

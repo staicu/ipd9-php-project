@@ -1,0 +1,24 @@
+
+
+{% extends "index.html.twig" %}
+{% block container %}
+
+    <div class="container"> 
+        <div class="highlight-blue">
+            <div class="container"  style="text-align:center">
+                <div class="intro">
+                    <h2 class="text-center" style="color: white">{{title}}</h2>
+                    <p style="font-size: 40; color: white" class="text-center">
+                    <pre >
+                        <font color=red size=5>
+                            {{textToDisplay}} 
+                    </pre> 
+
+                    </font>
+                    </p>
+                </div>
+                <div class="buttons"><a class="btn btn-primary" role="butt  on" href="{{linkToGoBack}}">Go Back</a></div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

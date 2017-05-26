@@ -72,6 +72,10 @@ if (!isset($_SESSION['activesurvey'])) {
 if (!isset($_SESSION['$selectedQuestions'])) {
     $_SESSION['$selectedQuestions'] = array();
 }
+//link to go back
+if (!isset($_SESSION['$linkToGoBack'])) {
+    $_SESSION['$linkToGoBack'] = "/";
+}
 
 $twig = $app->view()->getEnvironment();
 
@@ -85,6 +89,8 @@ $twig->addGlobal('templateselected', $_SESSION['templateselected']);
 $twig->addGlobal('userselected', $_SESSION['userselected']);
 //name of the current survey
 $twig->addGlobal('activesurvey', $_SESSION['activesurvey']);
+//link to go back
+$twig->addGlobal('linkToGoBack', $_SESSION['$linkToGoBack']);
 
 //function to display in header
 include 'newdesign.php';
@@ -168,17 +174,53 @@ $app->get('/logout', function() use ($app) {
     unset($_SESSION['templateselected']);
     unset($_SESSION['userselected']);
     unset($_SESSION['activesurvey']);
+    unset($_SESSION['linkToGoBack']);
+
     $app->render('login.html.twig');
 });
 
 //get the add customer page
 $app->get('/admin/customer/add', function() use ($app) {
+    if (!$_SESSION['todouser']) {
+        $app->render('login.html.twig'
+        );
+        return;
+    }
 
     $app->render("admin_customer_add.html.twig", array('operation' => "Register", 'url' => "add"));
 });
-
+$app->get('/admin/infoheader(/:i)', function($i = 0) use($app) {
+    if (!$_SESSION['todouser']) {
+        $app->render('login.html.twig'
+        );
+        return;
+    }
+    switch ($i) {
+        case 1:
+            $title = "Admin";
+            $textToDisplay = json_encode($_SESSION['todouser'], JSON_PRETTY_PRINT);
+            break;
+        case 3:
+            $title = "Customer";
+            $textToDisplay = json_encode($_SESSION['userselected'], JSON_PRETTY_PRINT);
+            break;
+        case 2:
+            $title = "Survey";
+            $textToDisplay = json_encode($_SESSION['templateselected'], JSON_PRETTY_PRINT);
+            break;
+    }
+    $app->render('infoheader.html.twig', array(
+        'title' => $title,
+        'textToDisplay' => $textToDisplay
+    ));
+});
 //post add customer 
 $app->post('/admin/customer/add', function() use ($app) {
+    if (!$_SESSION['todouser']) {
+        $app->render('login.html.twig'
+        );
+        return;
+    }
     $name = $app->request()->post('name');
     $email = $app->request()->post('email');
     $phone = $app->request()->post('phone');
@@ -231,6 +273,7 @@ $app->post('/admin/customer/add', function() use ($app) {
 
 //list customers
 $app->get('/admin/customer/list', function() use ($app) {
+    $_SESSION['$linkToGoBack'] = "/admin/customer/list";
     $userList = DB::query("SELECT * FROM users");
     $app->render("admin_list.html.twig", array(
         'userList' => $userList,
@@ -380,7 +423,14 @@ $app->post('/admin/customer/select', function () use($app) {
 
 //list of Questions for Surveys
 $app->get('/admin/question/list', function() use ($app) {
+    if (!$_SESSION['todouser']) {
+        $app->render('login.html.twig'
+        );
+        return;
+    }
+    
     $userList = DB::query("SELECT * FROM questions");
+    $linkToGoBack = $_SESSION['$linkToGoBack'];
     $app->render("admin_list.html.twig", array(
         'userList' => $userList,
         'titlelist' => "Questions",
@@ -617,15 +667,106 @@ $app->post('/admin/question/delete', function () use($app) {
         'topadmin' => topcontent()[2]));
 });
 
-//list of  Survey Templates
+//list of  Survey Templates - table style
 $app->get('/admin/template/list', function() use ($app) {
+    if (!$_SESSION['todouser']) {
+        $app->render('login.html.twig'
+        );
+        return;
+    }
+
     $templatelist = DB::query("SELECT * FROM templates as t,questions as q, templatesquestions as tq
 WHERE q.id=tq.idquestion AND tq.idtemplate=t.id ORDER BY  t.id");
     print_r($templatelist);
     $app->render("list_template.html.twig", array(
-        'templatelist'=>$templatelist));
-    
+        'templatelist' => $templatelist));
 });
+
+//template list only 
+$app->get('/admin/template/onlytemplatelist', function() use ($app) {
+    if (!$_SESSION['todouser']) {
+        $app->render('login.html.twig'
+        );
+        return;
+    }
+
+    $templatelist = DB::query("SELECT * FROM templates as t ORDER BY  t.id");
+    //print_r($templatelist);
+    $_SESSION['$linkToGoBack'] = "/admin/template/onlytemplatelist";
+    $app->render("list_onlytemplate.html.twig", array(
+        'templatelist' => $templatelist));
+});
+//select template to delete
+$app->get('/admin/template/onlytemplatelist/delete(/:id)', function($id = 0) use ($app) {
+
+    if (!$_SESSION['todouser']) {
+        $app->render('login.html.twig'
+        );
+        return;
+    }
+    $template = DB::query("SELECT question,ans1,ans2,ans3,ans4 FROM templates as t,questions as q, templatesquestions as tq
+WHERE q.id=tq.idquestion AND tq.idtemplate=t.id AND  t.id=%i", $id);
+    $templatename = DB::queryFirstRow("SELECT name FROM templates as t WHERE t.id=%i", $id);
+    //print_r($template);
+
+    $linkToGoBack = $_SESSION['$linkToGoBack'];
+    $textToDisplay = json_encode($template, JSON_PRETTY_PRINT);
+    $mainTitle = "Delete Template :";
+    $title = json_encode($templatename, JSON_PRETTY_PRINT);
+    $action = "Delete";
+    $actionUrl = "/admin/template/onlytemplatelist/delete";
+    $app->render('json_display_with_links.html.twig', array(
+        'mainTitle' => $mainTitle,
+        'title' => $title,
+        'textToDisplay' => $textToDisplay,
+        'goBack' => $linkToGoBack,
+        'action' => $action,
+        'actionUrl' => $actionUrl,
+        'id' => $id
+    ));
+});
+//select template to delete
+$app->get('/admin/template/onlytemplatelist/select(/:id)', function($id = 0) use ($app) {
+
+    if (!$_SESSION['todouser']) {
+        $app->render('login.html.twig'
+        );
+        return;
+    }
+    $_SESSION['templateselected'] = DB::queryFirstRow("SELECT * FROM templates WHERE id=%i", $id);
+    print_r($_SESSION['templateselected']);
+    $template = DB::query("SELECT question,ans1,ans2,ans3,ans4 FROM templates as t,questions as q, templatesquestions as tq
+WHERE q.id=tq.idquestion AND tq.idtemplate=t.id AND  t.id=%i", $id);
+    $templatename = DB::queryFirstRow("SELECT name FROM templates as t WHERE t.id=%i", $id);
+
+    $linkToGoBack = $_SESSION['$linkToGoBack'];
+    $textToDisplay = json_encode($template, JSON_PRETTY_PRINT);
+    $mainTitle = "Selected Template :";
+    $title = json_encode($templatename, JSON_PRETTY_PRINT);
+    $action = "Select";
+    $app->render('json_display_with_links.html.twig', array(
+        'mainTitle' => $mainTitle,
+        'title' => $title,
+        'textToDisplay' => $textToDisplay,
+        'goBack' => $linkToGoBack,
+        'action' => $action,
+        'id' => $id
+    ));
+});
+
+
+//Delete the template
+$app->post('/admin/template/onlytemplatelist/delete', function () use($app) {
+    if (!$_SESSION['todouser']) {
+        $app->render('login.html.twig'
+        );
+        return;
+    }
+    $id = $app->request()->post('id');
+    print_r($id);
+});
+
+
 
 //list of  Survey Templates
 $app->get('/admin/template/list/select', function() use ($app) {
@@ -793,7 +934,7 @@ $app->post('/admin/template/add/step2', function() use ($app) {
 
         $app->render("add_template_list.html.twig", array(
             'selectedQuestions' => $_SESSION['$selectedQuestions'],
-                'errorlist'=>$errorList[0]));
+            'errorlist' => $errorList[0]));
     } else {
         DB::insert('templates', array(
             "name" => $templatename
@@ -812,9 +953,8 @@ $app->post('/admin/template/add/step2', function() use ($app) {
         print_r($template);
         $app->render("display_template.html.twig", array(
             'selectedQuestions' => $_SESSION['$selectedQuestions'],
-                'templatename'=>$templatename));
+            'templatename' => $templatename));
     }
-
 });
 
 

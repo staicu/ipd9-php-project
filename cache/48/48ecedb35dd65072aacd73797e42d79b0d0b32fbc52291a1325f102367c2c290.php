@@ -33,7 +33,7 @@ class __TwigTemplate_03d5a290f86912239d6d124107e201b48bccdda356f4c02584edc7521d8
             <h3 class=\"text-center\">Template Created</h3>
             <div class=\"well\">
                 
-                <form method=\"post\"  action=\"/admin/template/add/step2\" enctype=\"multipart/form-data\"> 
+                <form method=\"get\"  action=\"/admin/template/onlytemplatelist\" enctype=\"multipart/form-data\"> 
                     <div class=\"form-group\">
                         <label class=\"control-label\">Template Name</label>
                         <input class=\"form-control\" type=\"text\" name=\"templatename\" value=\"";
@@ -134,7 +134,7 @@ class __TwigTemplate_03d5a290f86912239d6d124107e201b48bccdda356f4c02584edc7521d8
             <h3 class=\"text-center\">Template Created</h3>
             <div class=\"well\">
                 
-                <form method=\"post\"  action=\"/admin/template/add/step2\" enctype=\"multipart/form-data\"> 
+                <form method=\"get\"  action=\"/admin/template/onlytemplatelist\" enctype=\"multipart/form-data\"> 
                     <div class=\"form-group\">
                         <label class=\"control-label\">Template Name</label>
                         <input class=\"form-control\" type=\"text\" name=\"templatename\" value=\"{{templatename}}\" required readonly>
@@ -170,6 +170,6 @@ class __TwigTemplate_03d5a290f86912239d6d124107e201b48bccdda356f4c02584edc7521d8
         </table>
     </div>
 
-{% endblock %}", "display_template.html.twig", "C:\\xampp\\htdocs\\phpproject\\templates\\display_template.html.twig");
+{% endblock %}", "display_template.html.twig", "C:\\xampp\\htdocs\\ipd9-php-project\\templates\\display_template.html.twig");
     }
 }
