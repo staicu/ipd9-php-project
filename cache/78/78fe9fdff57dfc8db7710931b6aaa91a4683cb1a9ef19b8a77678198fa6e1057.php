@@ -31,7 +31,7 @@ class __TwigTemplate_fcf338754412fcce2c3f7e711122f4f4231a63cbdbb41f93bd6cd9a1b34
         echo "
     <div class=\"container\"> 
         <div class=\"highlight-blue\">
-            <div class=\"container\"  style=\"text-align:center\">
+                <div class=\"container\"  style=\"text-align:center\">
                 <div class=\"intro\">
                     <form method=\"post\"  action=\"";
         // line 10
@@ -113,7 +113,7 @@ class __TwigTemplate_fcf338754412fcce2c3f7e711122f4f4231a63cbdbb41f93bd6cd9a1b34
 
     <div class=\"container\"> 
         <div class=\"highlight-blue\">
-            <div class=\"container\"  style=\"text-align:center\">
+                <div class=\"container\"  style=\"text-align:center\">
                 <div class=\"intro\">
                     <form method=\"post\"  action=\"{{actionUrl}}\" enctype=\"multipart/form-data\">
                         <h2 class=\"text-center\" style=\"color: white \">{{mainTitle}} {{title}} </h2>

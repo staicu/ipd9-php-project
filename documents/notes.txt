@@ -215,3 +215,257 @@ $_SESSION['$linkToGoBack'] = "/admin/template/onlytemplatelist";
 display_template.html
 
 get /admin/template/onlytemplatelist
+
+global $twig;
+updateGlobalAll($twig);	
+
+
+
+
+ {% if admin == "template"%}
+                            <input type="submit" value="Next">
+                        {%endif%}
+ if (!$customer) {
+        echo 'Customer not found';
+        return;
+    }
+
+if (!$_SESSION['todouser']) {
+        $app->render('login.html.twig'
+        );
+        return;
+    }
+
+unset($_SESSION['templateselected']);
+    unset($_SESSION['userselected']);
+
+
+ if (!$_SESSION['todouser']) {
+        $app->render('login.html.twig'
+        );
+        return;
+    }
+
+   	
+
+
+<div style="text-align:center ; display: inline" class="row row-login" >
+
+                <h1 class="text-center">List of {{titlelist}}. 
+                    {% if admin == "template"%}
+                        <button  class="btn btn-primary" type="submit" required> Next </button>
+                    {%endif%}
+                    <br>{{extraTitle}}</h1>
+            </div>
+
+
+
+	/admin/survey/start
+
+$_SESSION['$linkToGoBack'] = "/admin/customer/list";
+    global $twig;
+    updateGlobalAll($twig);
+    $userList = DB::query("SELECT * FROM users");
+    $app->render("admin_list.html.twig", array(
+        'userList' => $userList,
+        'titlelist' => "Customers"
+
+{% if survey == "survey"%}
+                  Please Select a template.                    
+                {%endif%}
+
+
+$app->render('survey_customer_template.html.twig', array(
+        'id' => $id,
+        'name' => $templatename['name'],
+        'template' => $template
+    ));
+
+ $template = DB::query("SELECT question,ans1,ans2,ans3,ans4 FROM templates as t,questions as q, templatesquestions as tq
+WHERE q.id=tq.idquestion AND tq.idtemplate=t.id AND  t.id=%i", $id);
+
+
+
+
+{% block container %}
+
+    <div class="container"> 
+        <div class="highlight-blue">
+            <form action="/admin/customer/survey/answer" method="post" >
+                <div class="container"  style="text-align:center">
+                    <h3 class="text-danger">Hi {{username}}. Please select 1 answer per Question</h3>
+                    <input type="submit" value="Next">
+                    <table style="color: white" id="example" class="table table-bordered" cellspacing="0" width="100%">
+
+                        <thead>
+
+                            <tr>
+                                <th>Question</th>
+                                <th>Answer 1</th>
+                                <th> select this one</th>
+                                <th>Answer 2</th>
+                                <th>OR slect this one</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>{{question1}}</td>
+                                <td>{{ans11}}</td>
+                                <td><input type="radio" name="selection1" value="1"></td>
+                                <td>{{ans12}}</td>
+                                <td><input type="radio" name="selection1" value="2"></td>
+                            </tr>
+                            <tr>
+                                <td>{{question2}}</td>
+                                <td>{{ans21}}</td>
+                                <td><input type="radio" name="selection2" value="1"></td>
+
+
+
+
+
+
+//quiz answer question
+$app->post('/admin/customer/survey/answer', function() use ($app) {
+    $selection1 = $app->request()->post('selection1');
+    $selection2 = $app->request()->post('selection2');
+    print_r($selection1);
+    print_r($_SESSION['datesurvey']);
+    print_r($_SESSION['userselected']);
+    print_r($_SESSION['templateselected']);
+
+    DB::insert('responses', array(
+        "userid" => $_SESSION['userselected']['id'],
+        "name" => $_SESSION['activesurvey'],
+        "surveyid" => $_SESSION['templateselected']['id'],
+        "anstoquestion1" => $selection1,
+        "anstoquestion2" => $selection2,
+        "date" => $_SESSION['datesurvey']
+    ));
+    $idinserted = DB::insertId();
+    print_r($idinserted);
+    $textToDisplay = "Congratulation " . $_SESSION['userselected']['name'] . " completed " . $_SESSION['templateselected']['name'] . " survey.";
+    $app->render("congratulation.html.twig", array(
+        'textToDisplay' => $textToDisplay,
+        'topuser' => $_SESSION['templateselected']['name'],
+        'toptemplate' => $_SESSION['userselected']['name'],
+        'topadmin' => $_SESSION['todouser']['name']
+    ));
+});
+                                <td>{{ans22}}</td>
+                                <td><input type="radio" name="selection2" value="2"></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                
+
+            </form>
+        </div>
+    </div>
+{% endblock %}
+
+
+
+
+
+
+<form method="post"  action="/admin/customer/{{url}}" enctype="multipart/form-data">
+
+<button class="btn btn-success btn-block" type="submit"> {{operation}} </button>
+
+{% extends "index.html.twig" %}
+{% block container %}
+
+    <div class="container"> 
+        <div class="highlight-blue">
+            <form action="/admin/customer/survey/answer" method="post" >
+                <div class="container"  style="text-align:center">
+                    <h3 class="text-danger">Hi {{username}}. Please select 1 answer per Question</h3>
+                    <input type="submit" value="Next">
+                    <table style="color: white" id="example" class="table t	able-bordered" cellspacing="0" width="100%">
+
+                        <thead>
+
+                            <tr>
+                                <th>Question</th>
+                                <th>Answer 1</th>
+                                <th> select this one</th>
+                                <th>Answer 2</th>
+                                <th>OR slect this one</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>{{question1}}</td>
+                                <td>{{ans11}}</td>
+                                <td><input type="radio" name="selection1" value="1"></td>
+                                <td>{{ans12}}</td>
+                                <td><input type="radio" name="selection1" value="2"></td>
+                            </tr>
+                            <tr>
+                                <td>{{question2}}</td>
+                                <td>{{ans21}}</td>
+                                <td><input type="radio" name="selection2" value="1"></td>
+                                <td>{{ans22}}</td>
+                                <td><input type="radio" name="selection2" value="2"></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                
+
+            </form>
+        </div>
+    </div>
+{% endblock %}
+
+
+
+
+
+{% extends "index.html.twig" %}
+{% block container %}
+
+    <div class="container"> 
+        <div class="highlight-blue">
+            <form action="/admin/customer/survey/answer" method="post" >
+                <div class="container"  style="text-align:center">
+                    <h3 class="text-danger">Hi {{username}}. Please select 1 answer per Question</h3>
+                    <input type="submit" value="Next">
+                    <table style="color: white" id="example" class="table table-bordered" cellspacing="0" width="100%">
+
+                        <thead>
+
+                            <tr>
+                                <th>Question</th>
+                                <th>Answer 1</th>
+                                <th> select this one</th>
+                                <th>Answer 2</th>
+                                <th>OR slect this one</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>{{question1}}</td>
+                                <td>{{ans11}}</td>
+                                <td><input type="radio" name="selection1" value="1"></td>
+                                <td>{{ans12}}</td>
+                                <td><input type="radio" name="selection1" value="2"></td>
+                            </tr>
+                            <tr>
+                                <td>{{question2}}</td>
+                                <td>{{ans21}}</td>
+                                <td><input type="radio" name="selection2" value="1"></td>
+                                <td>{{ans22}}</td>
+                                <td><input type="radio" name="selection2" value="2"></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                
+
+            </form>
+        </div>
+    </div>
+{% endblock %}

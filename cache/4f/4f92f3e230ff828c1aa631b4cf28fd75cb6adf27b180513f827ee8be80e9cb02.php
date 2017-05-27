@@ -30,8 +30,16 @@ class __TwigTemplate_44baff0c29152804e9382172cb83695a0e24aabaa0fda838375a15418e1
         // line 3
         echo "    <div class=\"row row-login\" >
         <div class=\"col-md-4 col-md-offset-4 col-sm-6 col-sm-offset-3 col-xs-10 col-xs-offset-1\">
-            <h3 class=\"text-center\" style =\"color: orange\">Template List</h3>
-
+            <h3 class=\"text-center\" style =\"color: orange\">Template List<br>
+                ";
+        // line 6
+        if (((isset($context["survey"]) ? $context["survey"] : null) == "survey")) {
+            // line 7
+            echo "                  Please Select a template.                    
+                ";
+        }
+        // line 9
+        echo "            </h3> 
         </div>
     </div>
     <div class=\"container\" style =\"padding-top: 50px;color: orange\" >       
@@ -45,27 +53,27 @@ class __TwigTemplate_44baff0c29152804e9382172cb83695a0e24aabaa0fda838375a15418e1
             </thead>
             <tbody>
                 ";
-        // line 19
+        // line 22
         $context['_parent'] = $context;
         $context['_seq'] = twig_ensure_traversable((isset($context["templatelist"]) ? $context["templatelist"] : null));
         foreach ($context['_seq'] as $context["_key"] => $context["t"]) {
-            // line 20
+            // line 23
             echo "                    <tr>
                         <td>";
-            // line 21
+            // line 24
             echo twig_escape_filter($this->env, $this->getAttribute($context["t"], "id", array()), "html", null, true);
             echo "</td>
                         <td> ";
-            // line 22
+            // line 25
             echo twig_escape_filter($this->env, $this->getAttribute($context["t"], "name", array()), "html", null, true);
             echo "</td>
                         <td>
                             <a style=\"color:red;\" href=\"/admin/template/onlytemplatelist/delete/";
-            // line 24
+            // line 27
             echo twig_escape_filter($this->env, $this->getAttribute($context["t"], "id", array()), "html", null, true);
             echo "\">Delete</a>
                             <a style=\"color:red;\" href=\"/admin/template/onlytemplatelist/select/";
-            // line 25
+            // line 28
             echo twig_escape_filter($this->env, $this->getAttribute($context["t"], "id", array()), "html", null, true);
             echo "\">Select</a>
                         </td>
@@ -75,7 +83,7 @@ class __TwigTemplate_44baff0c29152804e9382172cb83695a0e24aabaa0fda838375a15418e1
         $_parent = $context['_parent'];
         unset($context['_seq'], $context['_iterated'], $context['_key'], $context['t'], $context['_parent'], $context['loop']);
         $context = array_intersect_key($context, $_parent) + $_parent;
-        // line 29
+        // line 32
         echo "            </tbody>
         </table>
     </div>
@@ -95,7 +103,7 @@ class __TwigTemplate_44baff0c29152804e9382172cb83695a0e24aabaa0fda838375a15418e1
 
     public function getDebugInfo()
     {
-        return array (  79 => 29,  69 => 25,  65 => 24,  60 => 22,  56 => 21,  53 => 20,  49 => 19,  31 => 3,  28 => 2,  11 => 1,);
+        return array (  87 => 32,  77 => 28,  73 => 27,  68 => 25,  64 => 24,  61 => 23,  57 => 22,  42 => 9,  38 => 7,  36 => 6,  31 => 3,  28 => 2,  11 => 1,);
     }
 
     /** @deprecated since 1.27 (to be removed in 2.0). Use getSourceContext() instead */
@@ -112,8 +120,11 @@ class __TwigTemplate_44baff0c29152804e9382172cb83695a0e24aabaa0fda838375a15418e1
 {% block container %}
     <div class=\"row row-login\" >
         <div class=\"col-md-4 col-md-offset-4 col-sm-6 col-sm-offset-3 col-xs-10 col-xs-offset-1\">
-            <h3 class=\"text-center\" style =\"color: orange\">Template List</h3>
-
+            <h3 class=\"text-center\" style =\"color: orange\">Template List<br>
+                {% if survey == \"survey\"%}
+                  Please Select a template.                    
+                {%endif%}
+            </h3> 
         </div>
     </div>
     <div class=\"container\" style =\"padding-top: 50px;color: orange\" >       

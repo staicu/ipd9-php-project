@@ -39,7 +39,10 @@ class __TwigTemplate_4ed10a188da3dbe367f3ba8908463a84ef6da87ffce13cfceddd44a50a4
         echo twig_escape_filter($this->env, (isset($context["textToDisplay"]) ? $context["textToDisplay"] : null), "html", null, true);
         echo " . </p>
                 </div>
-                <div class=\"buttons\"><a class=\"btn btn-primary\" role=\"butt  on\" href=\"/\">Menu</a></div>
+                <div class=\"buttons\"><a class=\"btn btn-primary\" role=\"butt  on\" href=\"";
+        // line 13
+        echo twig_escape_filter($this->env, (isset($context["linkToGoBack"]) ? $context["linkToGoBack"] : null), "html", null, true);
+        echo "\">Return</a></div>
             </div>
         </div>
     </div>
@@ -58,7 +61,7 @@ class __TwigTemplate_4ed10a188da3dbe367f3ba8908463a84ef6da87ffce13cfceddd44a50a4
 
     public function getDebugInfo()
     {
-        return array (  39 => 11,  31 => 5,  28 => 4,  11 => 3,);
+        return array (  44 => 13,  39 => 11,  31 => 5,  28 => 4,  11 => 3,);
     }
 
     /** @deprecated since 1.27 (to be removed in 2.0). Use getSourceContext() instead */
@@ -83,10 +86,10 @@ class __TwigTemplate_4ed10a188da3dbe367f3ba8908463a84ef6da87ffce13cfceddd44a50a4
                     <h2 class=\"text-center\" style=\"color: white\">Congratulation</h2>
                     <p style=\"font-size: 20; color: white\" class=\"text-center\">{{textToDisplay}} . </p>
                 </div>
-                <div class=\"buttons\"><a class=\"btn btn-primary\" role=\"butt  on\" href=\"/\">Menu</a></div>
+                <div class=\"buttons\"><a class=\"btn btn-primary\" role=\"butt  on\" href=\"{{linkToGoBack}}\">Return</a></div>
             </div>
         </div>
     </div>
-{% endblock %}", "congratulation.html.twig", "C:\\xampp\\htdocs\\phpproject\\templates\\congratulation.html.twig");
+{% endblock %}", "congratulation.html.twig", "C:\\xampp\\htdocs\\ipd9-php-project\\templates\\congratulation.html.twig");
     }
 }

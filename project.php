@@ -79,18 +79,23 @@ if (!isset($_SESSION['$linkToGoBack'])) {
 
 $twig = $app->view()->getEnvironment();
 
+//function to udpdate composer global variable
+function updateGlobalAll($twig) {
 //selected questions to create a template
-$twig->addGlobal('$selectedQuestions', $_SESSION['$selectedQuestions']);
+    $twig->addGlobal('$selectedQuestions', $_SESSION['$selectedQuestions']);
 //active admin
-$twig->addGlobal('todouser', $_SESSION['todouser']);
+    $twig->addGlobal('todouser', $_SESSION['todouser']);
 //active template
-$twig->addGlobal('templateselected', $_SESSION['templateselected']);
+    $twig->addGlobal('templateselected', $_SESSION['templateselected']);
 //active surveyee
-$twig->addGlobal('userselected', $_SESSION['userselected']);
+    $twig->addGlobal('userselected', $_SESSION['userselected']);
 //name of the current survey
-$twig->addGlobal('activesurvey', $_SESSION['activesurvey']);
+    $twig->addGlobal('activesurvey', $_SESSION['activesurvey']);
 //link to go back
-$twig->addGlobal('linkToGoBack', $_SESSION['$linkToGoBack']);
+    $twig->addGlobal('linkToGoBack', $_SESSION['$linkToGoBack']);
+}
+
+updateGlobalAll($twig);
 
 //function to display in header
 include 'extra.php';
@@ -130,14 +135,7 @@ $app->get('/', function() use ($app) {
         return;
     }
 
-    $app->render('menu.html.twig', array(
-        'toptemplate' => topcontent()[0],
-        'topuser' => topcontent()[1],
-        'topadmin' => topcontent()[2],
-        'userselectedid' => topcontent()[3],
-        'templateselectedid' => topcontent()[4]
-            )
-    );
+    $app->render('menu.html.twig');
 });
 //login
 $app->post('/', function() use ($app) {
@@ -162,12 +160,7 @@ $app->post('/', function() use ($app) {
         $_SESSION['todouser'] = $user;
         global $twig;
         $twig->addGlobal('todouser', $_SESSION['todouser']);
-        $app->render('menu.html.twig', array(
-            'toptemplate' => topcontent()[0],
-            'topuser' => topcontent()[1],
-            'topadmin' => topcontent()[2]
-                )
-        );
+        $app->render('menu.html.twig');
     }
 });
 //logout
@@ -273,17 +266,20 @@ $app->post('/admin/customer/add', function() use ($app) {
 
         $textToDisplay = $name . " : customer was added to the database";
         $app->render("congratulation.html.twig", array('textToDisplay' => $textToDisplay,
-            'toptemplate' => topcontent()[0],
-            'topuser' => topcontent()[1],
-            'topadmin' => topcontent()[2],
-                // 'userselectedid' => topcontent[3]
         ));
     }
 });
 
 //list customers
 $app->get('/admin/customer/list', function() use ($app) {
+    if (!$_SESSION['todouser']) {
+        $app->render('login.html.twig'
+        );
+        return;
+    }
     $_SESSION['$linkToGoBack'] = "/admin/customer/list";
+    global $twig;
+    updateGlobalAll($twig);
     $userList = DB::query("SELECT * FROM users");
     $app->render("admin_list.html.twig", array(
         'userList' => $userList,
@@ -361,6 +357,10 @@ $app->get('/admin/customer/delete(/:id)', function($id = 0) use ($app) {
         echo 'Product not found';
         return;
     }
+    global $twig;
+    updateGlobalAll($twig);
+
+
     //print_r($customer);
     $app->render("admin_customer_add.html.twig", array(
         'url' => 'delete',
@@ -371,9 +371,6 @@ $app->get('/admin/customer/delete(/:id)', function($id = 0) use ($app) {
         'company' => $customer['company'],
         'position' => $customer['position'],
         'operation' => "Delete",
-        'toptemplate' => topcontent()[0],
-        'topuser' => topcontent()[1],
-        'topadmin' => topcontent()[2]
     ));
 })->conditions(array(
     'id' => '[0-9]+'));
@@ -384,6 +381,10 @@ $app->post('/admin/customer/delete', function () use($app) {
     $name = $app->request()->post('name');
     //print_r($id);
     DB::delete('users', 'id=%i', $id);
+    global $twig;
+    $_SESSION['userselected'] = '';
+    updateGlobalAll($twig);
+
     $textToDisplay = $name . " : customer was deleted from the database";
     $app->render("congratulation.html.twig", array('textToDisplay' => $textToDisplay));
 });
@@ -394,11 +395,11 @@ $app->get('/admin/customer/select(/:id)', function($id = 0) use ($app) {
 
     $customer = DB::queryFirstRow("SELECT * FROM users WHERE id=%i", $id);
     if (!$customer) {
-        echo 'Product not found';
+        echo 'Customer not found';
         return;
     }
     //print_r($customer);
-    $app->render("admin_customer_add.html.twig", array(
+    $app->render("admin_customer_info.html.twig", array(
         'url' => 'select',
         'id' => $customer['id'],
         'name' => $customer['name'],
@@ -407,9 +408,7 @@ $app->get('/admin/customer/select(/:id)', function($id = 0) use ($app) {
         'company' => $customer['company'],
         'position' => $customer['position'],
         'operation' => "Select",
-        'toptemplate' => topcontent()[0],
-        'topuser' => topcontent()[1],
-        'topadmin' => topcontent()[2]
+        'displayfromheader' => "1",
     ));
 })->conditions(array(
     'id' => '[0-9]+'));
@@ -420,13 +419,13 @@ $app->post('/admin/customer/select', function () use($app) {
     $id = $app->request()->post('id');
     $name = $app->request()->post('name');
     $_SESSION['userselected'] = DB::queryFirstRow("SELECT * FROM users WHERE id=%i", $id);
+    global $twig;
+    updateGlobalAll($twig);
 
-    print_r($_SESSION['userselected']);
+
+    //print_r($_SESSION['userselected']);
     $textToDisplay = $name . " : customer was selected for the survey";
     $app->render("congratulation.html.twig", array('textToDisplay' => $textToDisplay,
-        'toptemplate' => topcontent()[0],
-        'topuser' => topcontent()[1],
-        'topadmin' => topcontent()[2]
     ));
 });
 
@@ -444,9 +443,6 @@ $app->get('/admin/question/list', function() use ($app) {
     $app->render("admin_list.html.twig", array(
         'userList' => $userList,
         'titlelist' => "Questions",
-        'toptemplate' => topcontent()[0],
-        'topuser' => topcontent()[1],
-        'topadmin' => topcontent()[2]
     ));
 });
 
@@ -487,9 +483,6 @@ $app->post('/admin/question/add', function() use ($app) {
         'ans2' => $ans2,
         'ans3' => $ans3,
         'ans4' => $ans4,
-        'toptemplate' => topcontent()[0],
-        'topuser' => topcontent()[1],
-        'topadmin' => topcontent()[2]
     );
 
     //print_r($questionList);
@@ -517,9 +510,6 @@ $app->post('/admin/question/add', function() use ($app) {
         ));
         $textToDisplay = $question . " : Question was added to the database";
         $app->render("congratulation.html.twig", array('textToDisplay' => $textToDisplay,
-            'toptemplate' => topcontent()[0],
-            'topuser' => topcontent()[1],
-            'topadmin' => topcontent()[2]
         ));
     }
 });
@@ -543,9 +533,6 @@ $app->get('/admin/question/edit(/:id)', function($id = 0) use ($app) {
         'ans3' => $question['ans3'],
         'ans4' => $question['ans4'],
         'operation' => "Modify",
-        'toptemplate' => topcontent()[0],
-        'topuser' => topcontent()[1],
-        'topadmin' => topcontent()[2]
     ));
 })->conditions(array(
     'id' => '[0-9]+'));
@@ -566,9 +553,6 @@ $app->post('/admin/question/modify', function () use($app) {
         'ans2' => $ans2,
         'ans3' => $ans3,
         'ans4' => $ans4,
-        'toptemplate' => topcontent()[0],
-        'topuser' => topcontent()[1],
-        'topadmin' => topcontent()[2]
     );
 
     print_r($questionList);
@@ -601,9 +585,6 @@ $app->post('/admin/question/modify', function () use($app) {
             'ans3' => $questionList['ans3'],
             'ans4' => $questionList['ans4'],
             'operation' => "Modify",
-            'toptemplate' => topcontent()[0],
-            'topuser' => topcontent()[1],
-            'topadmin' => topcontent()[2]
         ));
     } else {
         //print_r($question);
@@ -616,9 +597,7 @@ $app->post('/admin/question/modify', function () use($app) {
                 ), 'id=%i', $id);
         $textToDisplay = $question . " : question was updated in the database";
         $app->render("congratulation.html.twig", array('textToDisplay' => $textToDisplay,
-            'toptemplate' => topcontent()[0],
-            'topuser' => topcontent()[1],
-            'topadmin' => topcontent()[2]));
+        ));
     }
 });
 
@@ -639,9 +618,6 @@ $app->get('/admin/question/delete(/:id)', function($id = 0) use ($app) {
             'ans3' => $question['ans3'],
             'ans4' => $question['ans4'],
             'operation' => "Delete",
-            'toptemplate' => topcontent()[0],
-            'topuser' => topcontent()[1],
-            'topadmin' => topcontent()[2]
         ));
         return;
     }
@@ -655,9 +631,6 @@ $app->get('/admin/question/delete(/:id)', function($id = 0) use ($app) {
         'ans3' => $question['ans3'],
         'ans4' => $question['ans4'],
         'operation' => "Delete",
-        'toptemplate' => topcontent()[0],
-        'topuser' => topcontent()[1],
-        'topadmin' => topcontent()[2]
     ));
 })->conditions(array(
     'id' => '[0-9]+'));
@@ -671,10 +644,7 @@ $app->post('/admin/question/delete', function () use($app) {
 //    print_r($question);
     DB::delete('questions', 'id=%i', $id);
     $textToDisplay = $question . " : question was deleted from the database";
-    $app->render("congratulation.html.twig", array('textToDisplay' => $textToDisplay,
-        'toptemplate' => topcontent()[0],
-        'topuser' => topcontent()[1],
-        'topadmin' => topcontent()[2]));
+    $app->render("congratulation.html.twig", array('textToDisplay' => $textToDisplay,));
 });
 
 //list of  Survey Templates - table style
@@ -703,39 +673,12 @@ $app->get('/admin/template/onlytemplatelist', function() use ($app) {
     $templatelist = DB::query("SELECT * FROM templates as t ORDER BY  t.id");
     //print_r($templatelist);
     $_SESSION['$linkToGoBack'] = "/admin/template/onlytemplatelist";
+    global $twig;
+    updateGlobalAll($twig);
     $app->render("list_onlytemplate.html.twig", array(
         'templatelist' => $templatelist));
 });
-//select template to delete
-$app->get('/admin/template/onlytemplatelist/delete(/:id)', function($id = 0) use ($app) {
-
-    if (!$_SESSION['todouser']) {
-        $app->render('login.html.twig'
-        );
-        return;
-    }
-    $template = DB::query("SELECT question,ans1,ans2,ans3,ans4 FROM templates as t,questions as q, templatesquestions as tq
-WHERE q.id=tq.idquestion AND tq.idtemplate=t.id AND  t.id=%i", $id);
-    $templatename = DB::queryFirstRow("SELECT name FROM templates as t WHERE t.id=%i", $id);
-    //print_r($template);
-
-    $linkToGoBack = $_SESSION['$linkToGoBack'];
-    $textToDisplay = json_encode($template, JSON_PRETTY_PRINT);
-    $mainTitle = "Delete Template :";
-    $title = json_encode($templatename, JSON_PRETTY_PRINT);
-    $action = "Delete";
-    $actionUrl = "/admin/template/onlytemplatelist/delete";
-    $app->render('json_display_with_links.html.twig', array(
-        'mainTitle' => $mainTitle,
-        'title' => $title,
-        'textToDisplay' => $textToDisplay,
-        'goBack' => $linkToGoBack,
-        'action' => $action,
-        'actionUrl' => $actionUrl,
-        'id' => $id
-    ));
-});
-//select template to delete
+//select template 
 $app->get('/admin/template/onlytemplatelist/select(/:id)', function($id = 0) use ($app) {
 
     if (!$_SESSION['todouser']) {
@@ -744,23 +687,50 @@ $app->get('/admin/template/onlytemplatelist/select(/:id)', function($id = 0) use
         return;
     }
     $_SESSION['templateselected'] = DB::queryFirstRow("SELECT * FROM templates WHERE id=%i", $id);
-    print_r($_SESSION['templateselected']);
+    //print_r($_SESSION['templateselected']);
     $template = DB::query("SELECT question,ans1,ans2,ans3,ans4 FROM templates as t,questions as q, templatesquestions as tq
 WHERE q.id=tq.idquestion AND tq.idtemplate=t.id AND  t.id=%i", $id);
     $templatename = DB::queryFirstRow("SELECT name FROM templates as t WHERE t.id=%i", $id);
 
     $linkToGoBack = $_SESSION['$linkToGoBack'];
-    $textToDisplay = json_encode($template, JSON_PRETTY_PRINT);
-    $mainTitle = "Selected Template :";
-    $title = json_encode($templatename, JSON_PRETTY_PRINT);
-    $action = "Select";
-    $app->render('json_display_with_links.html.twig', array(
-        'mainTitle' => $mainTitle,
-        'title' => $title,
-        'textToDisplay' => $textToDisplay,
-        'goBack' => $linkToGoBack,
-        'action' => $action,
-        'id' => $id
+
+    global $twig;
+    updateGlobalAll($twig);
+
+    $app->render('show_template.html.twig', array(
+        'id' => $id,
+        'name' => $templatename['name'],
+        'template' => $template
+    ));
+});
+
+
+
+//select template to delete
+$app->get('/admin/template/onlytemplatelist/delete(/:id)', function($id = 0) use ($app) {
+    if (!$_SESSION['todouser']) {
+        $app->render('login.html.twig'
+        );
+        return;
+    }
+    $_SESSION['templateselected'] = DB::queryFirstRow("SELECT * FROM templates WHERE id=%i", $id);
+    // print_r($_SESSION['templateselected']);
+    $template = DB::query("SELECT question,ans1,ans2,ans3,ans4 FROM templates as t,questions as q, templatesquestions as tq
+WHERE q.id=tq.idquestion AND tq.idtemplate=t.id AND  t.id=%i", $id);
+    $templatename = DB::queryFirstRow("SELECT name FROM templates as t WHERE t.id=%i", $id);
+
+    $linkToGoBack = $_SESSION['$linkToGoBack'];
+    $operation = "Delete";
+    global $twig;
+    updateGlobalAll($twig);
+    $actionUrl = "/admin/template/onlytemplatelist/delete";
+    $app->render('show_template.html.twig', array(
+        'id' => $id,
+        'name' => $templatename['name'],
+        'template' => $template,
+        'operation' => $operation,
+        'id' => $id,
+        'actionUrl' => $actionUrl
     ));
 });
 
@@ -774,9 +744,23 @@ $app->post('/admin/template/onlytemplatelist/delete', function () use($app) {
     }
 
     $id = $app->request()->post('id');
-    print_r($id);
+    //print_r($id);
+    $templatename = DB::queryFirstRow("SELECT name FROM templates as t WHERE t.id=%i", $id);
     DB::delete('templatesquestions', 'idtemplate=%i', $id);
+
     DB::delete('templates', 'id=%i', $id);
+    $linkToGoBack = $_SESSION['$linkToGoBack'];
+    global $twig;
+
+    $twig->addGlobal('templateselected', '');
+    $_SESSION['$templateselected'] = "";
+    $twig->addGlobal('templateselected', '');
+    updateGlobalAll($twig);
+    $app->render('show_template.html.twig', array(
+        'id' => $id,
+        'operation' => "Deleted",
+        'name' => $templatename['name'],
+    ));
 });
 
 
@@ -800,9 +784,6 @@ $app->get('/admin/template/list/select', function() use ($app) {
     $app->render("admin_list.html.twig", array(
         'userList' => $surveyList2,
         'titlelist' => "Survey Template",
-        'toptemplate' => topcontent()[0],
-        'topuser' => topcontent()[1],
-        'topadmin' => topcontent()[2],
         'onlyselect' => $onlyselect
     ));
 });
@@ -830,9 +811,6 @@ $app->get('/admin/template/select(/:id)', function($id = 0) use ($app) {
         'question1' => $result['question1'],
         'question2' => $result['question2'],
         'operation' => "Select",
-        'toptemplate' => topcontent()[0],
-        'topuser' => topcontent()[1],
-        'topadmin' => topcontent()[2]
     ));
 })->conditions(array(
     'id' => '[0-9]+'));
@@ -843,10 +821,7 @@ $app->post('/admin/template/select', function () use($app) {
     $name = $app->request()->post('name');
     $_SESSION['templateselected'] = DB::queryFirstRow("SELECT * FROM surveys WHERE id=%i", $id);
     $textToDisplay = $name . " : survey is the active one";
-    $app->render("congratulation.html.twig", array('textToDisplay' => $textToDisplay,
-        'toptemplate' => topcontent()[0],
-        'topuser' => topcontent()[1],
-        'topadmin' => topcontent()[2]));
+    $app->render("congratulation.html.twig", array('textToDisplay' => $textToDisplay,));
 });
 
 
@@ -872,9 +847,6 @@ $app->get('/admin/template/delete(/:id)', function($id = 0) use ($app) {
         'question1' => $result['question1'],
         'question2' => $result['question2'],
         'operation' => "Delete",
-        'toptemplate' => topcontent()[0],
-        'topuser' => topcontent()[1],
-        'topadmin' => topcontent()[2]
     ));
 })->conditions(array(
     'id' => '[0-9]+'));
@@ -887,24 +859,21 @@ $app->post('/admin/template/delete', function () use($app) {
     //print_r($id);
     DB::delete('surveys', 'id=%i', $id);
     $textToDisplay = $name . " : survey was deleted from the database";
-    $app->render("congratulation.html.twig", array('textToDisplay' => $textToDisplay,
-        'toptemplate' => topcontent()[0],
-        'topuser' => topcontent()[1],
-        'topadmin' => topcontent()[2]));
+    $app->render("congratulation.html.twig", array('textToDisplay' => $textToDisplay,));
 });
 
 //list of Questions to create a Survey Template
 $app->get('/admin/template/add', function() use ($app) {
     $userList = DB::query("SELECT * FROM questions");
-    print_r($userList);
+    //print_r($userList);
+
+    global $twig;
+    updateGlobalAll($twig);
     $app->render("admin_list.html.twig", array(
         'userList' => $userList,
         'titlelist' => "Questions",
         'admin' => "template",
-        'extraTitle' => "Please Select All the Questions you need and press Next.",
-        'toptemplate' => topcontent()[0],
-        'topuser' => topcontent()[1],
-        'topadmin' => topcontent()[2]
+        'extraTitle' => "Please Select All the Questions you need and press Next."
     ));
 });
 //display the info of the template to be added
@@ -923,8 +892,8 @@ $app->post('/admin/template/add/step1', function() use ($app) {
         $selectedQuestion[] = DB::queryFirstRow("SELECT * FROM questions WHERE id=%i", $q);
     }
     $_SESSION['$selectedQuestions'] = $selectedQuestion;
-    print_r(count($_SESSION['$selectedQuestions']));
-    print_r($_SESSION['$selectedQuestions']);
+//    print_r(count($_SESSION['$selectedQuestions']));
+//    print_r($_SESSION['$selectedQuestions']);
 
     $app->render("add_template_list.html.twig", array(
         'selectedQuestions' => $_SESSION['$selectedQuestions']
@@ -963,7 +932,7 @@ $app->post('/admin/template/add/step2', function() use ($app) {
         }
         $template = DB::query("SELECT * FROM templates as t,questions as q, templatesquestions as tq "
                         . "WHERE q.id=tq.idquestion AND tq.idtemplate=t.id	AND t.id=%i", $idinserted);
-        print_r($template);
+        //print_r($template);
         $app->render("display_template.html.twig", array(
             'selectedQuestions' => $_SESSION['$selectedQuestions'],
             'templatename' => $templatename));
@@ -972,27 +941,47 @@ $app->post('/admin/template/add/step2', function() use ($app) {
 
 
 //get the add customer window to start a new survey
-$app->get('/admin/start/survey/addcustomer', function() use ($app) {
-    if (!$_SESSION['userselected']) {
-        $textToDisplay = "Please select a customer from list to start a survey";
-        $app->render("user_selection_error.html.twig", array(
-            'textToDisplay' => $textToDisplay
-                )
+$app->get('/admin/survey/start', function() use ($app) {
+//    $_SESSION['templateselected'] = '';
+//    unset($_SESSION['userselected']);
+    if (!$_SESSION['todouser']) {
+        $app->render('login.html.twig'
         );
         return;
     }
-    if (!$_SESSION['templateselected']) {
-        $textToDisplay = "Please select a template from list to start a survey";
-        $app->render("template_selection_error.html.twig", array(
-            'textToDisplay' => $textToDisplay
-                )
-        );
+    //print_r(strlen($_SESSION['templateselected']['name']));
+    if (strlen($_SESSION['templateselected']['name']) < 2) {
+        $templatelist = DB::query("SELECT * FROM templates as t ORDER BY  t.id");
+        //print_r($templatelist);
+        $_SESSION['$linkToGoBack'] = "/admin/survey/start";
+        global $twig;
+        updateGlobalAll($twig);
+        $app->render("list_onlytemplate.html.twig", array(
+            'templatelist' => $templatelist,
+            'survey' => "survey"));
         return;
     }
-    print_r($_SESSION['userselected']);
+    if (strlen($_SESSION['userselected']['name']) < 2) {
+        $_SESSION['$linkToGoBack'] = "/admin/survey/start";
+        global $twig;
+        updateGlobalAll($twig);
+        $userList = DB::query("SELECT * FROM users");
+        $app->render("admin_list.html.twig", array(
+            'userList' => $userList,
+            'titlelist' => "Customers",
+            'survey' => "survey"));
+
+
+        return;
+    }
+
+    $_SESSION['$linkToGoBack'] = "/admin/survey/start";
+    global $twig;
+    updateGlobalAll($twig);
+    //print_r($_SESSION['userselected']);
     $app->render("admin_customer_add.html.twig", array('extraoperation' =>
         "Start a Survey", 'operation' =>
-        "Registration", 'url' => "survey",
+        "Start Survey", 'url' => "survey",
         'surveyname' => topcontent()[0],
         'name' => $_SESSION['userselected']['name'],
         'phone' => $_SESSION['userselected']['phone'],
@@ -1006,55 +995,72 @@ $app->get('/admin/start/survey/addcustomer', function() use ($app) {
 });
 //start survey question1
 $app->post('/admin/customer/survey', function() use ($app) {
-    $surveydate = $app->request()->post('surveydate');
-    $_SESSION['datesurvey'] = $surveydate;
-    $idquestion1 = $_SESSION['templateselected']['idquestion1'];
+//echo"survey started";
+    $id = $_SESSION['templateselected']['id'];
+    $template = DB::query("SELECT question,ans1,ans2,ans3,ans4 FROM templates as t,questions as q, templatesquestions as tq
+WHERE q.id=tq.idquestion AND tq.idtemplate=t.id AND  t.id=%i", $id);
+    //print_r($template);
+//    $_SESSION['$linkToGoBack'] = "/admin/customer/survey";
+//    global $twig;
+//updateGlobalAll($twig);	
 
-    $idquestion2 = $_SESSION['templateselected']['idquestion2'];
-    $question1 = DB::queryFirstRow("SELECT * FROM questions WHERE id=%s", $idquestion1);
-    $question2 = DB::queryFirstRow("SELECT * FROM questions WHERE id=%s", $idquestion2);
 
-    print_r($question2);
-
-    $app->render("admin_survey_question1.html.twig", array(
-        'username' => $_SESSION['userselected']['name'],
-        'question1' => $question1['question'],
-        'ans11' => $question1['ans1'],
-        'ans12' => $question1['ans2'],
-        'question2' => $question2['question'],
-        'ans21' => $question2['ans1'],
-        'ans22' => $question2['ans2']
-            )
-    );
+    $app->render('survey_customer_template.html.twig', array(
+        'id' => $id,
+        'name' => $_SESSION['templateselected']['name'],
+        'template' => $template,
+    ));
 });
 
 
 //quiz answer question
 $app->post('/admin/customer/survey/answer', function() use ($app) {
-    $selection1 = $app->request()->post('selection1');
-    $selection2 = $app->request()->post('selection2');
-    print_r($selection1);
-    print_r($_SESSION['datesurvey']);
-    print_r($_SESSION['userselected']);
-    print_r($_SESSION['templateselected']);
 
+//    print_r($_SESSION['templateselected']['id']);
+    $tn = $_SESSION['templateselected']['id'];
+    $templatequestions = DB::query("SELECT * FROM templatesquestions as tq WHERE tq.idtemplate = %i", $tn);
+    $numberofq = count($templatequestions);
+    //print_r(($templatequestions));
+//    foreach ($templatequestions as $value) {
+//        print_r($value);
+//    }
+    //Create a survey for a customer    
     DB::insert('responses', array(
         "userid" => $_SESSION['userselected']['id'],
-        "name" => $_SESSION['activesurvey'],
-        "surveyid" => $_SESSION['templateselected']['id'],
-        "anstoquestion1" => $selection1,
-        "anstoquestion2" => $selection2,
-        "date" => $_SESSION['datesurvey']
+        "templateid" => $_SESSION['templateselected']['id'],
     ));
-    $idinserted = DB::insertId();
-    print_r($idinserted);
-    $textToDisplay = "Congratulation " . $_SESSION['userselected']['name'] . " completed " . $_SESSION['templateselected']['name'] . " survey.";
-    $app->render("congratulation.html.twig", array(
-        'textToDisplay' => $textToDisplay,
-        'topuser' => $_SESSION['templateselected']['name'],
-        'toptemplate' => $_SESSION['userselected']['name'],
-        'topadmin' => $_SESSION['todouser']['name']
+    $idresponseinserted = DB::insertId();
+    $customername=$_SESSION['userselected']['name'];
+//    echo "The last inserted id: $idinserted <br>";
+//    print_r($_SESSION['userselected']['id']);
+//    print_r($_SESSION['templateselected']['id']);
+    for ($x = 0; $x < $numberofq; $x++) {
+        
+        $selection[] = $app->request()->post('selection' . ($x + 1));
+        //print_r($selection[$x]);
+        $questionid = $templatequestions[$x]['idquestion'];
+        //echo "The question id is: $questionid <br>";
+        
+
+//for the survey created above record each answer for all the questions
+        DB::insert('answers', array(
+            "responseId" => $idresponseinserted,
+            "questionId" => $questionid,
+            "choice"=>$selection[$x]
+        ));
+    }
+    $surveyinserted = DB::query("SELECT * 
+        FROM responses as r,answers as a, questions as q
+        WHERE r.id=a.responseId AND a.questionId = q.id AND  r.id=%i", $idresponseinserted);
+   // print_r($surveyinserted);
+//    print_r($selection);
+    
+    $app->render('show_survey_done.html.twig', array(
+       'surveyid'=>$idresponseinserted,
+        'customername'=>$customername,
+        'surveyinserted' => $surveyinserted
     ));
+    
 });
 
 

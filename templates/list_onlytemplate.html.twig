@@ -2,8 +2,11 @@
 {% block container %}
     <div class="row row-login" >
         <div class="col-md-4 col-md-offset-4 col-sm-6 col-sm-offset-3 col-xs-10 col-xs-offset-1">
-            <h3 class="text-center" style ="color: orange">Template List</h3>
-
+            <h3 class="text-center" style ="color: orange">Template List<br>
+                {% if survey == "survey"%}
+                  Please Select a template.                    
+                {%endif%}
+            </h3> 
         </div>
     </div>
     <div class="container" style ="padding-top: 50px;color: orange" >       

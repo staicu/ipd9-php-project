@@ -82,7 +82,7 @@ $app->map('/passreset', function () use ($app, $log) {
 // TODO: do the cleanup 1 in 1000 accessed to /passreset URL
    }
    if ($app->request()->isGet()) {
-       $app->render('passreset.html.twig');
+       $app->render('/passrec/passreset.html.twig');
    } else {
        $email = $app->request()->post('email');
        $user = DB::queryFirstRow("SELECT * FROM admins WHERE email=%s", $email);

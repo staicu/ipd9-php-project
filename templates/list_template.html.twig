@@ -1,9 +1,9 @@
 {% extends "index.html.twig" %}
 {% block container %}
-     <div class="row row-login" >
+    <div class="row row-login" >
         <div class="col-md-4 col-md-offset-4 col-sm-6 col-sm-offset-3 col-xs-10 col-xs-offset-1">
             <h3 class="text-center">Template List</h3>
-           
+            
         </div>
     </div>
     <div class="container" style ="padding-top: 100px;color: orange" >       
@@ -26,10 +26,10 @@
                         <td>{{t.question}}</td>
                         <td>{{t.ans1}}</td>
                         <td>{{t.ans2}}</td>                      
-                         <td>{{t.ans3}}</td>
-                         <td>{{t.ans4}}</td>
+                        <td>{{t.ans3}}</td>
+                        <td>{{t.ans4}}</td>
                     </tr>   
-{{template.id}}
+                    {{template.id}}
                 {% endfor %}
             </tbody>
         </table>

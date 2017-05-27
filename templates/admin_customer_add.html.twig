@@ -29,9 +29,7 @@
                     {% endif %}
                         {% if url == "survey" %}
                             <div class="form-group">
-                                <h4 class="text-danger">Survey Information  - Enter Date Start Survey</h4>
-                                <label class="control-label">Survey Date </label>
-                                <input class="form-control" type="date" name="surveydate" value="{{surveydate}}" required >
+
 
                                 <label class="control-label">Survey Name </label>
                                 <input class="form-control" type="text" name="surveyname" value="{{surveyname}}"required>
@@ -64,7 +62,8 @@
                             <label class="control-label">Position </label>
                             <input class="form-control" type="text" name="position" value="{{position}}" required>
                         </div>
-                        <button class="btn btn-success btn-block" type="submit"> {{operation}} </button>
+                            <button class="btn btn-success btn-block" type="submit"> {{operation}} </button>
+         
                     </form>
                 </div>
             </div>

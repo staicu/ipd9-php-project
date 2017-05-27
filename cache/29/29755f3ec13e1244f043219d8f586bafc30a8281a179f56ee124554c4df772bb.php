@@ -38,13 +38,13 @@ class __TwigTemplate_b731fc2f645ddef88e9fe6fd9538378ac2afbaab917425d9bb88c3717fc
         <nav class=\"navbar navbar-default\">
             <div class=\"container-fluid\">
                 <div class=\"navbar-header\">
-                    <a class=\"navbar-brand navbar-link\" href=\"#\">360 imagine</a>
-                    <a class=\"navbar-brand navbar-link\" href=\"/admin/infoheader/1\">
+                    <a class=\"navbar-brand navbar-link\" href=\"http://www.imagine360.marketing/\">360 imagine</a>
+                    <a class=\"navbar-brand navbar-link\" href=\"/\">
                         ";
         // line 22
         if (($this->getAttribute((isset($context["todouser"]) ? $context["todouser"] : null), "name", array()) != "")) {
             // line 23
-            echo "                            Admin : ";
+            echo "                           Home Admin : ";
             echo twig_escape_filter($this->env, $this->getAttribute((isset($context["todouser"]) ? $context["todouser"] : null), "name", array()), "html", null, true);
             echo "  
                         ";
@@ -53,7 +53,10 @@ class __TwigTemplate_b731fc2f645ddef88e9fe6fd9538378ac2afbaab917425d9bb88c3717fc
         echo "
 
                     </a>
-                    <a class=\"navbar-brand navbar-link\" href=\"/admin/infoheader/2\">
+                    <a class=\"navbar-brand navbar-link\" href=\"/admin/template/onlytemplatelist/select/";
+        // line 28
+        echo twig_escape_filter($this->env, $this->getAttribute((isset($context["templateselected"]) ? $context["templateselected"] : null), "id", array()), "html", null, true);
+        echo "\">
 
                         ";
         // line 30
@@ -67,7 +70,10 @@ class __TwigTemplate_b731fc2f645ddef88e9fe6fd9538378ac2afbaab917425d9bb88c3717fc
         // line 33
         echo "
                     </a>
-                    <a class=\"navbar-brand navbar-link\" href=\"/admin/infoheader/3\">
+                    <a class=\"navbar-brand navbar-link\" href=\"/admin/customer/select/";
+        // line 35
+        echo twig_escape_filter($this->env, $this->getAttribute((isset($context["userselected"]) ? $context["userselected"] : null), "id", array()), "html", null, true);
+        echo "\">
                         ";
         // line 36
         if (($this->getAttribute((isset($context["userselected"]) ? $context["userselected"] : null), "name", array()) != "")) {
@@ -176,7 +182,7 @@ class __TwigTemplate_b731fc2f645ddef88e9fe6fd9538378ac2afbaab917425d9bb88c3717fc
 
     public function getDebugInfo()
     {
-        return array (  163 => 71,  158 => 68,  153 => 67,  127 => 72,  125 => 71,  121 => 69,  118 => 68,  116 => 67,  110 => 63,  90 => 45,  88 => 44,  81 => 39,  75 => 37,  73 => 36,  68 => 33,  62 => 31,  60 => 30,  53 => 25,  47 => 23,  45 => 22,  22 => 1,);
+        return array (  169 => 71,  164 => 68,  159 => 67,  133 => 72,  131 => 71,  127 => 69,  124 => 68,  122 => 67,  116 => 63,  96 => 45,  94 => 44,  87 => 39,  81 => 37,  79 => 36,  75 => 35,  71 => 33,  65 => 31,  63 => 30,  58 => 28,  53 => 25,  47 => 23,  45 => 22,  22 => 1,);
     }
 
     /** @deprecated since 1.27 (to be removed in 2.0). Use getSourceContext() instead */
@@ -208,22 +214,22 @@ class __TwigTemplate_b731fc2f645ddef88e9fe6fd9538378ac2afbaab917425d9bb88c3717fc
         <nav class=\"navbar navbar-default\">
             <div class=\"container-fluid\">
                 <div class=\"navbar-header\">
-                    <a class=\"navbar-brand navbar-link\" href=\"#\">360 imagine</a>
-                    <a class=\"navbar-brand navbar-link\" href=\"/admin/infoheader/1\">
+                    <a class=\"navbar-brand navbar-link\" href=\"http://www.imagine360.marketing/\">360 imagine</a>
+                    <a class=\"navbar-brand navbar-link\" href=\"/\">
                         {% if todouser.name != \"\"%}
-                            Admin : {{todouser.name}}  
+                           Home Admin : {{todouser.name}}  
                         {%endif%}
 
 
                     </a>
-                    <a class=\"navbar-brand navbar-link\" href=\"/admin/infoheader/2\">
+                    <a class=\"navbar-brand navbar-link\" href=\"/admin/template/onlytemplatelist/select/{{templateselected.id}}\">
 
                         {% if templateselected.name != \"\"%}
                             Selected Template: {{templateselected.name}}
                         {%endif%}
 
                     </a>
-                    <a class=\"navbar-brand navbar-link\" href=\"/admin/infoheader/3\">
+                    <a class=\"navbar-brand navbar-link\" href=\"/admin/customer/select/{{userselected.id}}\">
                         {% if userselected.name != \"\"%}
                             Surveyee Name : {{userselected.name}}  
                         {%endif%}

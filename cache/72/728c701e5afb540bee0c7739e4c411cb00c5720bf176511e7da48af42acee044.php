@@ -84,16 +84,11 @@ class __TwigTemplate_e01b0dc6e178e64d5bf5597581a25453146b0c92ccbd361eeb7532c25bf
         if (((isset($context["url"]) ? $context["url"] : null) == "survey")) {
             // line 31
             echo "                            <div class=\"form-group\">
-                                <h4 class=\"text-danger\">Survey Information  - Enter Date Start Survey</h4>
-                                <label class=\"control-label\">Survey Date </label>
-                                <input class=\"form-control\" type=\"date\" name=\"surveydate\" value=\"";
-            // line 34
-            echo twig_escape_filter($this->env, (isset($context["surveydate"]) ? $context["surveydate"] : null), "html", null, true);
-            echo "\" required >
+
 
                                 <label class=\"control-label\">Survey Name </label>
                                 <input class=\"form-control\" type=\"text\" name=\"surveyname\" value=\"";
-            // line 37
+            // line 35
             echo twig_escape_filter($this->env, (isset($context["surveyname"]) ? $context["surveyname"] : null), "html", null, true);
             echo "\"required>
                             </div>
@@ -104,18 +99,18 @@ class __TwigTemplate_e01b0dc6e178e64d5bf5597581a25453146b0c92ccbd361eeb7532c25bf
                             </div>
                         ";
         }
-        // line 45
+        // line 43
         echo "                        <div class=\"form-group\">
                             <label class=\"control-label\">Name </label>
                             <input class=\"form-control\" type=\"text\" name=\"name\" value=\"";
-        // line 47
+        // line 45
         echo twig_escape_filter($this->env, (isset($context["name"]) ? $context["name"] : null), "html", null, true);
         echo "\" required>
                         </div>
                         <div class=\"form-group\">
                             <label class=\"control-label\">Email </label>
                             <input class=\"form-control\" type=\"email\" name=\"email\" value=\"";
-        // line 51
+        // line 49
         echo twig_escape_filter($this->env, (isset($context["email"]) ? $context["email"] : null), "html", null, true);
         echo "\" required>
                         </div>
@@ -124,28 +119,29 @@ class __TwigTemplate_e01b0dc6e178e64d5bf5597581a25453146b0c92ccbd361eeb7532c25bf
                             <input class=\"form-control\" 
                                    type='tel' pattern='[\\(]\\d{3}[\\)]\\d{3}[\\-]\\d{4}' title='Phone Number (Format: (999)999-9999)'
                                    name=\"phone\" value=\"";
-        // line 57
+        // line 55
         echo twig_escape_filter($this->env, (isset($context["phone"]) ? $context["phone"] : null), "html", null, true);
         echo "\" required>
                         </div>
                         <div class=\"form-group\">
                             <label class=\"control-label\">Company </label>
                             <input class=\"form-control\" type=\"text\" name=\"company\" value=\"";
-        // line 61
+        // line 59
         echo twig_escape_filter($this->env, (isset($context["company"]) ? $context["company"] : null), "html", null, true);
         echo "\" required>
                         </div>
                         <div class=\"form-group\">
                             <label class=\"control-label\">Position </label>
                             <input class=\"form-control\" type=\"text\" name=\"position\" value=\"";
-        // line 65
+        // line 63
         echo twig_escape_filter($this->env, (isset($context["position"]) ? $context["position"] : null), "html", null, true);
         echo "\" required>
                         </div>
-                        <button class=\"btn btn-success btn-block\" type=\"submit\"> ";
-        // line 67
+                            <button class=\"btn btn-success btn-block\" type=\"submit\"> ";
+        // line 65
         echo twig_escape_filter($this->env, (isset($context["operation"]) ? $context["operation"] : null), "html", null, true);
         echo " </button>
+         
                     </form>
                 </div>
             </div>
@@ -165,7 +161,7 @@ class __TwigTemplate_e01b0dc6e178e64d5bf5597581a25453146b0c92ccbd361eeb7532c25bf
 
     public function getDebugInfo()
     {
-        return array (  147 => 67,  142 => 65,  135 => 61,  128 => 57,  119 => 51,  112 => 47,  108 => 45,  97 => 37,  91 => 34,  86 => 31,  83 => 30,  78 => 27,  73 => 24,  71 => 23,  70 => 22,  66 => 21,  59 => 16,  57 => 15,  52 => 13,  46 => 11,  40 => 9,  38 => 8,  31 => 3,  28 => 2,  11 => 1,);
+        return array (  142 => 65,  137 => 63,  130 => 59,  123 => 55,  114 => 49,  107 => 45,  103 => 43,  92 => 35,  86 => 31,  83 => 30,  78 => 27,  73 => 24,  71 => 23,  70 => 22,  66 => 21,  59 => 16,  57 => 15,  52 => 13,  46 => 11,  40 => 9,  38 => 8,  31 => 3,  28 => 2,  11 => 1,);
     }
 
     /** @deprecated since 1.27 (to be removed in 2.0). Use getSourceContext() instead */
@@ -209,9 +205,7 @@ class __TwigTemplate_e01b0dc6e178e64d5bf5597581a25453146b0c92ccbd361eeb7532c25bf
                     {% endif %}
                         {% if url == \"survey\" %}
                             <div class=\"form-group\">
-                                <h4 class=\"text-danger\">Survey Information  - Enter Date Start Survey</h4>
-                                <label class=\"control-label\">Survey Date </label>
-                                <input class=\"form-control\" type=\"date\" name=\"surveydate\" value=\"{{surveydate}}\" required >
+
 
                                 <label class=\"control-label\">Survey Name </label>
                                 <input class=\"form-control\" type=\"text\" name=\"surveyname\" value=\"{{surveyname}}\"required>
@@ -244,11 +238,12 @@ class __TwigTemplate_e01b0dc6e178e64d5bf5597581a25453146b0c92ccbd361eeb7532c25bf
                             <label class=\"control-label\">Position </label>
                             <input class=\"form-control\" type=\"text\" name=\"position\" value=\"{{position}}\" required>
                         </div>
-                        <button class=\"btn btn-success btn-block\" type=\"submit\"> {{operation}} </button>
+                            <button class=\"btn btn-success btn-block\" type=\"submit\"> {{operation}} </button>
+         
                     </form>
                 </div>
             </div>
         </div>
-        {% endblock %}{# empty Twig template #}", "admin_customer_add.html.twig", "C:\\xampp\\htdocs\\phpproject\\templates\\admin_customer_add.html.twig");
+        {% endblock %}{# empty Twig template #}", "admin_customer_add.html.twig", "C:\\xampp\\htdocs\\ipd9-php-project\\templates\\admin_customer_add.html.twig");
     }
 }

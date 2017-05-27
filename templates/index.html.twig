@@ -17,22 +17,22 @@
         <nav class="navbar navbar-default">
             <div class="container-fluid">
                 <div class="navbar-header">
-                    <a class="navbar-brand navbar-link" href="#">360 imagine</a>
-                    <a class="navbar-brand navbar-link" href="/admin/infoheader/1">
+                    <a class="navbar-brand navbar-link" href="http://www.imagine360.marketing/">360 imagine</a>
+                    <a class="navbar-brand navbar-link" href="/">
                         {% if todouser.name != ""%}
-                            Admin : {{todouser.name}}  
+                           Home Admin : {{todouser.name}}  
                         {%endif%}
 
 
                     </a>
-                    <a class="navbar-brand navbar-link" href="/admin/infoheader/2">
+                    <a class="navbar-brand navbar-link" href="/admin/template/onlytemplatelist/select/{{templateselected.id}}">
 
                         {% if templateselected.name != ""%}
                             Selected Template: {{templateselected.name}}
                         {%endif%}
 
                     </a>
-                    <a class="navbar-brand navbar-link" href="/admin/infoheader/3">
+                    <a class="navbar-brand navbar-link" href="/admin/customer/select/{{userselected.id}}">
                         {% if userselected.name != ""%}
                             Surveyee Name : {{userselected.name}}  
                         {%endif%}
