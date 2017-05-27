@@ -4,14 +4,11 @@
         <div class="col-md-4 col-md-offset-4 col-sm-6 col-sm-offset-3 col-xs-10 col-xs-offset-1">
             <div class="well">
                 <h3 class="text-danger">
-                    Customer Information                       
-                    <div style="display: inline " class="buttons"><a class="btn btn-primary" role="butt  on" href="{{linkToGoBack}}">Go Back</a></div>
-
+                    Customer Information
                 </h3>
                 <form method="post"  action="/admin/customer/{{url}}" enctype="multipart/form-data">
                     <div class="form-group">
                         <label class="control-label">Customer ID </label>
-
                         <input class="form-control" type="number" name="id" value="{{id}}" 
                                readonly
                                required>
@@ -37,6 +34,7 @@
                         <label class="control-label">Position </label>
                         <input class="form-control" type="text" name="position" value="{{position}}" readonly>
                     </div>
+                    <button class="btn btn-success btn-block" type="submit"> {{operation}} </button>
 
                 </form>
             </div>

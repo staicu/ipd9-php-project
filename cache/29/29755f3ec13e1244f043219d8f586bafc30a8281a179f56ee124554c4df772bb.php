@@ -70,7 +70,7 @@ class __TwigTemplate_b731fc2f645ddef88e9fe6fd9538378ac2afbaab917425d9bb88c3717fc
         // line 33
         echo "
                     </a>
-                    <a class=\"navbar-brand navbar-link\" href=\"/admin/customer/select/";
+                    <a class=\"navbar-brand navbar-link\" href=\"/admin/customer/info/";
         // line 35
         echo twig_escape_filter($this->env, $this->getAttribute((isset($context["userselected"]) ? $context["userselected"] : null), "id", array()), "html", null, true);
         echo "\">
@@ -229,7 +229,7 @@ class __TwigTemplate_b731fc2f645ddef88e9fe6fd9538378ac2afbaab917425d9bb88c3717fc
                         {%endif%}
 
                     </a>
-                    <a class=\"navbar-brand navbar-link\" href=\"/admin/customer/select/{{userselected.id}}\">
+                    <a class=\"navbar-brand navbar-link\" href=\"/admin/customer/info/{{userselected.id}}\">
                         {% if userselected.name != \"\"%}
                             Surveyee Name : {{userselected.name}}  
                         {%endif%}

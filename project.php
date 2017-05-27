@@ -399,7 +399,7 @@ $app->get('/admin/customer/select(/:id)', function($id = 0) use ($app) {
         return;
     }
     //print_r($customer);
-    $app->render("admin_customer_info.html.twig", array(
+    $app->render("admin_customer_select.html.twig", array(
         'url' => 'select',
         'id' => $customer['id'],
         'name' => $customer['name'],
@@ -408,7 +408,6 @@ $app->get('/admin/customer/select(/:id)', function($id = 0) use ($app) {
         'company' => $customer['company'],
         'position' => $customer['position'],
         'operation' => "Select",
-        'displayfromheader' => "1",
     ));
 })->conditions(array(
     'id' => '[0-9]+'));
@@ -429,6 +428,26 @@ $app->post('/admin/customer/select', function () use($app) {
     ));
 });
 
+//display customer information from header
+$app->get('/admin/customer/info(/:id)', function($id = 0) use ($app) {
+
+    $customer = DB::queryFirstRow("SELECT * FROM users WHERE id=%i", $id);
+    if (!$customer) {
+        echo 'Customer not found';
+        return;
+    }
+    //print_r($customer);
+    $app->render("admin_customer_info.html.twig", array(
+        'id' => $customer['id'],
+        'name' => $customer['name'],
+        'email' => $customer['email'],
+        'phone' => $customer['phone'],
+        'company' => $customer['company'],
+        'position' => $customer['position'],
+        'operation' => "Select",
+    ));
+})->conditions(array(
+    'id' => '[0-9]+'));
 
 //list of Questions for Surveys
 $app->get('/admin/question/list', function() use ($app) {
@@ -950,7 +969,7 @@ $app->get('/admin/survey/start', function() use ($app) {
         return;
     }
     //print_r(strlen($_SESSION['templateselected']['name']));
-    if (strlen($_SESSION['templateselected']['name']) < 2) {
+    if (!($_SESSION['templateselected'])) {
         $templatelist = DB::query("SELECT * FROM templates as t ORDER BY  t.id");
         //print_r($templatelist);
         $_SESSION['$linkToGoBack'] = "/admin/survey/start";
@@ -961,7 +980,7 @@ $app->get('/admin/survey/start', function() use ($app) {
             'survey' => "survey"));
         return;
     }
-    if (strlen($_SESSION['userselected']['name']) < 2) {
+    if (!($_SESSION['userselected'])) {
         $_SESSION['$linkToGoBack'] = "/admin/survey/start";
         global $twig;
         updateGlobalAll($twig);
@@ -1030,36 +1049,83 @@ $app->post('/admin/customer/survey/answer', function() use ($app) {
         "templateid" => $_SESSION['templateselected']['id'],
     ));
     $idresponseinserted = DB::insertId();
-    $customername=$_SESSION['userselected']['name'];
+    $customername = $_SESSION['userselected']['name'];
 //    echo "The last inserted id: $idinserted <br>";
 //    print_r($_SESSION['userselected']['id']);
 //    print_r($_SESSION['templateselected']['id']);
     for ($x = 0; $x < $numberofq; $x++) {
-        
+
         $selection[] = $app->request()->post('selection' . ($x + 1));
         //print_r($selection[$x]);
         $questionid = $templatequestions[$x]['idquestion'];
         //echo "The question id is: $questionid <br>";
-        
-
 //for the survey created above record each answer for all the questions
         DB::insert('answers', array(
             "responseId" => $idresponseinserted,
             "questionId" => $questionid,
-            "choice"=>$selection[$x]
+            "choice" => $selection[$x]
         ));
     }
     $surveyinserted = DB::query("SELECT * 
         FROM responses as r,answers as a, questions as q
         WHERE r.id=a.responseId AND a.questionId = q.id AND  r.id=%i", $idresponseinserted);
-   // print_r($surveyinserted);
+    // print_r($surveyinserted);
 //    print_r($selection);
-    
+
     $app->render('show_survey_done.html.twig', array(
-       'surveyid'=>$idresponseinserted,
-        'customername'=>$customername,
+        'surveyid' => $idresponseinserted,
+        'customername' => $customername,
         'surveyinserted' => $surveyinserted
     ));
+});
+$app->get('/admin/responses/list', function() use ($app) {
+    //echo "all the surveys";
+//   $surveyinserted = DB::query("SELECT * 
+//        FROM responses as r,answers as a, questions as q
+//        WHERE r.id=a.responseId AND a.questionId = q.id ");
+//   print_r($surveyinserted);
+//   
+//all suveys
+     DB::query("
+       CREATE TEMPORARY TABLE allSurvey (
+        SELECT 
+        t.id as templateId,
+        u.id as userId,
+        u.name as userName,
+        a.id as answerId,
+        q.id as questionId,
+        a.choice as choiceId
+        FROM 
+        templates as t,
+        responses as r, 
+        answers as a, 
+        questions q,
+        users as u
+        WHERE 
+        t.id  = r.templateId AND
+        r.userid = u.id AND
+        r.id  = a.responseId AND
+        a.questionId=q.id
+         )
+
+        ");
+    //create table of users that took surveys
+     DB::query("
+       CREATE TEMPORARY TABLE userInSurvey (
+        SELECT DISTINCT userId ,userName FROM allSurvey 
+        ORDER BY userId)
+");
+    $userInSurvey = DB::query("
+       
+        SELECT userId FROM userInSurvey 
+        ORDER BY userId
+");
+    //print_r($userInSurvey);
+
+    foreach ($userInSurvey as $key => $value) {
+
+        print_r($value['userId']);
+    }
     
 });
 
