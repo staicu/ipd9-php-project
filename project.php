@@ -1079,22 +1079,29 @@ $app->post('/admin/customer/survey/answer', function() use ($app) {
     ));
 });
 $app->get('/admin/responses/list', function() use ($app) {
-    //echo "all the surveys";
-//   $surveyinserted = DB::query("SELECT * 
-//        FROM responses as r,answers as a, questions as q
-//        WHERE r.id=a.responseId AND a.questionId = q.id ");
-//   print_r($surveyinserted);
-//   
-//all suveys
-     DB::query("
+    if (!$_SESSION['todouser']) {
+        $app->render('login.html.twig'
+        );
+        return;
+    }
+    DB::query("
        CREATE TEMPORARY TABLE allSurvey (
         SELECT 
         t.id as templateId,
+        t.name as templateName,
         u.id as userId,
         u.name as userName,
+        u.email as userEmail,
+        u.phone as userPhone,
         a.id as answerId,
+        a.choice as choiceId,
         q.id as questionId,
-        a.choice as choiceId
+        q.question as question,
+        q.ans1 as ans1,
+        q.ans2 as ans2,
+        q.ans3 as ans3,
+        q.ans4 as ans4
+        
         FROM 
         templates as t,
         responses as r, 
@@ -1109,26 +1116,93 @@ $app->get('/admin/responses/list', function() use ($app) {
          )
 
         ");
-    //create table of users that took surveys
-     DB::query("
+    $allSurveyData = DB::query("
+         SELECT *
+         FROM allSurvey");
+//     print_r($allSurveyData);
+    //create table of customers that took surveys
+    DB::query("
        CREATE TEMPORARY TABLE userInSurvey (
-        SELECT DISTINCT userId ,userName FROM allSurvey 
+        SELECT DISTINCT userId ,userName,userEmail,userPhone FROM allSurvey 
         ORDER BY userId)
 ");
     $userInSurvey = DB::query("
        
-        SELECT userId FROM userInSurvey 
+        SELECT userId,userName,userEmail,userPhone FROM userInSurvey 
         ORDER BY userId
 ");
-    //print_r($userInSurvey);
 
-    foreach ($userInSurvey as $key => $value) {
 
-        print_r($value['userId']);
-    }
-    
+    //Templates used in Surveys
+    $templatesUsedInSurveys = DB::query("SELECT DISTINCT templateId, templateName, question  FROM allSurvey");
+
+    $numberOfTemplates = count(DB::query("SELECT DISTINCT templateId  FROM allSurvey"));
+
+//distinct questions used in templates
+    $distinctQuestionUsed = DB::query("SELECT DISTINCT question  FROM allSurvey");
+    //print_r($distinctQuestionUsed);
+    $allQuestionAvailable = DB::query("SELECT  question  FROM questions");
+    //print_r($allQuestionAvailable);
+//questions not used in surveys
+    $questionNotUsedSurveys = multi_diff($allQuestionAvailable, $distinctQuestionUsed);
+    //print_r($questionNotUsedSurveys);
+//total number of answers in the Surveys
+    $ansSurveys = DB::query("SELECT * FROM answers");
+    $totalNoOfAnswersInSurveys = count($ansSurveys);
+    //print_r($totalNoOfAnswersInSurveys);
+//total number of customer
+    $allTheCustomers = DB::query("SELECT * FROM users  ");
+    $noOfAllUsers = count($allTheCustomers);
+//print_r($allTheCustomers);
+//how many people choose choise 1
+    $CustChoice1 = DB::query("SELECT DISTINCT userName FROM allSurvey WHERE choiceId=1");
+    $noOfCustCh1 = count($CustChoice1);
+//how many people choose choise 2
+    $CustChoice2 = DB::query("SELECT DISTINCT userName FROM allSurvey WHERE choiceId=2");
+    $noOfCustCh2 = count($CustChoice2);
+//how many people choose choise 3
+    $CustChoice3 = DB::query("SELECT DISTINCT userName FROM allSurvey WHERE choiceId=3");
+    $noOfCustCh3 = count($CustChoice3);
+//how many people choose choise 4
+    $CustChoice4 = DB::query("SELECT DISTINCT userName FROM allSurvey WHERE choiceId=4");
+    $noOfCustCh4 = count($CustChoice4);
+
+    $_SESSION['$linkToGoBack'] = "/";
+    global $twig;
+    updateGlobalAll($twig);
+    $app->render("list_statistics.html.twig", array(
+        'numberOfCustomers' => count($userInSurvey),
+        'userInSurvey' => $userInSurvey,
+        'numberOfTemplates' => $numberOfTemplates,
+        'templatesUsedInSurveys' => $templatesUsedInSurveys,
+        'noDistinctQuestionUsed' => count($distinctQuestionUsed),
+        'noAllQuestionAvailable' => count($allQuestionAvailable),
+        'questionNotUsedSurveys' => $questionNotUsedSurveys,
+        'totalNoOfAnswersInSurveys' => $totalNoOfAnswersInSurveys,
+        'noOfAllUsers' => $noOfAllUsers,
+        'noOfCustCh1' => $noOfCustCh1,
+        'noOfCustCh2' => $noOfCustCh2,
+        'noOfCustCh3' => $noOfCustCh3,
+        'noOfCustCh4' => $noOfCustCh4,
+    ));
 });
 
+//comparing arrays of arrays -- super Cool stuff
+function multi_diff($arr1, $arr2) {
+    $result = array();
+    foreach ($arr1 as $k => $v) {
+        if (!isset($arr2[$k])) {
+            $result[$k] = $v;
+        } else {
+            if (is_array($v) && is_array($arr2[$k])) {
+                $diff = multi_diff($v, $arr2[$k]);
+                if (!empty($diff))
+                    $result[$k] = $diff;
+            }
+        }
+    }
+    return $result;
+}
 
 $app->run();
 

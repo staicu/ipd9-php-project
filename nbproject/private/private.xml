@@ -12,6 +12,7 @@
             <file>file:/C:/xampp/htdocs/ipd9-php-project/templates/error_internal.html.twig</file>
             <file>file:/C:/xampp/htdocs/ipd9-php-project/templates/congratulation.html.twig</file>
             <file>file:/C:/xampp/htdocs/ipd9-php-project/templates/menu.html.twig</file>
+            <file>file:/C:/xampp/htdocs/ipd9-php-project/templates/list_statistics.html.twig</file>
             <file>file:/C:/xampp/htdocs/ipd9-php-project/logs/errors.log</file>
             <file>file:/C:/xampp/htdocs/ipd9-php-project/templates/display_template.html.twig</file>
             <file>file:/C:/xampp/htdocs/ipd9-php-project/templates/admin_template_add.html.twig</file>
@@ -19,8 +20,8 @@
             <file>file:/C:/xampp/htdocs/ipd9-php-project/templates/admin_question_add.html.twig</file>
             <file>file:/C:/xampp/htdocs/ipd9-php-project/templates/admin_customer_select.html.twig</file>
             <file>file:/C:/xampp/htdocs/ipd9-php-project/logs/everything.log</file>
-            <file>file:/C:/xampp/htdocs/ipd9-php-project/templates/template_selection_error.html.twig</file>
             <file>file:/C:/xampp/htdocs/ipd9-php-project/templates/admin_customer_info.html.twig</file>
+            <file>file:/C:/xampp/htdocs/ipd9-php-project/templates/template_selection_error.html.twig</file>
             <file>file:/C:/xampp/htdocs/ipd9-php-project/templates/show_survey_done.html.twig</file>
             <file>file:/C:/xampp/htdocs/ipd9-php-project/templates/question_selection_error_for_template.html.twig</file>
             <file>file:/C:/xampp/htdocs/ipd9-php-project/extra.php</file>

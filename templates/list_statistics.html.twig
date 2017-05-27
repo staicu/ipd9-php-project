@@ -1,0 +1,155 @@
+{% extends "index.html.twig" %}
+{% block container %}
+    <div class="row row-login" >
+        <div class="col-md-4 col-md-offset-4 col-sm-6 col-sm-offset-3 col-xs-10 col-xs-offset-1">
+            <h3 class="text-center" style ="color: orange">Survey Statistics 
+
+
+                <div style="display: inline " class="buttons"><a class="btn btn-primary" role="butt  on" href="{{linkToGoBack}}">Go Back</a></div>
+            </h3>
+        </div>
+    </div>
+
+    <div class="col-md-4 col-md-offset-4 col-sm-6 col-sm-offset-3 col-xs-10 col-xs-offset-1">
+        <h4 class="text-center" style ="color: orange">Customer List Participating in Surveys <input style="max-width: 30px ;align-content: center" type="number" name="id" value="{{numberOfCustomers}}" required readonly></h4> 
+    </div>
+
+    <div class="container" style ="padding-top: 50px;color: orange" >       
+        <table style ="color: orange" id="example" class="table table-striped table-bordered" cellspacing="0" width="100%">
+            <thead >
+                <tr >
+                    <th>Id</th>
+                    <th>User Name</th>
+                    <th>User Email</th>
+                    <th>User Phone</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for u in userInSurvey %}
+                    <tr>
+                        <td>{{u.userId}}</td>
+                        <td> {{u.userName}}</td>
+                        <td> {{u.userEmail}}</td>
+                        <td> {{u.userPhone}}</td>
+
+                    </tr>    
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+
+    <div class="col-md-4 col-md-offset-4 col-sm-6 col-sm-offset-3 col-xs-10 col-xs-offset-1">
+        <h4 class="text-center" style ="color: orange">
+            Number of All the Customers Registered
+            <input style="max-width: 50px ;align-content: center" type="number" name="id" value="{{noOfAllUsers}}" required readonly>
+        </h4> 
+    </div>  
+    <div class="col-md-4 col-md-offset-4 col-sm-6 col-sm-offset-3 col-xs-10 col-xs-offset-1">
+        <h4 class="text-center" style ="color: orange">
+            Number of Customers that Answered Choice 1 for the Questions :
+            <input style="max-width: 50px ;align-content: center" type="number" name="id" value="{{noOfCustCh1}}" required readonly>
+        </h4> 
+    </div> 
+    <div class="col-md-4 col-md-offset-4 col-sm-6 col-sm-offset-3 col-xs-10 col-xs-offset-1">
+        <h4 class="text-center" style ="color: orange">
+            Number of Customers that Answered Choice 2 for the Questions :
+            <input style="max-width: 50px ;align-content: center" type="number" name="id" value="{{noOfCustCh2}}" required readonly>
+        </h4> 
+    </div> 
+    <div class="col-md-4 col-md-offset-4 col-sm-6 col-sm-offset-3 col-xs-10 col-xs-offset-1">
+        <h4 class="text-center" style ="color: orange">
+            Number of Customers that Answered Choice 3 for the Questions :
+            <input style="max-width: 50px ;align-content: center" type="number" name="id" value="{{noOfCustCh3}}" required readonly>
+        </h4> 
+    </div> 
+    <div class="col-md-4 col-md-offset-4 col-sm-6 col-sm-offset-3 col-xs-10 col-xs-offset-1">
+        <h4 class="text-center" style ="color: orange">
+            Number of Customers that Answered Choice 4 for the Questions :
+            <input style="max-width: 50px ;align-content: center" type="number" name="id" value="{{noOfCustCh4}}" required readonly>
+        </h4> 
+    </div> 
+
+    <div class="col-md-4 col-md-offset-4 col-sm-6 col-sm-offset-3 col-xs-10 col-xs-offset-1">
+        <h4 class="text-center" style ="color: orange">Number of Questions Used in Surveys <input style="max-width: 50px ;align-content: center" type="number" name="id" value="{{noDistinctQuestionUsed}}" required readonly></h4> 
+    </div>   
+
+
+    <div class="col-md-4 col-md-offset-4 col-sm-6 col-sm-offset-3 col-xs-10 col-xs-offset-1">
+        <h4 class="text-center" style ="color: orange">All Questions Available for Surveys 
+            <input style="max-width: 50px ;align-content: center" type="number" name="id" value="{{noAllQuestionAvailable}}" required readonly>
+        </h4> 
+    </div>
+    <div class="col-md-4 col-md-offset-4 col-sm-6 col-sm-offset-3 col-xs-10 col-xs-offset-1">
+        <h4 class="text-center" style ="color: orange">Number of Answer in Surveys 
+            <input style="max-width: 50px ;align-content: center" type="number" name="id" value="{{totalNoOfAnswersInSurveys}}" required readonly>
+        </h4> 
+    </div>
+    <div class="col-md-4 col-md-offset-4 col-sm-6 col-sm-offset-3 col-xs-10 col-xs-offset-1">
+        <h4 class="text-center" style ="color: orange">
+            Questions that were never user in Surveys
+        </h4> 
+    </div>
+    <div class="container" style ="padding-top: 50px;color: orange" >       
+        <table style ="color: orange" id="example" class="table table-striped table-bordered" cellspacing="0" width="100%">
+            <thead >
+                <tr >
+                    <th></th>
+                    <th>Question</th>
+                    <th></th>
+
+                </tr>
+            </thead>
+            <tbody>
+                {% for q in questionNotUsedSurveys %}
+                    <tr>
+
+                        <td></td>
+                        <td> {{q.question}}</td>
+                        <td> </td>
+
+                    </tr>    
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+
+    <div class="col-md-4 col-md-offset-4 col-sm-6 col-sm-offset-3 col-xs-10 col-xs-offset-1">
+        <h4 class="text-center" style ="color: orange">Templates used in Surveys <input style="max-width: 30px " type="number" name="id" value="{{numberOfTemplates}}" required readonly></h4> 
+    </div>
+
+    <div class="container" style ="padding-top: 50px;color: orange" >       
+        <table style ="color: orange" id="example" class="table table-striped table-bordered" cellspacing="0" width="100%">
+            <thead >
+                <tr >
+                    <th>Template ID</th>
+                    <th>Template Name</th>
+                    <th>Question</th>
+
+                </tr>
+            </thead>
+            <tbody>
+                {%set previousTemplateId = "" %}
+                {% for t in templatesUsedInSurveys %}
+
+                    {%if previousTemplateId != t.templateId%}
+                        {%set previousTemplateId = t.templateId %}
+                        <tr>
+
+                            <td>{{t.templateId}}</td>
+                            <td> {{t.templateName}}</td>
+                            <td></td>
+                        </tr> 
+
+                    {%endif%}  
+                    <tr>
+                        <td></td>
+                        <td></td>
+                        <td> {{t.question}}</td>
+                    </tr> 
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+
+
+{% endblock %}
