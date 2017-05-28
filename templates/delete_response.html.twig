@@ -1,0 +1,17 @@
+{% extends "index.html.twig" %}
+{% block container %}
+    <div class="row row-login" >
+        <div class="col-md-4 col-md-offset-4 col-sm-6 col-sm-offset-3 col-xs-10 col-xs-offset-1">
+            <form method="post"  action="/admin/responses/specificresponse/delete" enctype="multipart/form-data">
+
+                <h3 class="text-center" style ="color: orange">Reponse was deleted from Database. no: 
+                    <input style="max-width: 50px" type="number" name="id" value="{{id}}" required readonly>
+                    <div style="display: inline " class="buttons"><a class="btn btn-primary" role="butt  on" href="{{linkToGoBack}}">Go Back</a></div>
+
+                </h3>
+            </form>
+        </div>
+    </div>
+
+
+{% endblock %}

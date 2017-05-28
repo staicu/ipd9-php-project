@@ -1,0 +1,47 @@
+{% extends "index.html.twig" %}
+{% block container %}
+    <div class="row row-login" >
+        <div class="col-md-4 col-md-offset-4 col-sm-6 col-sm-offset-3 col-xs-10 col-xs-offset-1">
+            <h3 class="text-center" style ="color: orange">Survey Statistics 
+
+
+                <div style="display: inline " class="buttons"><a class="btn btn-primary" role="butt  on" href="{{linkToGoBack}}">Go Back</a></div>
+            </h3>
+        </div>
+    </div>
+
+    <div class="col-md-4 col-md-offset-4 col-sm-6 col-sm-offset-3 col-xs-10 col-xs-offset-1">
+        <h4 class="text-center" style ="color: orange"> List of All the Survey Reponses <input style="max-width: 50px ;align-content: center" type="number" name="id" value="{{noOfAllResponses}}" required readonly></h4> 
+    </div>
+
+    <div class="container" style ="padding-top: 50px;color: orange" >       
+        <table style ="color: orange" id="example" class="table table-striped table-bordered" cellspacing="0" width="100%">
+            <thead >
+                <tr >
+                    <th>Response Id<br>Select to display</th>
+                    <th>User Id</th>
+                    <th>User Name</th>
+                    <th>Template Id</th>
+                    <th>Template Name</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for sr in allResponses %}
+                    <tr>                                        
+                
+
+                        <td><a style="color:red;" href="/admin/responses/specificresponse/{{sr.responseId}}">{{sr.responseId}}</a></td>
+                        <td> {{sr.userId}}</td>
+                        <td> {{sr.userName}}</td>
+                        <td> {{sr.templateId}}</td>
+                         <td> {{sr.templateName}}</td>
+
+                    </tr>    
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+
+   
+
+{% endblock %}

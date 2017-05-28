@@ -154,10 +154,16 @@ implement add admin
 implemeted list templates
 password protection for each page
 
-2- crud for take surve
+2- crud for take survey
 
 3- use global variables to be displaed on master page as status for admin template and customer
 it does not update!
+
+27 
+1- fixed header w session variable
+finished implemeting crud survey
+2- implement statistics funtionality
+3- testing and fixing snaggs
 
 
 

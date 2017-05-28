@@ -1078,6 +1078,8 @@ $app->post('/admin/customer/survey/answer', function() use ($app) {
         'surveyinserted' => $surveyinserted
     ));
 });
+
+// get all the survey statistics 
 $app->get('/admin/responses/list', function() use ($app) {
     if (!$_SESSION['todouser']) {
         $app->render('login.html.twig'
@@ -1100,7 +1102,9 @@ $app->get('/admin/responses/list', function() use ($app) {
         q.ans1 as ans1,
         q.ans2 as ans2,
         q.ans3 as ans3,
-        q.ans4 as ans4
+        q.ans4 as ans4,
+        r.id as responseId
+        
         
         FROM 
         templates as t,
@@ -1167,6 +1171,8 @@ $app->get('/admin/responses/list', function() use ($app) {
     $CustChoice4 = DB::query("SELECT DISTINCT userName FROM allSurvey WHERE choiceId=4");
     $noOfCustCh4 = count($CustChoice4);
 
+
+
     $_SESSION['$linkToGoBack'] = "/";
     global $twig;
     updateGlobalAll($twig);
@@ -1187,6 +1193,65 @@ $app->get('/admin/responses/list', function() use ($app) {
     ));
 });
 
+// get all the survey statistics 
+$app->get('/admin/responses/allsurveys', function() use ($app) {
+    if (!$_SESSION['todouser']) {
+        $app->render('login.html.twig'
+        );
+        return;
+    }
+    DB::query("
+       CREATE TEMPORARY TABLE allSurvey (
+        SELECT 
+        t.id as templateId,
+        t.name as templateName,
+        u.id as userId,
+        u.name as userName,
+        u.email as userEmail,
+        u.phone as userPhone,
+        a.id as answerId,
+        a.choice as choiceId,
+        q.id as questionId,
+        q.question as question,
+        q.ans1 as ans1,
+        q.ans2 as ans2,
+        q.ans3 as ans3,
+        q.ans4 as ans4,
+        r.id as responseId
+        
+        
+        FROM 
+        templates as t,
+        responses as r, 
+        answers as a, 
+        questions q,
+        users as u
+        WHERE 
+        t.id  = r.templateId AND
+        r.userid = u.id AND
+        r.id  = a.responseId AND
+        a.questionId=q.id
+         )
+        ");
+//List of all the responses(as surveys) 
+
+    $allResponses = DB::query("SELECT DISTINCT 
+            responseId,userId,userName,templateId, templateName 
+            FROM 
+            allSurvey
+            ORDER BY responseId");
+
+    // print_r($allResponses);
+
+    $_SESSION['$linkToGoBack'] = "/";
+    global $twig;
+    updateGlobalAll($twig);
+    $app->render("list_all_responses.html.twig", array(
+        'allResponses' => $allResponses,
+        'noOfAllResponses' => count($allResponses)
+    ));
+});
+
 //comparing arrays of arrays -- super Cool stuff
 function multi_diff($arr1, $arr2) {
     $result = array();
@@ -1203,6 +1268,125 @@ function multi_diff($arr1, $arr2) {
     }
     return $result;
 }
+
+//get the response from the database 
+$app->get('/admin/responses/specificresponse(/:id)', function($id = 0) use ($app) {
+
+    if (!$_SESSION['todouser']) {
+        $app->render('login.html.twig'
+        );
+        return;
+    }
+    DB::query("
+       CREATE TEMPORARY TABLE allSurvey (
+        SELECT 
+        t.id as templateId,
+        t.name as templateName,
+        u.id as userId,
+        u.name as userName,
+        u.email as userEmail,
+        u.phone as userPhone,
+        a.id as answerId,
+        a.choice as choiceId,
+        q.id as questionId,
+        q.question as question,
+        q.ans1 as ans1,
+        q.ans2 as ans2,
+        q.ans3 as ans3,
+        q.ans4 as ans4,
+        r.id as responseId
+
+        FROM 
+        templates as t,
+        responses as r, 
+        answers as a, 
+        questions q,
+        users as u
+        WHERE 
+        t.id  = r.templateId AND
+        r.userid = u.id AND
+        r.id  = a.responseId AND
+        a.questionId=q.id
+         )
+        ");
+//List of all the responses(as surveys) 
+
+    $allResponses1 = DB::query("SELECT         
+        DISTINCT
+        templateId,
+        templateName,
+        userId,
+        userName,
+        userEmail,
+        userPhone
+        FROM 
+        allSurvey
+        WHERE responseId = %i", $id);
+    // print_r($allResponses1);
+
+    $allResponses2 = DB::query("SELECT  
+        DISTINCT
+        
+        question,
+            choiceId
+            FROM 
+            allSurvey
+            WHERE responseId = %i", $id);
+
+    //print_r($allResponses2);
+
+    $allResponses3 = DB::query("SELECT  
+        DISTINCT
+            ans1,
+            ans2,
+            ans3,
+            ans4
+            FROM 
+            allSurvey
+            WHERE responseId = %i", $id);
+
+    // print_r($allResponses3);
+
+    $allResponses4 = array();
+    foreach ($allResponses2 as $key => $val) { // Loop though one array
+        $val2 = $allResponses3[$key]; // Get the values from the other array
+        $allResponses4[$key] = $val + $val2; // combine 'em
+    }
+    //print_r($allResponses4);
+
+    $_SESSION['$linkToGoBack'] = "/";
+    global $twig;
+    updateGlobalAll($twig);
+    $app->render("list_single_response.html.twig", array(
+        'id' => $id,
+        'allResponses1' => $allResponses1,
+        'allResponses4' => $allResponses4,
+    ));
+})->conditions(array(
+    'id' => '[0-9]+'));
+
+
+//Delete the response from database
+$app->post('/admin/responses/specificresponse/delete', function () use($app) {
+    if (!$_SESSION['todouser']) {
+        $app->render('login.html.twig'
+        );
+        return;
+    }
+
+    $id = $app->request()->post('id');
+    //print_r($id);
+    DB::delete('answers', 'responseId=%i', $id);
+    DB::delete('responses', 'id=%i', $id);
+   // echo 'response deleted';
+    global $twig;
+    updateGlobalAll($twig);
+    $app->render("delete_response.html.twig", array(
+        'id' => $id,
+    ));
+});
+
+
 
 $app->run();
 
