@@ -472,3 +472,34 @@ $app->post('/admin/customer/survey/answer', function() use ($app) {
 
 
 cp4776_360survey
+
+
+/admin/responses/allsurveys
+
+
+
+templateId,
+templateName,
+userId,
+userName,
+userEmail,
+userPhone,
+questionId,
+question,
+
+answerId,
+choiceId,
+
+ans1,
+ans2,
+ans3,
+ans4,
+
+
+
+responseId
+
+
+/admin/email/allCutomers
+
+mailToCustomer($email,$emailSubject,$emailMessage)

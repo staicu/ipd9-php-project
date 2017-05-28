@@ -122,3 +122,5 @@
 [2017-05-28 03:07:21] main.ERROR:  in query: SELECT           DISTINCT         questionId,         question,             FROM              allSurvey             WHERE responseId = 27 [] []
 [2017-05-28 04:44:49] main.ERROR: SQL error: Table 'surveydb.allsurvey' doesn't exist [] []
 [2017-05-28 04:44:50] main.ERROR:  in query: SELECT                  DISTINCT         templateId,         templateName,         userId,         userName,         userEmail,         userPhone         FROM          allSurvey         WHERE responseId = 27 [] []
+[2017-05-28 14:16:45] main.ERROR: SQL error: Table 'surveydb.user' doesn't exist [] []
+[2017-05-28 14:16:45] main.ERROR:  in query: SELECT         email         FROM         user [] []

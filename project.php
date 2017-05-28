@@ -263,8 +263,10 @@ $app->post('/admin/customer/add', function() use ($app) {
         //print_r($idinserted);
         $_SESSION['userselected'] = DB::queryFirstRow("SELECT * FROM users WHERE id=%i", $idinserted);
         //print_r($_SESSION['userselected']);
-
-        $textToDisplay = $name . " : customer was added to the database";
+        $emailSubject = 'Welcome to Imagine 360.';
+        $emailMessage = 'Thank you for your participation in our survey';
+        mailToCustomer($email, $emailSubject, $emailMessage);
+        $textToDisplay = $name . " : customer was added to the database. Please verify your email.";
         $app->render("congratulation.html.twig", array('textToDisplay' => $textToDisplay,
         ));
     }
@@ -1378,16 +1380,46 @@ $app->post('/admin/responses/specificresponse/delete', function () use($app) {
     //print_r($id);
     DB::delete('answers', 'responseId=%i', $id);
     DB::delete('responses', 'id=%i', $id);
-   // echo 'response deleted';
+    // echo 'response deleted';
     global $twig;
     updateGlobalAll($twig);
     $app->render("delete_response.html.twig", array(
         'id' => $id,
     ));
 });
+//send promotional emails of all cutomers
+$app->get('/admin/email/allCutomers', function() use ($app) {
+    if (!$_SESSION['todouser']) {
+        $app->render('login.html.twig'
+        );
+        return;
+    }
+    $allEmails = DB::query("
+        SELECT
+        email
+        FROM
+        users");
+    
 
+    //$email = 'staicu4@gmail.com';
+    $emailSubject = 'Promotional discounts from 360 imagine';
+    $emailMessage = 'The only limit is your imagination
+We are consistently pushing the boundaries of technology 
+to create anything you can imagine. Our technology 
+can combine the latest tools in digital media to create a unique,
+immersive and interactive experience for your brand.';
+    //mailToCustomer($email, $emailSubject, $emailMessage);
+    //print_r($allEmails);
+    foreach ($allEmails as $email) {
+        //print_r($email['email']);
+        mailToCustomer($email['email'], $emailSubject, $emailMessage);
+    }
+    global $twig;
+    updateGlobalAll($twig);
 
-
+    $textToDisplay = "A promotional emailwas sent to all ".count($allEmails)." customers. ";
+    $app->render("congratulation.html.twig", array('textToDisplay' => $textToDisplay));
+});
 $app->run();
 
 

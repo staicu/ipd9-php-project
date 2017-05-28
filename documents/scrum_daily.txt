@@ -165,6 +165,13 @@ finished implemeting crud survey
 2- implement statistics funtionality
 3- testing and fixing snaggs
 
+28 -
+1- finished all metrics 
+list surveys and delete surveys
+2- implement email confirmation and email marketin
+power point presentation and practice
+testing the app
+3- test cases - or automated test cases - how to do them?
 
 
 
