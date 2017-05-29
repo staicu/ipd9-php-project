@@ -33,7 +33,7 @@ class __TwigTemplate_4f1016257b826a8da7734a6232679e57ddada732c5f8aac20a6bf7c0a40
         <div class=\"col-md-4 col-md-offset-4 col-sm-6 col-sm-offset-3 col-xs-10 col-xs-offset-1\">
             <h1 class=\"text-center\">360 Imagine</h1>
             <div class=\"well\">
-                <h3 class=\"text-danger\">Admin Login </h3>
+                <h3 class=\"text-danger\">Admin Login(uid:user pass:user) </h3>
                 
                 <form method=\"post\"  action=\"/\">
                     <div class=\"form-group\">
@@ -45,7 +45,7 @@ class __TwigTemplate_4f1016257b826a8da7734a6232679e57ddada732c5f8aac20a6bf7c0a40
                         <input class=\"form-control\" type=\"password\" name=\"pass\">
                     </div>
                     <button class=\"btn btn-success btn-block\" type=\"submit\" value=\"/\">LOGIN </button>
-                    <p>If you forgot your password <br>you can <a href=\"/passreset\">reset it</a>.</p>
+                    <p> click <a href=\"https://www.slideshare.net/staiculaurian/survey-management-system\">for ppt presentation</a>.</p>
 
                 </form>
             </div>
@@ -90,7 +90,7 @@ class __TwigTemplate_4f1016257b826a8da7734a6232679e57ddada732c5f8aac20a6bf7c0a40
         <div class=\"col-md-4 col-md-offset-4 col-sm-6 col-sm-offset-3 col-xs-10 col-xs-offset-1\">
             <h1 class=\"text-center\">360 Imagine</h1>
             <div class=\"well\">
-                <h3 class=\"text-danger\">Admin Login </h3>
+                <h3 class=\"text-danger\">Admin Login(uid:user pass:user) </h3>
                 
                 <form method=\"post\"  action=\"/\">
                     <div class=\"form-group\">
@@ -102,7 +102,7 @@ class __TwigTemplate_4f1016257b826a8da7734a6232679e57ddada732c5f8aac20a6bf7c0a40
                         <input class=\"form-control\" type=\"password\" name=\"pass\">
                     </div>
                     <button class=\"btn btn-success btn-block\" type=\"submit\" value=\"/\">LOGIN </button>
-                    <p>If you forgot your password <br>you can <a href=\"/passreset\">reset it</a>.</p>
+                    <p> click <a href=\"https://www.slideshare.net/staiculaurian/survey-management-system\">for ppt presentation</a>.</p>
 
                 </form>
             </div>
@@ -111,6 +111,6 @@ class __TwigTemplate_4f1016257b826a8da7734a6232679e57ddada732c5f8aac20a6bf7c0a40
     </div>
 
 
-{% endblock %}", "login.html.twig", "C:\\xampp\\htdocs\\phpproject\\templates\\login.html.twig");
+{% endblock %}", "login.html.twig", "C:\\xampp\\htdocs\\ipd9-php-project\\templates\\login.html.twig");
     }
 }

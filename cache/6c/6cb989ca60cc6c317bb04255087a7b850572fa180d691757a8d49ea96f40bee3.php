@@ -86,7 +86,7 @@ class __TwigTemplate_e6db0ccfecdd602111bb5af4270423812a8d4ce94dea5bf5b5aa7e998fe
                 <div class=\"panel-collapse collapse item-5\" role=\"tabpanel\">
                     <div class=\"panel-body\"><span><a href=\"/admin/responses/list\">Survey Statistics</a>.</span></div>
                     <div class=\"panel-body\"><span><a href=\"/admin/responses/allsurveys\">Survey Responses- Listing All => Detail and Delete</a>.</span></div>
-                    <div class=\"panel-body\"><span><a href=\"/admin/email/allCutomers\">Survey Responses- Listing All => Detail and Delete</a>.</span></div>
+                    <div class=\"panel-body\"><span><a href=\"/admin/email/allCutomers\">Email Marketing - Send Emails to all Customers</a>.</span></div>
 
                 </div>
             </div>
@@ -184,7 +184,7 @@ class __TwigTemplate_e6db0ccfecdd602111bb5af4270423812a8d4ce94dea5bf5b5aa7e998fe
                 <div class=\"panel-collapse collapse item-5\" role=\"tabpanel\">
                     <div class=\"panel-body\"><span><a href=\"/admin/responses/list\">Survey Statistics</a>.</span></div>
                     <div class=\"panel-body\"><span><a href=\"/admin/responses/allsurveys\">Survey Responses- Listing All => Detail and Delete</a>.</span></div>
-                    <div class=\"panel-body\"><span><a href=\"/admin/email/allCutomers\">Survey Responses- Listing All => Detail and Delete</a>.</span></div>
+                    <div class=\"panel-body\"><span><a href=\"/admin/email/allCutomers\">Email Marketing - Send Emails to all Customers</a>.</span></div>
 
                 </div>
             </div>
